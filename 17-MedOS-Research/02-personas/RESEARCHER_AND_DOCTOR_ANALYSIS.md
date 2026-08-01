@@ -95,7 +95,7 @@ These are first-class fields in the MedOS R&D `LiteratureRecord` (see `05-domain
   preventive_health_tips
   clinician_referral_prompts
   ```
-- **MCP server contract (`mcp_servers.json`):** `mcp-general-doctor` (default port 9110), Python-native MCP safety adapter that calls an upstream `medical-mcp-toolkit` (port 9090) and enforces `docs/medical/medical-ai-safety-policy.md`. The upstream toolkit is [`ruslanmv/medical-mcp-toolkit`](https://github.com/ruslanmv/medical-mcp-toolkit) and exposes `triageSymptoms`, `searchMedicalKB`.
+- **MCP server contract (`mcp_servers.json`):** `mcp-general-doctor` (default port 9110), Python-native MCP safety adapter that calls an upstream `medical-mcp-toolkit` (port 9090) and enforces `docs/medical/medical-ai-safety-policy.md`. The upstream toolkit is [`kishan/medical-mcp-toolkit`](https://github.com/kishan/medical-mcp-toolkit) and exposes `triageSymptoms`, `searchMedicalKB`.
 
 ### What we keep, unchanged
 
@@ -181,9 +181,9 @@ medos-research-personas/
 
 This makes every MedOS Research role:
 
-- Loadable into [`ruslanmv/HomePilot`](https://github.com/ruslanmv/HomePilot) like any other persona.
-- Distributable via [`ruslanmv/ollabridge-cloud`](https://github.com/ruslanmv/ollabridge-cloud) as a persona delivery channel.
-- Backed by an MCP server (Python or TypeScript) that enforces a policy document — the same architectural pattern that the General Doctor persona uses to enforce its safety policy on top of [`ruslanmv/medical-mcp-toolkit`](https://github.com/ruslanmv/medical-mcp-toolkit).
+- Loadable into [`kishan/HomePilot`](https://github.com/kishan/HomePilot) like any other persona.
+- Distributable via [`kishan/ollabridge-cloud`](https://github.com/kishan/ollabridge-cloud) as a persona delivery channel.
+- Backed by an MCP server (Python or TypeScript) that enforces a policy document — the same architectural pattern that the General Doctor persona uses to enforce its safety policy on top of [`kishan/medical-mcp-toolkit`](https://github.com/kishan/medical-mcp-toolkit).
 
 ---
 

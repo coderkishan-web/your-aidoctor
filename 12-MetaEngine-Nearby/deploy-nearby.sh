@@ -4,7 +4,7 @@ set -e
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 TEMPLATE_DIR="$REPO_ROOT/12-MetaEngine-Nearby/12-deploy/hf-space-template"
 BUILD_DIR="/tmp/nearby-finder-deploy"
-SPACE_NAME="${HF_SPACE_NAME:-ruslanmv/MetaEngine-Nearby}"
+SPACE_NAME="${HF_SPACE_NAME:-kishan/MetaEngine-Nearby}"
 
 if [ -z "$HF_TOKEN" ]; then
   echo "ERROR: Set HF_TOKEN environment variable" && exit 1

@@ -21,9 +21,9 @@ import requests
 # Configuration
 # ============================================================
 
-MEDIBOT_URL = "https://ruslanmv-medibot.hf.space"
-SCANNER_URL = "https://ruslanmv-medicine-scanner.hf.space"
-NEARBY_URL = "https://ruslanmv-metaengine-nearby.hf.space"
+MEDIBOT_URL = "https://kishan-medibot.hf.space"
+SCANNER_URL = "https://kishan-medicine-scanner.hf.space"
+NEARBY_URL = "https://kishan-metaengine-nearby.hf.space"
 VERCEL_URL = "https://www.ai-medical-chabot.com"
 
 TIMEOUT = 60  # seconds — covers cold starts

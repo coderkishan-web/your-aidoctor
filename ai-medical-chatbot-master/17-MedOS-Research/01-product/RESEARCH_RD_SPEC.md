@@ -108,8 +108,8 @@ The Clinical Safety Reviewer is invoked at every output boundary. Outputs that f
 
 MedOS Research personas are designed to be loaded into the user's local persona host:
 
-- [`ruslanmv/HomePilot`](https://github.com/ruslanmv/HomePilot) — the local-first GenAI host that runs personas via MCP.
-- [`ruslanmv/ollabridge-cloud`](https://github.com/ruslanmv/ollabridge-cloud) — bridge / cloud delivery channel.
+- [`kishan/HomePilot`](https://github.com/kishan/HomePilot) — the local-first GenAI host that runs personas via MCP.
+- [`kishan/ollabridge-cloud`](https://github.com/kishan/ollabridge-cloud) — bridge / cloud delivery channel.
 - The persona schema mirrors the [HomePilotAI/personas](https://github.com/HomePilotAI/personas) registry (manifest + blueprint + agentic + MCP server contract).
 
 Each MedOS Research agent role is shipped as a persona with a manifest, system prompt, agentic capabilities, tool ids, and an MCP server contract — exactly as in the existing `personas/04-researcher` and `personas/10-general-doctor` packages.

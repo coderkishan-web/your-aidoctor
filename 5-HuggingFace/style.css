@@ -11,7 +11,7 @@
     background-color: #212529; /* Dark background color */
     color: #fff;    /* Light text color for better readability */
     overflow: hidden; /* Hide potential overflow content */
-    background-image: url("https://raw.githubusercontent.com/ruslanmv/ai-medical-chatbot/master/assets/images/background.jpg"); /* Replace with your image path */
+    background-image: url("https://raw.githubusercontent.com/kishan/ai-medical-chatbot/master/assets/images/background.jpg"); /* Replace with your image path */
     background-size: cover; /* Stretch the image to cover the container */
     background-position: center; /* Center the image horizontally and vertically */
 }

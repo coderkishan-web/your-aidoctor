@@ -4,7 +4,7 @@ Pytest configuration and fixtures for AI Medical Chatbot tests.
 This module provides shared fixtures and configuration for all test modules.
 
 Author: Ruslan Magana Vsevolodovna
-Website: https://ruslanmv.com
+Website: https://kishan.com
 License: Apache 2.0
 """
 

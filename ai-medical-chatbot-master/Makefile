@@ -36,7 +36,7 @@ help: ## Show this help message
 	@echo ""
 	@echo "$(BLUE)═══════════════════════════════════════════════════════════════$(NC)"
 	@echo "$(YELLOW)Author:$(NC) Ruslan Magana Vsevolodovna"
-	@echo "$(YELLOW)Website:$(NC) https://ruslanmv.com"
+	@echo "$(YELLOW)Website:$(NC) https://kishan.com"
 	@echo "$(BLUE)═══════════════════════════════════════════════════════════════$(NC)"
 
 install: ## Install production dependencies using uv
@@ -209,7 +209,7 @@ version: ## Show version information
 	@echo "$(YELLOW)Project:$(NC) ai-medical-chatbot"
 	@echo "$(YELLOW)Version:$(NC) 2.0.0"
 	@echo "$(YELLOW)Author:$(NC) Ruslan Magana Vsevolodovna"
-	@echo "$(YELLOW)Website:$(NC) https://ruslanmv.com"
+	@echo "$(YELLOW)Website:$(NC) https://kishan.com"
 
 info: ## Show project information
 	@echo "$(BLUE)═══════════════════════════════════════════════════════════════$(NC)"
@@ -219,7 +219,7 @@ info: ## Show project information
 	@echo "$(YELLOW)Project Name:$(NC)    ai-medical-chatbot"
 	@echo "$(YELLOW)Version:$(NC)        2.0.0"
 	@echo "$(YELLOW)Author:$(NC)         Ruslan Magana Vsevolodovna"
-	@echo "$(YELLOW)Website:$(NC)        https://ruslanmv.com"
+	@echo "$(YELLOW)Website:$(NC)        https://kishan.com"
 	@echo "$(YELLOW)License:$(NC)        Apache 2.0"
 	@echo "$(YELLOW)Description:$(NC)    Production-ready AI Medical Chatbot"
 	@echo ""

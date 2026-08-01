@@ -3,20 +3,20 @@ import path from 'path';
 
 // Node.js script to fetch and format medical Q&A dataset from HuggingFace dataset endpoint
 async function fetchMedicalDataset() {
-    console.log("🚀 Starting extraction of Hugging Face dataset (ruslanmv/ai-medical-chatbot)...");
-    
+    console.log("🚀 Starting extraction of Hugging Face dataset (kishan/ai-medical-chatbot)...");
+
     const outputFilePath = path.join(process.cwd(), 'medical_dataset.json');
     const limit = 100; // Fetch top 100 clinical dialogue pairs for instant local loading
-    const url = `https://datasets-server.huggingface.co/rows?dataset=ruslanmv%2Fai-medical-chatbot&config=default&split=train&offset=0&limit=${limit}`;
+    const url = `https://datasets-server.huggingface.co/rows?dataset=kishan%2Fai-medical-chatbot&config=default&split=train&offset=0&limit=${limit}`;
 
     try {
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`HTTP Error: ${response.status} ${response.statusText}`);
         }
-        
+
         const data = await response.json();
-        
+
         if (!data.rows || !Array.isArray(data.rows)) {
             throw new Error("Invalid response format from Hugging Face dataset server.");
         }
@@ -27,13 +27,13 @@ async function fetchMedicalDataset() {
                 id: index + 1,
                 patientQuery: rowData.Description || rowData.patient || rowData.input || rowData.Question || "Medical query",
                 doctorResponse: rowData.Doctor || rowData.doctor || rowData.output || rowData.Answer || "Clinical guidance",
-                source: "ruslanmv/ai-medical-chatbot (HuggingFace)"
+                source: "kishan/ai-medical-chatbot (HuggingFace)"
             };
         });
 
         const datasetPayload = {
             metadata: {
-                datasetName: "ruslanmv/ai-medical-chatbot",
+                datasetName: "kishan/ai-medical-chatbot",
                 extractedAt: new Date().toISOString(),
                 totalRecords: extractedPairs.length,
                 description: "Cleaned patient doctor dialogue sample for fast local retrieval in dr.appointmentai"
@@ -46,11 +46,11 @@ async function fetchMedicalDataset() {
 
     } catch (error) {
         console.error("❌ Error fetching dataset:", error.message);
-        
+
         // Fallback: create a structured sample dataset if offline/network error occurs
         const fallbackPayload = {
             metadata: {
-                datasetName: "ruslanmv/ai-medical-chatbot (Local Fallback)",
+                datasetName: "kishan/ai-medical-chatbot (Local Fallback)",
                 extractedAt: new Date().toISOString(),
                 totalRecords: 3,
                 description: "Fallback dataset for local offline operation"

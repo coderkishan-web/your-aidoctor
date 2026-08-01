@@ -13,7 +13,7 @@ set -e
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SCANNER_DIR="$REPO_ROOT/11-Medicine-Scanner"
 BUILD_DIR="/tmp/medicine-scanner-deploy"
-SPACE_NAME="${HF_SPACE_NAME:-ruslanmv/Medicine-Scanner}"
+SPACE_NAME="${HF_SPACE_NAME:-kishan/Medicine-Scanner}"
 
 if [ -z "$HF_TOKEN" ]; then
   echo "ERROR: Set HF_TOKEN environment variable" && exit 1

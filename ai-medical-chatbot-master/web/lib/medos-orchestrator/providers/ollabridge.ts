@@ -13,7 +13,7 @@
  *     failures) so a stuck upstream doesn't compound across retries.
  *
  * Default model is `qwen2.5:1.5b` — verified to serve real content on
- * the shared `ruslanmv-ollabridge.hf.space` instance. The legacy
+ * the shared `kishan-ollabridge.hf.space` instance. The legacy
  * `local-private` alias is a stub responder and is no longer used.
  */
 
@@ -24,7 +24,7 @@ function readBaseURL(): string {
   return (
     process.env.OLLABRIDGE_URL ||
     process.env.OLLABRIDGE_BASE_URL ||
-    "https://ruslanmv-ollabridge.hf.space"
+    "https://kishan-ollabridge.hf.space"
   );
 }
 
@@ -82,7 +82,7 @@ export function recordFailure(): void {
     openedAt = Date.now();
     console.warn(
       `[Chat] provider.ollabridge.circuit.open cooldown=${COOLDOWN_MS}ms ` +
-        `failures=${consecutiveFailures}`,
+      `failures=${consecutiveFailures}`,
     );
   }
 }

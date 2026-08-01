@@ -524,9 +524,8 @@ export function AdminView({ language, token }: AdminViewProps) {
                 <div className="divide-y divide-line/40">
                   {users.map((u) => (
                     <div key={u.id} className="p-4 flex items-center gap-3 hover:bg-surface-2/30 transition-colors">
-                      <div className={`w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-xs flex-shrink-0 ${
-                        u.isAdmin ? "bg-warning-500" : "bg-brand-500"
-                      }`}>
+                      <div className={`w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-xs flex-shrink-0 ${u.isAdmin ? "bg-warning-500" : "bg-brand-500"
+                        }`}>
                         {(u.displayName || u.email)[0].toUpperCase()}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -681,11 +680,10 @@ export function AdminView({ language, token }: AdminViewProps) {
             {llmHealth && (
               <AdminCard
                 icon={Cpu}
-                title={`${t("admin_provider_status", language)}${
-                  llmHealth.summary.testedAt
+                title={`${t("admin_provider_status", language)}${llmHealth.summary.testedAt
                     ? ` — ${new Date(llmHealth.summary.testedAt).toLocaleTimeString()}`
                     : ""
-                }`}
+                  }`}
               >
                 {llmHealth.models.length === 0 ? (
                   <div className="py-6 text-center">
@@ -700,9 +698,8 @@ export function AdminView({ language, token }: AdminViewProps) {
                     {llmHealth.models.map((m) => (
                       <div key={m.model} className="flex items-center gap-3 py-2.5">
                         <div
-                          className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${
-                            m.status === "ok" ? "bg-success-500" : "bg-danger-500"
-                          }`}
+                          className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${m.status === "ok" ? "bg-success-500" : "bg-danger-500"
+                            }`}
                         />
                         <div className="flex-1 min-w-0">
                           <span className="text-sm font-medium text-ink-base block truncate">
@@ -776,11 +773,10 @@ export function AdminView({ language, token }: AdminViewProps) {
             <AdminCard icon={Mail} title="Outgoing Email (SMTP)">
               <div className="space-y-4">
                 {/* Status indicator */}
-                <div className={`flex items-center gap-2 p-3 rounded-xl border ${
-                  config.smtp.configured
+                <div className={`flex items-center gap-2 p-3 rounded-xl border ${config.smtp.configured
                     ? "bg-success-500/5 border-success-500/20"
                     : "bg-warning-500/5 border-warning-500/20"
-                }`}>
+                  }`}>
                   {config.smtp.configured ? (
                     <>
                       <CheckCircle2 size={16} className="text-success-500" />
@@ -860,16 +856,16 @@ export function AdminView({ language, token }: AdminViewProps) {
                   Gemini, OpenRouter, and your HomePilot node into one OpenAI-compatible endpoint.
                   See{" "}
                   <a
-                    href="https://github.com/ruslanmv/ollabridge"
+                    href="https://github.com/kishan/ollabridge"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-brand-500 hover:underline"
                   >
-                    ruslanmv/ollabridge
+                    kishan/ollabridge
                   </a>{" "}
                   for self-hosting, or use the shared cloud instance at{" "}
                   <code className="text-[10px] bg-surface-2 px-1 py-0.5 rounded">
-                    ruslanmv-ollabridge.hf.space
+                    kishan-ollabridge.hf.space
                   </code>
                   .
                 </p>
@@ -877,7 +873,7 @@ export function AdminView({ language, token }: AdminViewProps) {
                 <ConfigInput
                   label="OllaBridge URL"
                   value={config.llm.ollabridgeUrl}
-                  placeholder="https://ruslanmv-ollabridge.hf.space"
+                  placeholder="https://kishan-ollabridge.hf.space"
                   onChange={(v) => updateConfig("llm", "ollabridgeUrl", v)}
                   hint="Root URL of your OllaBridge gateway (no trailing slash)"
                 />
@@ -1099,7 +1095,7 @@ export function AdminView({ language, token }: AdminViewProps) {
                 <ConfigInput
                   label="Application URL"
                   value={config.app.appUrl}
-                  placeholder="https://ruslanmv-medibot.hf.space"
+                  placeholder="https://kishan-medibot.hf.space"
                   onChange={(v) => updateConfig("app", "appUrl", v)}
                   hint="Public URL used in email templates and redirects"
                 />
@@ -1148,9 +1144,8 @@ function TabButton({ active, onClick, icon: Icon, label }: {
 }) {
   return (
     <button onClick={onClick}
-      className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg text-sm font-semibold transition-all whitespace-nowrap ${
-        active ? "bg-surface-1 text-ink-base shadow-soft" : "text-ink-muted hover:text-ink-base"
-      }`}
+      className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg text-sm font-semibold transition-all whitespace-nowrap ${active ? "bg-surface-1 text-ink-base shadow-soft" : "text-ink-muted hover:text-ink-base"
+        }`}
     >
       <Icon size={15} />
       <span className="hidden sm:inline">{label}</span>
@@ -1236,21 +1231,19 @@ function ProviderModelsRow({ provider }: { provider: ProviderModels }) {
         className="w-full flex items-center gap-3 p-3 hover:bg-surface-2/40 transition-colors text-left"
       >
         <div
-          className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${
-            provider.ok
+          className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${provider.ok
               ? "bg-success-500"
               : provider.configured
                 ? "bg-danger-500"
                 : "bg-ink-subtle/40"
-          }`}
+            }`}
         />
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-sm font-semibold text-ink-base">{provider.label}</span>
             <span
-              className={`text-[9px] font-bold px-1.5 py-0.5 rounded border uppercase tracking-wide ${
-                pricingColor[provider.pricing] || pricingColor.free
-              }`}
+              className={`text-[9px] font-bold px-1.5 py-0.5 rounded border uppercase tracking-wide ${pricingColor[provider.pricing] || pricingColor.free
+                }`}
             >
               {provider.pricing}
             </span>
@@ -1319,11 +1312,10 @@ function ProviderStatusBadge({
   if (test && typeof test === "object") {
     return (
       <div
-        className={`flex items-center gap-2 p-3 rounded-xl border ${
-          test.ok
+        className={`flex items-center gap-2 p-3 rounded-xl border ${test.ok
             ? "bg-success-500/5 border-success-500/20"
             : "bg-danger-500/5 border-danger-500/20"
-        }`}
+          }`}
       >
         {test.ok ? (
           <CheckCircle2 size={16} className="text-success-500 flex-shrink-0" />
@@ -1332,9 +1324,8 @@ function ProviderStatusBadge({
         )}
         <div className="flex-1 min-w-0">
           <div
-            className={`text-sm font-medium ${
-              test.ok ? "text-success-600" : "text-danger-600"
-            }`}
+            className={`text-sm font-medium ${test.ok ? "text-success-600" : "text-danger-600"
+              }`}
           >
             {test.ok ? `Connected · ${test.latencyMs}ms` : `Failed · ${test.error || "Unknown error"}`}
           </div>
@@ -1345,11 +1336,10 @@ function ProviderStatusBadge({
   }
   return (
     <div
-      className={`flex items-center gap-2 p-3 rounded-xl border ${
-        configured
+      className={`flex items-center gap-2 p-3 rounded-xl border ${configured
           ? "bg-success-500/5 border-success-500/20"
           : "bg-surface-2/50 border-line/40"
-      }`}
+        }`}
     >
       {configured ? (
         <>

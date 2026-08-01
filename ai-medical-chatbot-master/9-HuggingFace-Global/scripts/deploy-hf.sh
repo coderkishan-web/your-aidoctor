@@ -104,7 +104,7 @@ cd "$BUILD_DIR"
 git init && git branch -M main
 git add -A
 git -c commit.gpgsign=false commit -m "Deploy: web/ frontend + HF backend (zero duplication)"
-git remote add hf "https://ruslanmv:${HF_TOKEN}@huggingface.co/spaces/ruslanmv/MediBot"
+git remote add hf "https://kishan:${HF_TOKEN}@huggingface.co/spaces/kishan/MediBot"
 git push hf main --force 2>&1 | tail -5
 
-echo "[deploy] ✓ Done — https://huggingface.co/spaces/ruslanmv/MediBot"
+echo "[deploy] ✓ Done — https://huggingface.co/spaces/kishan/MediBot"

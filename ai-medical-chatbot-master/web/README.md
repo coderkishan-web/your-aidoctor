@@ -34,7 +34,7 @@ A production-ready, enterprise-grade medical AI assistant built with Next.js 14,
 
 ```bash
 # Clone the repository
-git clone https://github.com/ruslanmv/ai-medical-chatbot.git
+git clone https://github.com/kishan/ai-medical-chatbot.git
 cd ai-medical-chatbot/web
 
 # Install dependencies
@@ -50,7 +50,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### One-Click Deploy
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ruslanmv/ai-medical-chatbot/tree/main/web)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/kishan/ai-medical-chatbot/tree/main/web)
 
 ### Manual Deployment
 
@@ -291,8 +291,8 @@ This is a demonstration application. **DO NOT use for actual medical diagnosis o
 
 ## 📧 Support
 
-- GitHub Issues: [github.com/ruslanmv/ai-medical-chatbot/issues](https://github.com/ruslanmv/ai-medical-chatbot/issues)
-- Documentation: [github.com/ruslanmv/ai-medical-chatbot](https://github.com/ruslanmv/ai-medical-chatbot)
+- GitHub Issues: [github.com/kishan/ai-medical-chatbot/issues](https://github.com/kishan/ai-medical-chatbot/issues)
+- Documentation: [github.com/kishan/ai-medical-chatbot](https://github.com/kishan/ai-medical-chatbot)
 
 ---
 

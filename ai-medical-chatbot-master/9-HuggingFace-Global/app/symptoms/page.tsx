@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ChevronRight, ShieldCheck } from 'lucide-react';
 import { SYMPTOMS } from '@/lib/symptoms';
 
-const SITE_URL = 'https://ruslanmv-medibot.hf.space';
+const SITE_URL = 'https://kishan-medibot.hf.space';
 
 export const metadata: Metadata = {
   title: 'Symptom guides — free, WHO-aligned | MedOS',

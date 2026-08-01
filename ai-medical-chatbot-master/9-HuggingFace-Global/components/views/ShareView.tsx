@@ -24,14 +24,14 @@ export function ShareView({ language }: ShareViewProps) {
       await navigator.clipboard.writeText(text);
       if (type === "link") { setCopiedLink(true); setTimeout(() => setCopiedLink(false), 2000); }
       else { setCopiedEmbed(true); setTimeout(() => setCopiedEmbed(false), 2000); }
-    } catch {}
+    } catch { }
   };
 
   const nativeShare = async () => {
     if (navigator.share) {
       try {
         await navigator.share({ title: "MedOS — Free AI Medical Assistant", text: "Get free AI medical advice in 20 languages:", url: appUrl });
-      } catch {}
+      } catch { }
     }
   };
 
@@ -131,7 +131,7 @@ export function ShareView({ language }: ShareViewProps) {
         {/* GitHub link */}
         <div className="pt-4 mt-4 border-t border-line/40">
           <a
-            href="https://github.com/ruslanmv/ai-medical-chatbot"
+            href="https://github.com/kishan/ai-medical-chatbot"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-sm text-ink-muted hover:text-brand-600 transition-colors"

@@ -1,12 +1,12 @@
 # =============================================================================
-# Deploy MedOS Main App to HuggingFace Space (ruslanmv/MediBot)
+# Deploy MedOS Main App to HuggingFace Space (kishan/MediBot)
 # =============================================================================
 # Assembles frontend (web/) + backend (9-HuggingFace-Global/) into a single
 # deploy tree, rewrites API proxy paths, and force-pushes to HF Space.
 #
 # Required Repository Secrets:
 #   HF_TOKEN       - HuggingFace token with write + Spaces permissions
-#   HF_USERNAME    - HuggingFace username (e.g. ruslanmv)
+#   HF_USERNAME    - HuggingFace username (e.g. kishan)
 # =============================================================================
 name: Deploy MediBot to HF Space
 

@@ -5,7 +5,7 @@ This module contains integration tests that verify the complete chatbot
 workflow from question input to answer generation.
 
 Author: Ruslan Magana Vsevolodovna
-Website: https://ruslanmv.com
+Website: https://kishan.com
 License: Apache 2.0
 """
 

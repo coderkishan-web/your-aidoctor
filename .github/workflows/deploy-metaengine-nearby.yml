@@ -1,12 +1,12 @@
 # =============================================================================
-# Deploy MetaEngine Nearby to HuggingFace Space (ruslanmv/MetaEngine-Nearby)
+# Deploy MetaEngine Nearby to HuggingFace Space (kishan/MetaEngine-Nearby)
 # =============================================================================
 # Pushes the 12-MetaEngine-Nearby/ Docker app to HF Space.
 # Uses Docker SDK with FastAPI + Gradio mounted at /ui.
 #
 # Required Repository Secrets:
 #   HF_TOKEN       - HuggingFace token with write + Spaces permissions
-#   HF_USERNAME    - HuggingFace username (e.g. ruslanmv)
+#   HF_USERNAME    - HuggingFace username (e.g. kishan)
 # =============================================================================
 name: Deploy MetaEngine Nearby to HF Space
 

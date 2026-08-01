@@ -40,10 +40,10 @@ models:
   - mistralai/Mixtral-8x7B-Instruct-v0.1
   - Qwen/Qwen2.5-72B-Instruct
   - deepseek-ai/DeepSeek-V3
-  - ruslanmv/Medical-Llama3-8B
+  - kishan/Medical-Llama3-8B
   - google/gemma-2-9b-it
 datasets:
-  - ruslanmv/ai-medical-chatbot
+  - kishan/ai-medical-chatbot
 ---
 
 # MediBot — free AI medical assistant, worldwide
@@ -51,7 +51,7 @@ datasets:
 > **Tell MediBot what's bothering you. In your language. Instantly. For free.**
 > No sign-up. No paywall. No data retention. Aligned with WHO · CDC · NHS guidelines.
 
-[![Try MediBot](https://img.shields.io/badge/Try_MediBot-Free_on_HuggingFace-blue?style=for-the-badge&logo=huggingface)](https://huggingface.co/spaces/ruslanmv/MediBot)
+[![Try MediBot](https://img.shields.io/badge/Try_MediBot-Free_on_HuggingFace-blue?style=for-the-badge&logo=huggingface)](https://huggingface.co/spaces/kishan/MediBot)
 [![Languages](https://img.shields.io/badge/languages-20-14B8A6?style=for-the-badge)](#)
 [![Free](https://img.shields.io/badge/price-free_forever-22C55E?style=for-the-badge)](#)
 [![No sign-up](https://img.shields.io/badge/account-not_required-3B82F6?style=for-the-badge)](#)
@@ -67,7 +67,7 @@ datasets:
 - **Installable PWA.** Add to your phone's home screen and use it like a native app. Offline-capable with a cached FAQ fallback.
 - **Shareable.** Every AI answer gets a Share button that generates a clean deep link with a branded OG card preview — perfect for WhatsApp, Twitter, and Telegram.
 - **Private & anonymous.** Zero accounts. Zero server-side conversation storage. No IPs logged. Anonymous session counter only.
-- **Open source.** Fully transparent. [github.com/ruslanmv/ai-medical-chatbot](https://github.com/ruslanmv/ai-medical-chatbot)
+- **Open source.** Fully transparent. [github.com/kishan/ai-medical-chatbot](https://github.com/kishan/ai-medical-chatbot)
 
 ## How it works
 
@@ -86,8 +86,8 @@ If the main model is busy, MedOS automatically tries other free models until one
 | Frontend | Next.js 14, React, Tailwind CSS |
 | AI Model | Llama 3.3 70B Instruct (via HuggingFace Inference + Groq) |
 | Fallbacks | Mixtral 8x7B, OllaBridge, cached FAQ |
-| Knowledge | Medical RAG from [ruslanmv/ai-medical-chatbot](https://github.com/ruslanmv/ai-medical-chatbot) dataset |
-| Gateway | [OllaBridge-Cloud](https://github.com/ruslanmv/ollabridge) |
+| Knowledge | Medical RAG from [kishan/ai-medical-chatbot](https://github.com/kishan/ai-medical-chatbot) dataset |
+| Gateway | [OllaBridge-Cloud](https://github.com/kishan/ollabridge) |
 | Hosting | HuggingFace Spaces (Docker) |
 
 ## License

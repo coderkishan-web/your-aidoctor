@@ -79,7 +79,7 @@ vercel --prod
 
 Click this button to deploy directly:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ruslanmv/ai-medical-chatbot/tree/main/web)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/kishan/ai-medical-chatbot/tree/main/web)
 
 ## Post-Deployment Configuration
 

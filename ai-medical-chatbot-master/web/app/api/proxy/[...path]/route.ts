@@ -32,7 +32,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const BACKEND_URL =
   process.env.NEXT_PUBLIC_BACKEND_URL ||
-  'https://ruslanmv-medibot.hf.space';
+  'https://kishan-medibot.hf.space';
 
 const TIMEOUT_MS = 50_000;
 

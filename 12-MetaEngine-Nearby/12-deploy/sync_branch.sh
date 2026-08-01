@@ -6,7 +6,7 @@ set -euo pipefail
 #   export GITHUB_TOKEN=...   # optional for private/authenticated push
 #   12-MetaEngine-Nearby/12-deploy/sync_branch.sh
 
-UPSTREAM_URL="https://github.com/ruslanmv/ai-medical-chatbot.git"
+UPSTREAM_URL="https://github.com/kishan/ai-medical-chatbot.git"
 UPSTREAM_BRANCH="claude/remove-emergency-button-bdkt6"
 CURRENT_BRANCH="$(git branch --show-current)"
 
@@ -31,7 +31,7 @@ fi
 
 # Push current branch
 if [[ -n "${GITHUB_TOKEN:-}" ]]; then
-  AUTH_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/ruslanmv/ai-medical-chatbot.git"
+  AUTH_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/kishan/ai-medical-chatbot.git"
   git push "$AUTH_URL" "$CURRENT_BRANCH"
 else
   git push origin "$CURRENT_BRANCH"

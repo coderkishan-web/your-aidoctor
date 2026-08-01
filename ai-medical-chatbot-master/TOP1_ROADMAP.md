@@ -10,8 +10,8 @@
 | Metric | Value |
 |---|---|
 | MediBot likes | 0 (brand new Space) |
-| HF #1 medical chatbot | `ruslanmv/AI-Medical-Chatbot` — **15 likes**, runtime error |
-| HF #2 | `ruslanmv/AI-Medical-Llama3-Chatbot` — **14 likes**, Running on Zero |
+| HF #1 medical chatbot | `kishan/AI-Medical-Chatbot` — **15 likes**, runtime error |
+| HF #2 | `kishan/AI-Medical-Llama3-Chatbot` — **14 likes**, Running on Zero |
 | HF #3 | `AventIQ-AI/T5-Medical-Chatbot` — 4 likes |
 | HF medical-chatbot Spaces total | 399 |
 | Hardware | `cpu-basic`, 1 replica |
@@ -139,7 +139,7 @@ Hunt launch can clear the bar.
 >   WhatsApp, and Telegram.
 > - 🛡️ Still 100% free, no sign-up, no paywall, no data retention.
 >
-> Try it: https://huggingface.co/spaces/ruslanmv/MediBot
+> Try it: https://huggingface.co/spaces/kishan/MediBot
 >
 > Would love your feedback, and a ❤️ on the Space if you find it useful —
 > it really does help with HF discoverability. 🙏
@@ -152,7 +152,7 @@ Hunt launch can clear the bar.
    that speaks 20 languages, works worldwide,
    and needs zero sign-up.
 
-   https://huggingface.co/spaces/ruslanmv/MediBot
+   https://huggingface.co/spaces/kishan/MediBot
 
    Here's what's new 🧵
 
@@ -177,7 +177,7 @@ Hunt launch can clear the bar.
 
 6/ Privacy: zero accounts, zero conversation
    storage, no IP logging. Anonymous session
-   counter only. Open source: github.com/ruslanmv/ai-medical-chatbot
+   counter only. Open source: github.com/kishan/ai-medical-chatbot
 
 7/ Every AI answer has a Share button. Post it to
    Twitter / WhatsApp / Telegram and it previews
@@ -186,7 +186,7 @@ Hunt launch can clear the bar.
 8/ Free forever. No paywall. No ads. Built for
    everyone, everywhere.
 
-   Try it → https://huggingface.co/spaces/ruslanmv/MediBot
+   Try it → https://huggingface.co/spaces/kishan/MediBot
 
    ❤️ a like on the Space would mean the world.
 ```

@@ -9,7 +9,7 @@ import { NextResponse } from 'next/server';
  */
 
 const NEARBY_URL =
-  process.env.NEARBY_URL || 'https://ruslanmv-metaengine-nearby.hf.space';
+  process.env.NEARBY_URL || 'https://kishan-metaengine-nearby.hf.space';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';

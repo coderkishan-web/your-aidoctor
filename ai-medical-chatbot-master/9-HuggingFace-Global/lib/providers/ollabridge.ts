@@ -27,7 +27,7 @@ function getClient(): OpenAI {
   const baseURL =
     configUrl ||
     process.env.OLLABRIDGE_URL ||
-    'https://ruslanmv-ollabridge.hf.space';
+    'https://kishan-ollabridge.hf.space';
   const apiKey = configKey || process.env.OLLABRIDGE_API_KEY || 'not-required';
 
   // Timeout: 45s.
@@ -115,7 +115,7 @@ export function recordFailure(): void {
     openedAt = Date.now();
     console.warn(
       `[Chat] provider.ollabridge.circuit.open cooldown=${COOLDOWN_MS}ms ` +
-        `failures=${consecutiveFailures}`,
+      `failures=${consecutiveFailures}`,
     );
   }
 }

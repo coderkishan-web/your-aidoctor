@@ -16,11 +16,11 @@ It is strongly recommended to maintain a clinical history for every patient trea
 
 The first step is the preprocessing of the data
 
-### [3_1-Preproces.ipynb](https://github.com/ruslanmv/Free-Doctor-with-Artificial-Intelligence/blob/master/3-Modeling/3_1-Preproces.ipynb)
+### [3_1-Preproces.ipynb](https://github.com/kishan/Free-Doctor-with-Artificial-Intelligence/blob/master/3-Modeling/3_1-Preproces.ipynb)
 
 The second step is the clustering of the cases. Can be useful to understand better our data.
 
-### [3_2-Clustering.ipynb](https://github.com/ruslanmv/Free-Doctor-with-Artificial-Intelligence/blob/master/3-Modeling/3_2-Clustering.ipynb)
+### [3_2-Clustering.ipynb](https://github.com/kishan/Free-Doctor-with-Artificial-Intelligence/blob/master/3-Modeling/3_2-Clustering.ipynb)
 
 The third  step is classical feature engineering, here we should create a syntenic clinical history for each visit of with the AI doctor.
 
@@ -28,7 +28,7 @@ For future releases our raw data must be included as a part of the model.
 
 Due to lack of data we create a synthetic clinical history based on the description of the patient.
 
-### [3_3-Features.ipynb](https://github.com/ruslanmv/Free-Doctor-with-Artificial-Intelligence/blob/master/3-Modeling/3_3-Features.ipynb)
+### [3_3-Features.ipynb](https://github.com/kishan/Free-Doctor-with-Artificial-Intelligence/blob/master/3-Modeling/3_3-Features.ipynb)
 
 Having the data well built.
 
@@ -36,7 +36,7 @@ Features + Description + Patient + Answer
 
 Is simply build a model to answer custom questions.
 
-### [3_4-Generative.ipynb](https://github.com/ruslanmv/Free-Doctor-with-Artificial-Intelligence/blob/master/3-Modeling/3_4-Generative.ipynb)
+### [3_4-Generative.ipynb](https://github.com/kishan/Free-Doctor-with-Artificial-Intelligence/blob/master/3-Modeling/3_4-Generative.ipynb)
 
 # Additional Notes
 

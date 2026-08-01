@@ -8,9 +8,9 @@
 
 <br/>
 
-[![Try MedOS Free](https://img.shields.io/badge/%F0%9F%8F%A5%20Try%20MedOS-Free%20for%20Everyone-0078D4?style=for-the-badge&logo=huggingface&logoColor=white)](https://huggingface.co/spaces/ruslanmv/MediBot)
+[![Try MedOS Free](https://img.shields.io/badge/%F0%9F%8F%A5%20Try%20MedOS-Free%20for%20Everyone-0078D4?style=for-the-badge&logo=huggingface&logoColor=white)](https://huggingface.co/spaces/kishan/MediBot)
 &nbsp;&nbsp;
-[![GitHub Stars](https://img.shields.io/github/stars/ruslanmv/ai-medical-chatbot?style=for-the-badge&logo=github&label=Star&color=gold)](https://github.com/ruslanmv/ai-medical-chatbot)
+[![GitHub Stars](https://img.shields.io/github/stars/kishan/ai-medical-chatbot?style=for-the-badge&logo=github&label=Star&color=gold)](https://github.com/kishan/ai-medical-chatbot)
 
 <br/>
 
@@ -18,23 +18,23 @@
 
 <br/>
 
-[Use it now](https://huggingface.co/spaces/ruslanmv/MediBot) &nbsp;&bull;&nbsp; [What you get](#-what-you-get) &nbsp;&bull;&nbsp; [The stack](#-the-open-source-stack) &nbsp;&bull;&nbsp; [Run it yourself](#-run-it-yourself) &nbsp;&bull;&nbsp; [Join us](#-contributing) &nbsp;&bull;&nbsp; [Sponsor](#support-the-project)
+[Use it now](https://huggingface.co/spaces/kishan/MediBot) &nbsp;&bull;&nbsp; [What you get](#-what-you-get) &nbsp;&bull;&nbsp; [The stack](#-the-open-source-stack) &nbsp;&bull;&nbsp; [Run it yourself](#-run-it-yourself) &nbsp;&bull;&nbsp; [Join us](#-contributing) &nbsp;&bull;&nbsp; [Sponsor](#support-the-project)
 
 <br/>
 
-<a href="https://huggingface.co/spaces/ruslanmv/MediBot">
+<a href="https://huggingface.co/spaces/kishan/MediBot">
 <img src="assets/images/posts/README/future.jpg" alt="Free Doctor Consultation with Artificial Intelligence" width="100%" />
 </a>
 
 <br/>
 
 <p align="center">
-  <a href="https://github.com/sponsors/ruslanmv"><img src="https://img.shields.io/badge/%F0%9F%92%96%20Become%20a%20sponsor-ec4899?style=for-the-badge" alt="Become a sponsor"/></a>
+  <a href="https://github.com/sponsors/kishan"><img src="https://img.shields.io/badge/%F0%9F%92%96%20Become%20a%20sponsor-ec4899?style=for-the-badge" alt="Become a sponsor"/></a>
   &nbsp;
-  <a href="https://huggingface.co/spaces/ruslanmv/MediBot"><img src="https://img.shields.io/badge/Try%20it%20now%20%E2%86%92%20MediBot-2e5bff?style=for-the-badge" alt="Try MediBot"/></a>
+  <a href="https://huggingface.co/spaces/kishan/MediBot"><img src="https://img.shields.io/badge/Try%20it%20now%20%E2%86%92%20MediBot-2e5bff?style=for-the-badge" alt="Try MediBot"/></a>
 </p>
 
-<p align="center"><sub>This project is free, open source, and runs on free-tier infrastructure. If MedOS is useful to you, <a href="https://github.com/sponsors/ruslanmv">sponsor on GitHub</a> — every dollar helps keep healthcare guidance free for everyone, in every language.</sub></p>
+<p align="center"><sub>This project is free, open source, and runs on free-tier infrastructure. If MedOS is useful to you, <a href="https://github.com/sponsors/kishan">sponsor on GitHub</a> — every dollar helps keep healthcare guidance free for everyone, in every language.</sub></p>
 
 </div>
 
@@ -48,7 +48,7 @@ We believe the best medical AI in the world should be **free, private, and avail
 
 This is that project. Built by the community. Free forever.
 
-If that mission resonates, you can keep it going: [**sponsor on GitHub →**](https://github.com/sponsors/ruslanmv)
+If that mission resonates, you can keep it going: [**sponsor on GitHub →**](https://github.com/sponsors/kishan)
 
 > **Important:** This does not replace a doctor. It helps you understand your health, ask better questions, and know when to seek professional care.
 
@@ -61,7 +61,7 @@ If that mission resonates, you can keep it going: [**sponsor on GitHub →**](ht
 The full medical AI experience — chat with the AI, track your health, manage medications, and more.
 
 <div align="center">
-<a href="https://huggingface.co/spaces/ruslanmv/MediBot">
+<a href="https://huggingface.co/spaces/kishan/MediBot">
 <img src="assets/2025-12-29-02-45-35.png" alt="MedOS Chat with AI Doctor" width="700" />
 </a>
 </div>
@@ -82,7 +82,7 @@ The full medical AI experience — chat with the AI, track your health, manage m
 Your personal health dashboard — private, encrypted, on your device.
 
 <div align="center">
-<a href="https://huggingface.co/spaces/ruslanmv/MediBot">
+<a href="https://huggingface.co/spaces/kishan/MediBot">
 <img src="assets/2025-12-29-02-47-19.png" alt="MedOS Health Tracker — Schedule & Routine" width="700" />
 </a>
 </div>
@@ -125,7 +125,7 @@ Everything here is free and open. Every piece can be run independently, improved
 
 <div align="center">
 
-<a href="https://huggingface.co/spaces/ruslanmv/MediBot">
+<a href="https://huggingface.co/spaces/kishan/MediBot">
 <img src="assets/2025-12-29-02-45-35.png" alt="MedOS" width="700" />
 <br/>
 <img src="https://img.shields.io/badge/MedOS-Web%20App-0078D4?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="MedOS Web App" />
@@ -136,7 +136,7 @@ Full medical platform — chat, health tracker, medicines, 13 languages
 
 ---
 
-<a href="https://huggingface.co/spaces/ruslanmv/Medical-Llama3-Chatbot">
+<a href="https://huggingface.co/spaces/kishan/Medical-Llama3-Chatbot">
 <img src="assets/2024-05-16-09-23-02.png" alt="Medical Llama3 Chatbot" width="700" />
 <br/>
 <img src="https://img.shields.io/badge/Medical-Llama3%20Chatbot-FF6F00?style=for-the-badge&logo=meta&logoColor=white" alt="Medical Llama3" />
@@ -147,7 +147,7 @@ Fine-tuned Llama3 8B on 250K medical Q&As
 
 ---
 
-<a href="https://huggingface.co/spaces/ruslanmv/Medical-Interviewer">
+<a href="https://huggingface.co/spaces/kishan/Medical-Interviewer">
 <img src="assets/2024-09-08-19-33-56.png" alt="Medical Interviewer" width="700" />
 <br/>
 <img src="https://img.shields.io/badge/Medical-Interviewer-6C3483?style=for-the-badge&logo=openai&logoColor=white" alt="Medical Interviewer" />
@@ -158,7 +158,7 @@ AI that conducts a structured medical interview
 
 ---
 
-<a href="https://huggingface.co/spaces/ruslanmv/Empathy_Chatbot_v1">
+<a href="https://huggingface.co/spaces/kishan/Empathy_Chatbot_v1">
 <img src="assets/image-20250203130739209.png" alt="Empathy Chatbot" width="700" />
 <br/>
 <img src="https://img.shields.io/badge/Empathy-Chatbot-E91E63?style=for-the-badge&logo=heart&logoColor=white" alt="Empathy Chatbot" />
@@ -169,7 +169,7 @@ AI trained to understand emotions (with Tilburg University)
 
 ---
 
-<a href="https://github.com/ruslanmv/watsonx-medical-mcp-server">
+<a href="https://github.com/kishan/watsonx-medical-mcp-server">
 <img src="assets/images/posts/README/im-778762.png" alt="WatsonX MCP Server" width="700" />
 <br/>
 <img src="https://img.shields.io/badge/WatsonX-MCP%20Server-054ADA?style=for-the-badge&logo=ibm&logoColor=white" alt="WatsonX" />
@@ -195,7 +195,7 @@ Point your camera at a medicine box — AI reads the label for you
 
 | # | Project | What it does | Links |
 |---|---|---|---|
-| | **[MedOS Web App](./web/)** | Full medical platform — chat, health tracker, medicine inventory, 13 languages | [![Live](https://img.shields.io/badge/Live-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/spaces/ruslanmv/MediBot) |
+| | **[MedOS Web App](./web/)** | Full medical platform — chat, health tracker, medicine inventory, 13 languages | [![Live](https://img.shields.io/badge/Live-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/spaces/kishan/MediBot) |
 | | **[MedOS Backend](./9-HuggingFace-Global/)** | API server — auth, SQLite DB, LLM routing, emergency triage, RAG | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./9-HuggingFace-Global/) |
 | 11 | **[Medicine Scanner](./11-Medicine-Scanner/)** | Camera scan of medicine labels via Qwen2.5-VL multimodal AI | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./11-Medicine-Scanner/) |
 | 12 | **[MetaEngine Nearby](./12-MetaEngine-Nearby/)** | Find nearby pharmacies and doctors via OpenStreetMap | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./12-MetaEngine-Nearby/) |
@@ -204,12 +204,12 @@ Point your camera at a medicine box — AI reads the label for you
 | 15 | **[MedOS Classify](./15-MedOS-Classify/)** | MCP clinical-classification + triage engine — multi-head, calibrated, red-flag floor, Hugging Face models | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./15-MedOS-Classify/) |
 | 16 | **[MedOS Pathogen](./16-MedOS-Pathogen/)** | MCP pathogen-ID layer — microscopy / chest X-ray / genomic sequence with calibrated probabilities and visible evidence | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./16-MedOS-Pathogen/) |
 | 17 | **[MedOS Research](./17-MedOS-Research/)** | R&D module — literature briefs, hypotheses, in-silico simulation plans, publication studio, safety reviewer | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./17-MedOS-Research/) |
-| | **[Medical Llama3 8B](https://huggingface.co/ruslanmv/Medical-Llama3-8B)** | Fine-tuned Llama3 on 250K medical Q&A pairs | [![Model](https://img.shields.io/badge/Model-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/ruslanmv/Medical-Llama3-8B) |
-| | **[Medical Llama3 v2](https://huggingface.co/ruslanmv/Medical-Llama3-v2)** | Improved medical Llama3 with enhanced chatbot interface | [![Model](https://img.shields.io/badge/Model-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/ruslanmv/Medical-Llama3-v2) |
-| | **[Medical Mixtral 7B](https://huggingface.co/ruslanmv/Medical-Mixtral-7B-v2k)** | Fine-tuned Mixtral for medical assistance | [![Model](https://img.shields.io/badge/Model-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/ruslanmv/Medical-Mixtral-7B-v2k) |
-| | **[Medical Interviewer](./8-Interviewer/)** | AI that conducts structured medical interviews and generates reports | [![Live](https://img.shields.io/badge/Live-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/spaces/ruslanmv/Medical-Interviewer) |
-| | **[Empathy Chatbot](https://github.com/energycombined/empathyondemand)** | AI understanding emotions and unmet needs (Tilburg University) | [![Live](https://img.shields.io/badge/Live-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/spaces/ruslanmv/Empathy_Chatbot_v1) |
-| | **[WatsonX MCP Server](https://github.com/ruslanmv/watsonx-medical-mcp-server)** | IBM WatsonX medical symptom analysis via MCP protocol | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](https://github.com/ruslanmv/watsonx-medical-mcp-server) |
+| | **[Medical Llama3 8B](https://huggingface.co/kishan/Medical-Llama3-8B)** | Fine-tuned Llama3 on 250K medical Q&A pairs | [![Model](https://img.shields.io/badge/Model-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/kishan/Medical-Llama3-8B) |
+| | **[Medical Llama3 v2](https://huggingface.co/kishan/Medical-Llama3-v2)** | Improved medical Llama3 with enhanced chatbot interface | [![Model](https://img.shields.io/badge/Model-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/kishan/Medical-Llama3-v2) |
+| | **[Medical Mixtral 7B](https://huggingface.co/kishan/Medical-Mixtral-7B-v2k)** | Fine-tuned Mixtral for medical assistance | [![Model](https://img.shields.io/badge/Model-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/kishan/Medical-Mixtral-7B-v2k) |
+| | **[Medical Interviewer](./8-Interviewer/)** | AI that conducts structured medical interviews and generates reports | [![Live](https://img.shields.io/badge/Live-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/spaces/kishan/Medical-Interviewer) |
+| | **[Empathy Chatbot](https://github.com/energycombined/empathyondemand)** | AI understanding emotions and unmet needs (Tilburg University) | [![Live](https://img.shields.io/badge/Live-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/spaces/kishan/Empathy_Chatbot_v1) |
+| | **[WatsonX MCP Server](https://github.com/kishan/watsonx-medical-mcp-server)** | IBM WatsonX medical symptom analysis via MCP protocol | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](https://github.com/kishan/watsonx-medical-mcp-server) |
 | | **[RAG Pipeline](./3-Modeling/)** | Medical knowledge retrieval with FAISS / Milvus / ChromaDB | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./3-Modeling/) |
 | | **[Medical Dataset](./2-Data/)** | 250K curated medical Q&A pairs for training | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./2-Data/) |
 | | **[Fine-tuning](./6-FineTunning/)** | Notebooks to fine-tune your own medical LLMs | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./6-FineTunning/) |
@@ -255,14 +255,14 @@ Every Ecosystem module follows the same contract: **additive only, namespaced, f
 
 ### Use it now (zero install)
 
-[![Open MedOS](https://img.shields.io/badge/%F0%9F%8F%A5%20Open-MedOS-0078D4?style=for-the-badge)](https://huggingface.co/spaces/ruslanmv/MediBot)
+[![Open MedOS](https://img.shields.io/badge/%F0%9F%8F%A5%20Open-MedOS-0078D4?style=for-the-badge)](https://huggingface.co/spaces/kishan/MediBot)
 
 Just click. No account. No install. Free.
 
 ### Run locally
 
 ```bash
-git clone https://github.com/ruslanmv/ai-medical-chatbot.git
+git clone https://github.com/kishan/ai-medical-chatbot.git
 cd ai-medical-chatbot/web
 npm install && npm run dev
 ```
@@ -308,13 +308,13 @@ This project exists because people like you contribute. Every fix, every transla
 - Star the repo so others find it
 
 ```bash
-git clone https://github.com/ruslanmv/ai-medical-chatbot.git
+git clone https://github.com/kishan/ai-medical-chatbot.git
 cd ai-medical-chatbot
 git checkout -b my-improvement
 # Make your changes, then open a Pull Request
 ```
 
-[![Stargazers over time](https://starchart.cc/ruslanmv/ai-medical-chatbot.svg?variant=adaptive)](https://starchart.cc/ruslanmv/ai-medical-chatbot)
+[![Stargazers over time](https://starchart.cc/kishan/ai-medical-chatbot.svg?variant=adaptive)](https://starchart.cc/kishan/ai-medical-chatbot)
 
 ---
 
@@ -325,9 +325,9 @@ MedOS is free for users forever. It runs on free-tier cloud and gets better only
 If MedOS has helped you understand a symptom, prepare for a doctor's visit, or just felt like a calm voice on a rough day, please consider supporting it.
 
 <p align="center">
-  <a href="https://github.com/sponsors/ruslanmv"><img src="https://img.shields.io/badge/%F0%9F%92%96%20Sponsor%20on%20GitHub-ec4899?style=for-the-badge" alt="Sponsor on GitHub"/></a>
+  <a href="https://github.com/sponsors/kishan"><img src="https://img.shields.io/badge/%F0%9F%92%96%20Sponsor%20on%20GitHub-ec4899?style=for-the-badge" alt="Sponsor on GitHub"/></a>
   &nbsp;
-  <a href="https://github.com/ruslanmv/ai-medical-chatbot"><img src="https://img.shields.io/badge/%E2%AD%90%20Star%20the%20repo-gold?style=for-the-badge" alt="Star the repo"/></a>
+  <a href="https://github.com/kishan/ai-medical-chatbot"><img src="https://img.shields.io/badge/%E2%AD%90%20Star%20the%20repo-gold?style=for-the-badge" alt="Star the repo"/></a>
 </p>
 
 Both help. Sponsorship pays for hosting beyond the free tiers, the LLM provider keys that keep the chat fast in every language, and the clinician review hours that keep the safety floor honest. Stars help the next person who needs MedOS actually find it.
@@ -354,11 +354,11 @@ Apache 2.0 — use it, modify it, deploy it, share it. **Free forever.**
 
 <br/><br/>
 
-**Made with care by [Ruslan Magana Vsevolodovna](https://ruslanmv.com) and the open source community**
+**Made with care by [Ruslan Magana Vsevolodovna](https://kishan.com) and the open source community**
 
-[![Website](https://img.shields.io/badge/Website-ruslanmv.com-0078D4?style=flat-square&logo=google-chrome&logoColor=white)](https://ruslanmv.com)
-[![GitHub](https://img.shields.io/badge/GitHub-@ruslanmv-181717?style=flat-square&logo=github)](https://github.com/ruslanmv)
-[![HuggingFace](https://img.shields.io/badge/HuggingFace-@ruslanmv-FFD21E?style=flat-square&logo=huggingface)](https://huggingface.co/ruslanmv)
+[![Website](https://img.shields.io/badge/Website-kishan.com-0078D4?style=flat-square&logo=google-chrome&logoColor=white)](https://kishan.com)
+[![GitHub](https://img.shields.io/badge/GitHub-@kishan-181717?style=flat-square&logo=github)](https://github.com/kishan)
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-@kishan-FFD21E?style=flat-square&logo=huggingface)](https://huggingface.co/kishan)
 
 <br/>
 
@@ -368,6 +368,6 @@ Apache 2.0 — use it, modify it, deploy it, share it. **Free forever.**
 
 <br/>
 
-<a href="https://github.com/sponsors/ruslanmv"><img src="https://img.shields.io/badge/%F0%9F%92%96%20Sponsor%20MedOS-ec4899?style=flat-square" alt="Sponsor MedOS"/></a>
+<a href="https://github.com/sponsors/kishan"><img src="https://img.shields.io/badge/%F0%9F%92%96%20Sponsor%20MedOS-ec4899?style=flat-square" alt="Sponsor MedOS"/></a>
 
 </div>

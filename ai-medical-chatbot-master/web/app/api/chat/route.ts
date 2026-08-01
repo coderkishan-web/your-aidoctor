@@ -2,7 +2,7 @@
  * /api/chat — thin streaming proxy to the HF Space backend.
  *
  * Vercel hosts the UI and CDN; the HuggingFace Space at
- * `huggingface.co/spaces/ruslanmv/MediBot` (URL: `ruslanmv-medibot.hf.space`)
+ * `huggingface.co/spaces/kishan/MediBot` (URL: `kishan-medibot.hf.space`)
  * owns the entire chat pipeline — RAG, intent classification, safety
  * pre/post checks, the provider fallback chain (Groq → OllaBridge →
  * HF Inference), the admin SQLite store, and the card-emitting system
@@ -30,7 +30,7 @@ import { NextRequest } from "next/server";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const DEFAULT_BACKEND = "https://ruslanmv-medibot.hf.space";
+const DEFAULT_BACKEND = "https://kishan-medibot.hf.space";
 const DEFAULT_TIMEOUT_MS = 50_000;
 
 function resolveBackendURL(): string {

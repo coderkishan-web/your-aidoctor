@@ -9,9 +9,9 @@ This module is inspired by — and links to — two persona patterns from the [H
 
 The relevant persona links (used as the delivery channel for MedOS Research personas):
 
-- [`ruslanmv/HomePilot`](https://github.com/ruslanmv/HomePilot) — the local-first GenAI host that runs personas via MCP.
-- [`ruslanmv/ollabridge-cloud`](https://github.com/ruslanmv/ollabridge-cloud) — bridge / cloud delivery channel for personas.
-- [`ruslanmv/medical-mcp-toolkit`](https://github.com/ruslanmv/medical-mcp-toolkit) — upstream medical MCP toolkit referenced by the General Doctor persona's MCP server.
+- [`kishan/HomePilot`](https://github.com/kishan/HomePilot) — the local-first GenAI host that runs personas via MCP.
+- [`kishan/ollabridge-cloud`](https://github.com/kishan/ollabridge-cloud) — bridge / cloud delivery channel for personas.
+- [`kishan/medical-mcp-toolkit`](https://github.com/kishan/medical-mcp-toolkit) — upstream medical MCP toolkit referenced by the General Doctor persona's MCP server.
 
 > MedOS Research must **not** diagnose patients, prescribe medicines, run human experiments, recommend self-treatment, or claim to cure any disease. It supports scientific research workflows and keeps a clear boundary between research hypotheses, preclinical simulation, clinical evidence, and real-world medical care.
 

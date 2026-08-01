@@ -2,7 +2,7 @@
 
 **Date:** 2026-05-22
 **Severity:** Sev 2 — chat broken for all users on
-`https://www.ai-medical-chabot.com` → `https://ruslanmv-medibot.hf.space`.
+`https://www.ai-medical-chabot.com` → `https://kishan-medibot.hf.space`.
 **Status of upstreams at incident time:** both UP and healthy.
 **Root cause:** missing environment variable on the MediBot Space.
 **Time to repair (operator action):** ~2 minutes.
@@ -15,7 +15,7 @@ the immediate operator fix from the architectural fix designed in
 ## TL;DR
 
 ```
-OLLABRIDGE_URL=https://ruslanmv-ollabridge.hf.space
+OLLABRIDGE_URL=https://kishan-ollabridge.hf.space
 ```
 
 Set that single secret on the MediBot Space (Settings → Variables and
@@ -54,14 +54,14 @@ The same pattern recurs on every request in the window (19:16, 20:14,
 
 ### OllaBridge Space — verified UP and serving the gateway
 
-The OllaBridge Space (`ruslanmv/ollabridge`) is alive and running the
+The OllaBridge Space (`kishan/ollabridge`) is alive and running the
 **enterprise gateway**, not just raw Ollama. Live probes:
 
 ```
-$ curl https://ruslanmv-ollabridge.hf.space/
+$ curl https://kishan-ollabridge.hf.space/
 HTTP 200  body: "<title>OllaBridge Cloud — Enterprise AI Gateway</title>"
 
-$ curl https://ruslanmv-ollabridge.hf.space/v1/models
+$ curl https://kishan-ollabridge.hf.space/v1/models
 HTTP 200  body: {"object":"list","data":[
   {"id":"qwen2.5:1.5b",      "owned_by":"ollama"},
   {"id":"free-best",          "owned_by":"ollabridge-addon"},
@@ -79,7 +79,7 @@ MediBot just has nothing pointing at it.
 ### MediBot Space — backend itself is healthy
 
 ```
-$ curl https://ruslanmv-medibot.hf.space/api/health
+$ curl https://kishan-medibot.hf.space/api/health
 HTTP 200  {"status":"healthy","service":"medos-global","version":"1.0.0"}
 ```
 
@@ -132,14 +132,14 @@ only in OllaBridge — MediBot needs none.
 ## Immediate restore (operator runbook, 2 minutes)
 
 1. **Open the Space settings**
-   `https://huggingface.co/spaces/ruslanmv/MediBot/settings`
+   `https://huggingface.co/spaces/kishan/MediBot/settings`
    → Variables and secrets.
 
 2. **Set ONE of the following** (option A preferred):
 
    ```
    # Option A — preferred, gets v2 ready
-   OLLABRIDGE_URL = https://ruslanmv-ollabridge.hf.space
+   OLLABRIDGE_URL = https://kishan-ollabridge.hf.space
 
    # Option B — quick fix that uses direct HF inference
    HF_TOKEN = hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -154,14 +154,14 @@ only in OllaBridge — MediBot needs none.
    ```bash
    HF_TOKEN=hf_xxx
    curl -N -H "Authorization: Bearer $HF_TOKEN" \
-     "https://huggingface.co/api/spaces/ruslanmv/MediBot/logs/run" \
+     "https://huggingface.co/api/spaces/kishan/MediBot/logs/run" \
      | grep -E "provider\.(ollabridge|huggingface)\.(ok|fail)"
    ```
 
    Success looks like:
 
    ```
-   [Chat] provider.ollabridge.dispatch {"baseURL":"https://ruslanmv-ollabridge.hf.space/v1","model":"qwen2.5:1.5b"}
+   [Chat] provider.ollabridge.dispatch {"baseURL":"https://kishan-ollabridge.hf.space/v1","model":"qwen2.5:1.5b"}
    [Chat] provider.ollabridge.ok {"latencyMs":420}
    ```
 
@@ -264,7 +264,7 @@ When green:
 
 ```
 LLM Configuration
-  ✓ OLLABRIDGE_URL  ruslanmv-ollabridge.hf.space  (140 ms)
+  ✓ OLLABRIDGE_URL  kishan-ollabridge.hf.space  (140 ms)
   ✓ HF_TOKEN        configured
   ✓ Gateway alias   free-best  (resolves to 6 sub-providers)
 ```
@@ -312,7 +312,7 @@ the LLM was ever called.
 
 | # | Action                                                                                                  | Owner   | When        |
 |---|---------------------------------------------------------------------------------------------------------|---------|-------------|
-| 1 | Set `OLLABRIDGE_URL=https://ruslanmv-ollabridge.hf.space` on the MediBot Space                          | Ops     | Now         |
+| 1 | Set `OLLABRIDGE_URL=https://kishan-ollabridge.hf.space` on the MediBot Space                          | Ops     | Now         |
 | 2 | Confirm `provider.ollabridge.ok` shows in next `/api/chat` log                                           | Ops     | +5 min      |
 | 3 | Land `lib/llm-config-check.ts` + boot-log warning (additive PR)                                          | Backend | This week   |
 | 4 | Switch `/api/health` to red when `checkLlmConfig().ok === false`                                         | Backend | This week   |

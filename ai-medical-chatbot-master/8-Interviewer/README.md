@@ -64,7 +64,7 @@ To run the application locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/ruslanmv/ai-medical-chatbot
+   git clone https://github.com/kishan/ai-medical-chatbot
    cd ./ai-medical-chatbot/8-Interviewer/hf
    ```
 

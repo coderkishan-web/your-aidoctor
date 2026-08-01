@@ -6,8 +6,8 @@ We take the security of MedOS — and the safety of its users — seriously. Bec
 
 Please **do not** open a public issue.
 
-Email: **`security@ruslanmv.com`**
-PGP key: see [`https://ruslanmv.com/security.asc`](https://ruslanmv.com/security.asc) *(placeholder until published — until then, plain email is fine)*
+Email: **`security@kishan.com`**
+PGP key: see [`https://kishan.com/security.asc`](https://kishan.com/security.asc) *(placeholder until published — until then, plain email is fine)*
 
 In your report, include:
 

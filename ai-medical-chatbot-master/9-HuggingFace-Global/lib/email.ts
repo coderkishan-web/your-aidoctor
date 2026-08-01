@@ -26,7 +26,7 @@ import nodemailer from 'nodemailer';
 
 const FROM_EMAIL = process.env.FROM_EMAIL || 'MedOS <onboarding@resend.dev>';
 const APP_NAME = 'MedOS';
-const APP_URL = process.env.APP_URL || 'https://ruslanmv-medibot.hf.space';
+const APP_URL = process.env.APP_URL || 'https://kishan-medibot.hf.space';
 
 // ---------- Resend HTTP transport ----------
 
@@ -74,11 +74,11 @@ const smtpConfigured = !!(SMTP_HOST && SMTP_USER && SMTP_PASS);
 
 const smtpTransporter = smtpConfigured
   ? nodemailer.createTransport({
-      host: SMTP_HOST,
-      port: SMTP_PORT,
-      secure: SMTP_PORT === 465,
-      auth: { user: SMTP_USER, pass: SMTP_PASS },
-    })
+    host: SMTP_HOST,
+    port: SMTP_PORT,
+    secure: SMTP_PORT === 465,
+    auth: { user: SMTP_USER, pass: SMTP_PASS },
+  })
   : null;
 
 async function sendViaSmtp(

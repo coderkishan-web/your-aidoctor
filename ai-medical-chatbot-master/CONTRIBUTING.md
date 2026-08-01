@@ -28,7 +28,7 @@ Pick what fits your skills and time:
 ## Setup
 
 ```bash
-git clone https://github.com/ruslanmv/ai-medical-chatbot.git
+git clone https://github.com/kishan/ai-medical-chatbot.git
 cd ai-medical-chatbot
 
 # Live web app

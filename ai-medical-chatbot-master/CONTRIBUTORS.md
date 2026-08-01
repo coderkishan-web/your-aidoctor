@@ -8,7 +8,7 @@ If you've contributed and aren't listed, please open a PR — we want to credit 
 
 | Name | GitHub | Scope |
 |---|---|---|
-| Ruslan Magana Vsevolodovna | [@ruslanmv](https://github.com/ruslanmv) | Project lead, architecture, releases |
+| Ruslan Magana Vsevolodovna | [@kishan](https://github.com/kishan) | Project lead, architecture, releases |
 
 ## Clinical Advisors
 
@@ -32,7 +32,7 @@ Translation Leads review locale packs (`config/locales/*.medical.json`) and crow
 
 | Locale | Lead | GitHub | Active since |
 |---|---|---|---|
-| en-US | Maintainer | [@ruslanmv](https://github.com/ruslanmv) | |
+| en-US | Maintainer | [@kishan](https://github.com/kishan) | |
 | es-MX | *open* | | |
 | es-AR | *open* | | |
 | pt-BR | *open* | | |
@@ -61,7 +61,7 @@ Anyone who has contributed translations or reviewed regional medical content.
 
 For everyone who has filed an issue, opened a PR, written documentation, or generally helped:
 
-> See the GitHub contributor graph: [https://github.com/ruslanmv/ai-medical-chatbot/graphs/contributors](https://github.com/ruslanmv/ai-medical-chatbot/graphs/contributors)
+> See the GitHub contributor graph: [https://github.com/kishan/ai-medical-chatbot/graphs/contributors](https://github.com/kishan/ai-medical-chatbot/graphs/contributors)
 
 We recognize that not all contributions show up in `git log` — translations done in a translation tool, clinical reviews provided by email, and design feedback all count. Open a PR to add yourself to the relevant table above with one line about what you did.
 

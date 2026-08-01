@@ -35,8 +35,8 @@ help: ## Show this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  $(GREEN)%-20s$(NC) %s\n", $$1, $$2}'
 	@echo ""
 	@echo "$(BLUE)═══════════════════════════════════════════════════════════════$(NC)"
-	@echo "$(YELLOW)Author:$(NC) Ruslan Magana Vsevolodovna"
-	@echo "$(YELLOW)Website:$(NC) https://ruslanmv.com"
+	@echo "$(YELLOW)Author:$(NC) kishan shinde"
+	@echo "$(YELLOW)Website:$(NC) https://coderkishan.in"
 	@echo "$(BLUE)═══════════════════════════════════════════════════════════════$(NC)"
 
 install: ## Install production dependencies using uv
@@ -208,8 +208,8 @@ version: ## Show version information
 	@echo "$(BLUE)Version Information$(NC)"
 	@echo "$(YELLOW)Project:$(NC) ai-medical-chatbot"
 	@echo "$(YELLOW)Version:$(NC) 2.0.0"
-	@echo "$(YELLOW)Author:$(NC) Ruslan Magana Vsevolodovna"
-	@echo "$(YELLOW)Website:$(NC) https://ruslanmv.com"
+	@echo "$(YELLOW)Author:$(NC) kishan shinde"
+	@echo "$(YELLOW)Website:$(NC) https://coderkishan.in"
 
 info: ## Show project information
 	@echo "$(BLUE)═══════════════════════════════════════════════════════════════$(NC)"
@@ -218,8 +218,8 @@ info: ## Show project information
 	@echo ""
 	@echo "$(YELLOW)Project Name:$(NC)    ai-medical-chatbot"
 	@echo "$(YELLOW)Version:$(NC)        2.0.0"
-	@echo "$(YELLOW)Author:$(NC)         Ruslan Magana Vsevolodovna"
-	@echo "$(YELLOW)Website:$(NC)        https://ruslanmv.com"
+	@echo "$(YELLOW)Author:$(NC)         kishan shinde"
+	@echo "$(YELLOW)Website:$(NC)        https://coderkishan.in"
 	@echo "$(YELLOW)License:$(NC)        Apache 2.0"
 	@echo "$(YELLOW)Description:$(NC)    Production-ready AI Medical Chatbot"
 	@echo ""

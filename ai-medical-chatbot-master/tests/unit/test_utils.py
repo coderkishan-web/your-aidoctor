@@ -5,7 +5,7 @@ This module contains unit tests for common utility functions used across
 the AI Medical Chatbot system.
 
 Author: Ruslan Magana Vsevolodovna
-Website: https://ruslanmv.com
+Website: https://kishan.com
 License: Apache 2.0
 """
 

@@ -59,7 +59,7 @@ DEFAULT_MODEL
 v2 collapses that to **one** bootstrap variable:
 
 ```
-OLLABRIDGE_URL=https://ruslanmv-ollabridge.hf.space
+OLLABRIDGE_URL=https://kishan-ollabridge.hf.space
 ```
 
 That's the entire LLM-side surface MediBot needs to know at boot. Every
@@ -77,7 +77,7 @@ After this change the entire `.env.example` LLM block becomes:
 
 ```
 # --- LLM gateway (only required value) ---
-OLLABRIDGE_URL=https://ruslanmv-ollabridge.hf.space
+OLLABRIDGE_URL=https://kishan-ollabridge.hf.space
 
 # (no HF token, no model name, no provider keys — admin-managed in OllaBridge)
 ```
@@ -309,7 +309,7 @@ diagnostics, Email. The **LLM tab** is replaced with a read-only summary:
 
 ```
 LLM gateway
-  Endpoint        ruslanmv-ollabridge.hf.space        ✓ reachable (140 ms)
+  Endpoint        kishan-ollabridge.hf.space        ✓ reachable (140 ms)
   Paired since    2026-05-22 14:02 UTC                [ Re-pair ] [ Unlink ]
   Active alias    medibot-free-best                   [ Open in OllaBridge ]
   Cost mode       free-only
@@ -622,7 +622,7 @@ Audit logs prove the LLM was called by storing the resolved
 Symptom (from the Vercel proxy log):
 
 ```
-[Proxy] upstream 503 on POST https://ruslanmv-medibot.hf.space/api/chat:
+[Proxy] upstream 503 on POST https://kishan-medibot.hf.space/api/chat:
 {"error":"All LLM providers are currently unavailable. Please try again in
 a moment.","code":"all_providers_unavailable"}
 ```
@@ -643,8 +643,8 @@ So a 503 means both rungs failed simultaneously. Triage in this order:
 
 | Check                                 | How                                                                                       | Quick fix                              |
 |---------------------------------------|-------------------------------------------------------------------------------------------|----------------------------------------|
-| `OLLABRIDGE_URL` set on the HF Space? | Admin → Server → "OllaBridge URL"; also `printenv \| grep OLLABRIDGE` in the Space shell | Set to `https://ruslanmv-ollabridge.hf.space` (or the v2 paired equivalent) |
-| OllaBridge Space awake?               | `curl -sS https://ruslanmv-ollabridge.hf.space/health` from anywhere                      | Open the Space URL in a browser once to wake it; cold-start is ≤45 s |
+| `OLLABRIDGE_URL` set on the HF Space? | Admin → Server → "OllaBridge URL"; also `printenv \| grep OLLABRIDGE` in the Space shell | Set to `https://kishan-ollabridge.hf.space` (or the v2 paired equivalent) |
+| OllaBridge Space awake?               | `curl -sS https://kishan-ollabridge.hf.space/health` from anywhere                      | Open the Space URL in a browser once to wake it; cold-start is ≤45 s |
 | `HF_TOKEN` present and valid?         | Admin → Server → "HF Token" (masked); test with `curl -H "Authorization: Bearer $HF_TOKEN" https://huggingface.co/api/whoami-v2` | Rotate at https://huggingface.co/settings/tokens, paste back into Admin |
 | OllaBridge tightened timeouts         | `lib/providers/ollabridge.ts` sets `timeout: 8000, maxRetries: 0` — fine in steady state, ruthless during cold start | Temporarily widen to 25000 on the Space; revert after the bridge warms |
 
@@ -721,7 +721,7 @@ Both rungs failed for a configuration reason, not an outage:
 
 | Log line                                | What it means                                                | Fix                                                                 |
 |-----------------------------------------|--------------------------------------------------------------|---------------------------------------------------------------------|
-| `provider.ollabridge.skipped.nonstream` | `isOllaBridgeConfigured()` returned `false` because neither the persisted config nor `OLLABRIDGE_URL` env var is set on the Space. The OllaBridge rung is bypassed entirely. | Set `OLLABRIDGE_URL=https://ruslanmv-ollabridge.hf.space` in the Space's repository secrets, **or** open Admin → Server and paste the URL there. |
+| `provider.ollabridge.skipped.nonstream` | `isOllaBridgeConfigured()` returned `false` because neither the persisted config nor `OLLABRIDGE_URL` env var is set on the Space. The OllaBridge rung is bypassed entirely. | Set `OLLABRIDGE_URL=https://kishan-ollabridge.hf.space` in the Space's repository secrets, **or** open Admin → Server and paste the URL there. |
 | `provider.huggingface.no-token.nonstream` | The fallback rung tried `streamWithHuggingFace` and found no `HF_TOKEN` — anonymous HF inference is rejected at the gateway. | Generate a token at https://huggingface.co/settings/tokens, paste it in Admin → Server → "HF Token". `loadConfig()` re-reads the file on every request, no restart required. |
 | `route.error … AllProvidersUnavailableError` | Both rungs are unconfigured → the public 503. The `totalMs` is ~10 ms because the failure is instant (no network round-trip). | Once either var above is set, this disappears. |
 
@@ -731,12 +731,12 @@ least the 8 000 ms timeout configured in `lib/providers/ollabridge.ts`.
 
 ### Two-minute live restore
 
-For the running `ruslanmv-medibot.hf.space`, set **one** of the
+For the running `kishan-medibot.hf.space`, set **one** of the
 following — either is sufficient to make chat work:
 
 ```
 # Option A — preferred: route through OllaBridge (gets v2 ready too)
-OLLABRIDGE_URL=https://ruslanmv-ollabridge.hf.space
+OLLABRIDGE_URL=https://kishan-ollabridge.hf.space
 # (and confirm the OllaBridge Space is awake — open its URL once)
 
 # Option B — quick fix: direct HF fallback
@@ -804,7 +804,7 @@ touching existing code paths:
 All three are additive — they add new code, don't modify the existing
 fallback chain or chat handler.
 
-### Immediate unblock for the live `ruslanmv-medibot.hf.space` (today)
+### Immediate unblock for the live `kishan-medibot.hf.space` (today)
 
 While the v2 work lands, the fastest restore for the live Space is:
 

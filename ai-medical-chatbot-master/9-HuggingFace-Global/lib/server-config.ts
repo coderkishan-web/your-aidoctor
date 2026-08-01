@@ -58,8 +58,8 @@ function resolvePersistenceDir(): { path: string; persistent: boolean } {
       if (!c.persistent) {
         console.warn(
           `[Config] /data not writable — falling back to ephemeral ${c.path}. ` +
-            `Saved settings survive within the container but are lost on Space restart. ` +
-            `Set PERSISTENT_DIR or mount /data to make persistence durable.`,
+          `Saved settings survive within the container but are lost on Space restart. ` +
+          `Set PERSISTENT_DIR or mount /data to make persistence durable.`,
         );
       } else {
         console.log(`[Config] persistence dir: ${c.path}`);
@@ -170,12 +170,12 @@ export function getDefaultConfig(): ServerConfig {
       togetherApiKey: process.env.TOGETHER_API_KEY || '',
       mistralApiKey: process.env.MISTRAL_API_KEY || '',
       scannerUrl:
-        process.env.SCANNER_URL || 'https://ruslanmv-medicine-scanner.hf.space',
+        process.env.SCANNER_URL || 'https://kishan-medicine-scanner.hf.space',
       nearbyUrl:
-        process.env.NEARBY_URL || 'https://ruslanmv-metaengine-nearby.hf.space',
+        process.env.NEARBY_URL || 'https://kishan-metaengine-nearby.hf.space',
     },
     app: {
-      appUrl: process.env.APP_URL || 'https://ruslanmv-medibot.hf.space',
+      appUrl: process.env.APP_URL || 'https://kishan-medibot.hf.space',
       allowedOrigins: process.env.ALLOWED_ORIGINS || '',
     },
   };

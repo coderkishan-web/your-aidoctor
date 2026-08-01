@@ -5,7 +5,7 @@ This package contains comprehensive unit and integration tests for all
 components of the AI Medical Chatbot system.
 
 Author: Ruslan Magana Vsevolodovna
-Website: https://ruslanmv.com
+Website: https://kishan.com
 License: Apache 2.0
 """
 

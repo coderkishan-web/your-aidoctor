@@ -6,10 +6,10 @@ readme = "README.md"
 requires-python = ">=3.9,<3.13"
 license = { text = "Apache-2.0" }
 authors = [
-    { name = "Ruslan Magana Vsevolodovna", email = "contact@ruslanmv.com" }
+    { name = "Ruslan Magana Vsevolodovna", email = "contact@kishan.com" }
 ]
 maintainers = [
-    { name = "Ruslan Magana Vsevolodovna", email = "contact@ruslanmv.com" }
+    { name = "Ruslan Magana Vsevolodovna", email = "contact@kishan.com" }
 ]
 keywords = [
     "medical-chatbot",
@@ -135,11 +135,11 @@ all = [
 ]
 
 [project.urls]
-Homepage = "https://ruslanmv.com"
-Documentation = "https://github.com/ruslanmv/ai-medical-chatbot"
-Repository = "https://github.com/ruslanmv/ai-medical-chatbot"
-"Bug Tracker" = "https://github.com/ruslanmv/ai-medical-chatbot/issues"
-Changelog = "https://github.com/ruslanmv/ai-medical-chatbot/releases"
+Homepage = "https://kishan.com"
+Documentation = "https://github.com/kishan/ai-medical-chatbot"
+Repository = "https://github.com/kishan/ai-medical-chatbot"
+"Bug Tracker" = "https://github.com/kishan/ai-medical-chatbot/issues"
+Changelog = "https://github.com/kishan/ai-medical-chatbot/releases"
 
 [project.scripts]
 medical-chatbot = "src.medical_chatbot.cli:main"

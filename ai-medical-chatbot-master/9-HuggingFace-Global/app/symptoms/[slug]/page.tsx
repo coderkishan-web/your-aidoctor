@@ -8,7 +8,7 @@ import {
   type Symptom,
 } from '@/lib/symptoms';
 
-const SITE_URL = 'https://ruslanmv-medibot.hf.space';
+const SITE_URL = 'https://kishan-medibot.hf.space';
 
 interface Params {
   params: { slug: string };
@@ -218,16 +218,14 @@ function Section({
 }) {
   return (
     <section
-      className={`mt-8 rounded-2xl border p-5 ${
-        danger
+      className={`mt-8 rounded-2xl border p-5 ${danger
           ? 'border-red-500/40 bg-red-950/30'
           : 'border-slate-700/60 bg-slate-800/40'
-      }`}
+        }`}
     >
       <h2
-        className={`text-lg font-bold mb-3 tracking-tight ${
-          danger ? 'text-red-300' : 'text-slate-100'
-        }`}
+        className={`text-lg font-bold mb-3 tracking-tight ${danger ? 'text-red-300' : 'text-slate-100'
+          }`}
       >
         {title}
       </h2>

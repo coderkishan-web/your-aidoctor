@@ -170,7 +170,7 @@ async function runDemo() {
   log('\n📚 Documentation:', colors.cyan);
   log('  • README: /web/README.md');
   log('  • Deployment Guide: /web/DEPLOYMENT.md');
-  log('  • GitHub: https://github.com/ruslanmv/ai-medical-chatbot');
+  log('  • GitHub: https://github.com/kishan/ai-medical-chatbot');
 
   log('\n🔗 API Documentation:', colors.cyan);
   log('  • OpenAI: https://platform.openai.com/docs');

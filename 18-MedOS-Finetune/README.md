@@ -188,7 +188,7 @@ probe metrics are what we ultimately ship the model on.
 cd ../9-HuggingFace-Global
 cat > .env.local <<'EOF'
 OB_TOKEN=ob_-rEI0e2TNC65izUnHq3JwSwGwe6ZSjcDTHsG5cN2Q7I
-OLLABRIDGE_URL=https://ruslanmv-ollabridge.hf.space
+OLLABRIDGE_URL=https://kishan-ollabridge.hf.space
 PERSISTENT_DIR=/tmp/medos
 DB_PATH=/tmp/medos/medos.db
 EOF

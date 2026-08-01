@@ -32,7 +32,7 @@ As an authenticated admin:
 
 ```bash
 curl -s -H "Authorization: Bearer $ADMIN_TOKEN" \
-  https://ruslanmv-medibot.hf.space/api/admin/email-status
+  https://kishan-medibot.hf.space/api/admin/email-status
 # → {"transport":"resend","from":"...","appUrl":"..."}
 # → {"transport":"smtp","from":"...","appUrl":"..."}
 # → {"transport":"console","from":"...","appUrl":"..."}  ← nothing reaches inboxes
@@ -68,7 +68,7 @@ If you see `transport=console`, no email has been sent.
    |---|---|---|
    | `RESEND_API_KEY` | secret | your Resend API key |
    | `FROM_EMAIL` | variable | `MedOS <onboarding@resend.dev>` (or `noreply@your-verified-domain`) |
-   | `APP_URL` | variable | `https://ruslanmv-medibot.hf.space` (or your Vercel URL) |
+   | `APP_URL` | variable | `https://kishan-medibot.hf.space` (or your Vercel URL) |
 
 5. Restart the Space so the new env loads.
 6. Hit `GET /api/admin/email-status` — it should return `{"transport":"resend",…}`.

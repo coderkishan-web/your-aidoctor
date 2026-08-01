@@ -133,15 +133,13 @@ export function Sidebar({
     <>
       {/* Desktop sidebar */}
       <aside
-        className={`hidden md:flex flex-col z-20 bg-surface-1/70 backdrop-blur-xl border-r border-line/60 transition-all duration-300 ease-in-out ${
-          collapsed ? "w-[68px] p-2" : "w-64 p-4"
-        }`}
+        className={`hidden md:flex flex-col z-20 bg-surface-1/70 backdrop-blur-xl border-r border-line/60 transition-all duration-300 ease-in-out ${collapsed ? "w-[68px] p-2" : "w-64 p-4"
+          }`}
       >
         {/* Top row: collapse toggle + logo */}
         <div
-          className={`flex items-center mb-5 ${
-            collapsed ? "flex-col gap-3" : "justify-between"
-          }`}
+          className={`flex items-center mb-5 ${collapsed ? "flex-col gap-3" : "justify-between"
+            }`}
         >
           {/* Collapse toggle — TOP, like ChatGPT/Claude */}
           <button
@@ -302,7 +300,7 @@ export function Sidebar({
                     <MenuItem icon={ClipboardList} label="Health Profile (EHR)" onClick={() => navTo("ehr-wizard")} />
                     <MenuItem icon={Settings} label={t("nav_settings", language)} onClick={() => navTo("settings")} />
                     <MenuItem icon={Globe} label={t("settings_language", language)} detail={language.toUpperCase()} onClick={() => navTo("settings")} />
-                    <MenuItem icon={HelpCircle} label="Help & support" onClick={() => window.open("https://github.com/ruslanmv/ai-medical-chatbot/issues", "_blank")} />
+                    <MenuItem icon={HelpCircle} label="Help & support" onClick={() => window.open("https://github.com/kishan/ai-medical-chatbot/issues", "_blank")} />
 
                     <div className="my-1.5 border-t border-line/40" />
 
@@ -320,9 +318,8 @@ export function Sidebar({
             /* Authenticated: avatar + name + menu toggle */
             <button
               onClick={() => collapsed ? setActiveNav("profile") : setBottomMenuOpen(!bottomMenuOpen)}
-              className={`w-full flex items-center rounded-xl transition-all hover:bg-surface-2 ${
-                collapsed ? "justify-center p-2.5" : "gap-3 px-3 py-2.5"
-              }`}
+              className={`w-full flex items-center rounded-xl transition-all hover:bg-surface-2 ${collapsed ? "justify-center p-2.5" : "gap-3 px-3 py-2.5"
+                }`}
             >
               <div className="flex-shrink-0 w-8 h-8 rounded-full bg-brand-gradient flex items-center justify-center text-white font-bold text-xs">
                 {(username || "U")[0].toUpperCase()}
@@ -393,7 +390,7 @@ export function Sidebar({
                   <GuestLink
                     icon={HelpCircle}
                     label="Help"
-                    onClick={() => window.open("https://github.com/ruslanmv/ai-medical-chatbot/issues", "_blank")}
+                    onClick={() => window.open("https://github.com/kishan/ai-medical-chatbot/issues", "_blank")}
                   />
                   <GuestLink
                     icon={Settings}
@@ -456,11 +453,10 @@ function MenuItem({
   return (
     <button
       onClick={onClick}
-      className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
-        danger
+      className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${danger
           ? "text-danger-500 hover:bg-danger-500/10"
           : "text-ink-base hover:bg-surface-2"
-      }`}
+        }`}
     >
       <Icon size={16} className="text-ink-subtle flex-shrink-0" />
       <span className="flex-1 text-left">{label}</span>
@@ -527,13 +523,12 @@ function MobileNavButton({
   return (
     <button
       onClick={onClick}
-      className={`flex flex-col items-center justify-center gap-0.5 min-h-[48px] min-w-[48px] px-2 py-1.5 rounded-2xl transition-all active:scale-95 ${
-        active
+      className={`flex flex-col items-center justify-center gap-0.5 min-h-[48px] min-w-[48px] px-2 py-1.5 rounded-2xl transition-all active:scale-95 ${active
           ? urgent
             ? "text-danger-500 bg-danger-500/10"
             : "text-brand-600 bg-brand-500/10"
           : "text-ink-subtle"
-      }`}
+        }`}
     >
       <Icon size={22} strokeWidth={active ? 2.5 : 1.75} className={urgent && !active ? "text-danger-500/70" : ""} />
       <span className="text-[10px] font-semibold leading-none tracking-tight">{label}</span>

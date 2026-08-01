@@ -36,7 +36,7 @@ from langchain_core.callbacks import CallbackManagerForRetrieverRun
 print_full_prompt=False
 
 ## Step 1 Dataset Retrieving
-dataset = load_dataset("ruslanmv/ai-medical-chatbot")
+dataset = load_dataset("kishan/ai-medical-chatbot")
 clear_output()
 train_data = dataset["train"]
 #For this demo let us choose the first 1000 dialogues
@@ -91,7 +91,7 @@ combined_pipe = (
 # Step 3  - Custom LLM
 from openai import OpenAI
 def generate_stream(prompt, model="mixtral-8x7b"):
-    base_url = "https://ruslanmv-hf-llm-api.hf.space"
+    base_url = "https://kishan-hf-llm-api.hf.space"
     api_key = "sk-xxxxx"
     client = OpenAI(base_url=base_url, api_key=api_key)
     response = client.chat.completions.create(
@@ -267,7 +267,7 @@ collection.load()
 # Create a Gradio interface
 title = "AI Medical Chatbot"
 description = "Ask any medical question and get answers from our AI Medical Chatbot."
-references = "Developed by Ruslan Magana. Visit ruslanmv.com for more information."
+references = "Developed by Ruslan Magana. Visit kishan.com for more information."
 
 chatbot = gr.Chatbot()
 interface = gr.Interface(

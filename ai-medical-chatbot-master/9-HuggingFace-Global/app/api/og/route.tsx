@@ -7,7 +7,7 @@ export const runtime = 'edge';
  *
  * Every share on Twitter / WhatsApp / LinkedIn / Telegram / iMessage
  * renders a branded 1200x630 card. The query becomes the card title so
- * a link like `https://ruslanmv-medibot.hf.space/?q=chest+pain` previews
+ * a link like `https://kishan-medibot.hf.space/?q=chest+pain` previews
  * as a premium, unique image instead of the default favicon blob.
  *
  * Usage from the client: `/api/og?q=<question>&lang=<code>`

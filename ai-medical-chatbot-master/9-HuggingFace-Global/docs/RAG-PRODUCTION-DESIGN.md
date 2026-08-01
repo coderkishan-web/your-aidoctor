@@ -1,6 +1,6 @@
 # MedOS RAG — Production Design Plan (HuggingFace‑deployable)
 
-> Status: **Phases 1–3 implemented + Phase 4 first tests** (Phase 1/2 behind flags, default OFF) · design for Phase 5 · Target: `ruslanmv-medibot.hf.space` (this app) + `ai-medical-chabot.com` (Vercel proxy)
+> Status: **Phases 1–3 implemented + Phase 4 first tests** (Phase 1/2 behind flags, default OFF) · design for Phase 5 · Target: `kishan-medibot.hf.space` (this app) + `ai-medical-chabot.com` (Vercel proxy)
 >
 > Phase 3 (evidence receipt): the chat route emits `sources`/`groundedness`
 > in the SSE; `lib/hooks/useChat.ts` captures them onto the AI message and
@@ -89,7 +89,7 @@ This plan adapts the 5‑phase trustworthiness roadmap to the real constraints o
 
 ## 3. Corpus & data design
 
-**Sources (versioned, authoritative).** WHO, CDC, NHS, NIH/MedlinePlus, NICE/BNF, EMA, plus the existing `ruslanmv/ai-medical-chatbot` dataset as a *secondary* (clearly labelled, lower‑trust) lane. Each source is captured with a fetch date and licence note.
+**Sources (versioned, authoritative).** WHO, CDC, NHS, NIH/MedlinePlus, NICE/BNF, EMA, plus the existing `kishan/ai-medical-chatbot` dataset as a *secondary* (clearly labelled, lower‑trust) lane. Each source is captured with a fetch date and licence note.
 
 **Chunk record (the unit of retrieval):**
 ```jsonc

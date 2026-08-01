@@ -5,7 +5,7 @@ This package contains integration tests that verify the interaction between
 multiple components of the system.
 
 Author: Ruslan Magana Vsevolodovna
-Website: https://ruslanmv.com
+Website: https://kishan.com
 License: Apache 2.0
 """
 

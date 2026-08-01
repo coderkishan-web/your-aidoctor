@@ -55,9 +55,9 @@ The Research & Development entry is gated by a per-user role (`researcher`, `cli
 
 MedOS Research personas mirror the HomePilotAI persona layout (manifest + blueprint + agentic + dependencies + preview). They are designed to be:
 
-- Loaded by [`ruslanmv/HomePilot`](https://github.com/ruslanmv/HomePilot) — the local-first GenAI host.
-- Distributed via [`ruslanmv/ollabridge-cloud`](https://github.com/ruslanmv/ollabridge-cloud) as a persona delivery channel.
-- Backed by an MCP server pattern that mirrors the General Doctor persona's `mcp-general-doctor` adapter, which itself sits on top of [`ruslanmv/medical-mcp-toolkit`](https://github.com/ruslanmv/medical-mcp-toolkit).
+- Loaded by [`kishan/HomePilot`](https://github.com/kishan/HomePilot) — the local-first GenAI host.
+- Distributed via [`kishan/ollabridge-cloud`](https://github.com/kishan/ollabridge-cloud) as a persona delivery channel.
+- Backed by an MCP server pattern that mirrors the General Doctor persona's `mcp-general-doctor` adapter, which itself sits on top of [`kishan/medical-mcp-toolkit`](https://github.com/kishan/medical-mcp-toolkit).
 
 Suggested persona registry (separate package):
 

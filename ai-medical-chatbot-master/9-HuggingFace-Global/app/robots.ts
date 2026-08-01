@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const SITE_URL = 'https://ruslanmv-medibot.hf.space';
+const SITE_URL = 'https://kishan-medibot.hf.space';
 
 /**
  * Permissive robots.txt — we want every crawler to index the public

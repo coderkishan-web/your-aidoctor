@@ -6,7 +6,7 @@
 #
 # Required Repository Secrets:
 #   HF_TOKEN    - HuggingFace write token (with Spaces write permission)
-#   HF_USERNAME - HuggingFace username (e.g. ruslanmv)
+#   HF_USERNAME - HuggingFace username (e.g. kishan)
 #   SPACE_NAME  - HuggingFace Space name (e.g. MedOS-Global)
 # =============================================================================
 name: Sync MedOS Global to Hugging Face Space
@@ -41,7 +41,7 @@ jobs:
             echo "Add them under: Settings -> Secrets and variables -> Actions -> Secrets"
             echo ""
             echo "Required secrets:"
-            echo "  HF_USERNAME  = your HuggingFace username (e.g. ruslanmv)"
+            echo "  HF_USERNAME  = your HuggingFace username (e.g. kishan)"
             echo "  SPACE_NAME   = your HuggingFace Space name (e.g. MedOS-Global)"
             echo "  HF_TOKEN     = your HuggingFace write token"
             exit 1

@@ -4,7 +4,7 @@ Unit tests for AI Medical Chatbot.
 This package contains unit tests for individual components and functions.
 
 Author: Ruslan Magana Vsevolodovna
-Website: https://ruslanmv.com
+Website: https://kishan.com
 License: Apache 2.0
 """
 

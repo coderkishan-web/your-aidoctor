@@ -25,6 +25,6 @@ export async function GET(req: Request) {
   return NextResponse.json({
     transport: emailTransportName(),
     from: process.env.FROM_EMAIL || '(default: MedOS <onboarding@resend.dev>)',
-    appUrl: process.env.APP_URL || '(default: https://ruslanmv-medibot.hf.space)',
+    appUrl: process.env.APP_URL || '(default: https://kishan-medibot.hf.space)',
   });
 }

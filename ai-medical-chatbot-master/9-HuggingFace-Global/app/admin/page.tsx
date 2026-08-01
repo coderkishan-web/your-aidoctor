@@ -352,11 +352,10 @@ function TabButton({
   return (
     <button
       onClick={onClick}
-      className={`flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold transition-colors border-b-2 -mb-px ${
-        active
+      className={`flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold transition-colors border-b-2 -mb-px ${active
           ? 'border-red-500 text-slate-100'
           : 'border-transparent text-slate-400 hover:text-slate-200'
-      }`}
+        }`}
     >
       <Icon size={14} /> {label}
     </button>
@@ -373,7 +372,7 @@ function TabButton({
  * the chat route's provider chain can use it without a redeploy.
  *
  * Field semantics:
- *  - URL: OllaBridge Cloud base, e.g. https://ruslanmv-ollabridge.hf.space
+ *  - URL: OllaBridge Cloud base, e.g. https://kishan-ollabridge.hf.space
  *  - API key: `ob_xxx` from the OllaBridge Cloud admin -> API Keys tab
  *  - Default alias: which OllaBridge model alias to request by default
  *    (e.g. `free-best`, `free-fast`, `qwen2.5:1.5b`). Mapped server-side
@@ -489,12 +488,12 @@ function OllaBridgeTab({ headers }: { headers: () => Record<string, string> }) {
         </p>
 
         <div className="space-y-4">
-          <Field label="OllaBridge URL" hint="e.g. https://ruslanmv-ollabridge.hf.space">
+          <Field label="OllaBridge URL" hint="e.g. https://kishan-ollabridge.hf.space">
             <input
               type="url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              placeholder="https://ruslanmv-ollabridge.hf.space"
+              placeholder="https://kishan-ollabridge.hf.space"
               className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/50"
             />
           </Field>
@@ -554,11 +553,10 @@ function OllaBridgeTab({ headers }: { headers: () => Record<string, string> }) {
           )}
           {testResult && (
             <div
-              className={`text-sm rounded-lg p-3 flex items-start gap-2 ${
-                testResult.ok
+              className={`text-sm rounded-lg p-3 flex items-start gap-2 ${testResult.ok
                   ? 'bg-emerald-950/40 border border-emerald-700/40 text-emerald-200'
                   : 'bg-red-950/40 border border-red-700/40 text-red-200'
-              }`}
+                }`}
             >
               {testResult.ok
                 ? <CheckCircle2 size={16} className="mt-0.5 shrink-0" />

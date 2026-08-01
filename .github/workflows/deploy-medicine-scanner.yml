@@ -1,12 +1,12 @@
 # =============================================================================
-# Deploy Medicine Scanner to HuggingFace Space (ruslanmv/Medicine-Scanner)
+# Deploy Medicine Scanner to HuggingFace Space (kishan/Medicine-Scanner)
 # =============================================================================
 # Pushes the 11-Medicine-Scanner/ Gradio app to HF Space.
 # Uses Gradio SDK (not Docker) — HF manages the runtime.
 #
 # Required Repository Secrets:
 #   HF_TOKEN       - HuggingFace token with write + Spaces permissions
-#   HF_USERNAME    - HuggingFace username (e.g. ruslanmv)
+#   HF_USERNAME    - HuggingFace username (e.g. kishan)
 #   HF_TOKEN_INFERENCE - Token with "Make calls to Inference Providers" permission
 # =============================================================================
 name: Deploy Medicine Scanner to HF Space

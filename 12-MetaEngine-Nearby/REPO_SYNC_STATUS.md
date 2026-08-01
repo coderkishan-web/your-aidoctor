@@ -12,7 +12,7 @@ Verify upstream commit visibility and confirm we can continue committing MetaEng
 - Attempted command:
 
 ```bash
-git ls-remote https://github.com/ruslanmv/ai-medical-chatbot.git
+git ls-remote https://github.com/kishan/ai-medical-chatbot.git
 ```
 
 - Result in this environment: `CONNECT tunnel failed, response 403`
@@ -27,7 +27,7 @@ Yes.
 
 ```bash
 12-MetaEngine-Nearby/12-deploy/check_upstream_commit.sh \
-  https://github.com/ruslanmv/ai-medical-chatbot.git \
+  https://github.com/kishan/ai-medical-chatbot.git \
   621a37ec7a98439b3026e4031ea70c9801ac28d2
 ```
 

@@ -209,7 +209,7 @@ export function ShareView({ language }: ShareViewProps) {
         {/* GitHub footer — quiet text link, not a button. */}
         <div className="pt-4 mt-6 border-t border-line/40">
           <a
-            href="https://github.com/ruslanmv/ai-medical-chatbot"
+            href="https://github.com/kishan/ai-medical-chatbot"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-brand-600 transition-colors"

@@ -67,7 +67,7 @@ export function AboutModal({ onClose }: { onClose: () => void }) {
           {/* Links */}
           <div className="flex gap-2">
             <a
-              href="https://github.com/ruslanmv/ai-medical-chatbot"
+              href="https://github.com/kishan/ai-medical-chatbot"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border border-line/60 text-sm font-semibold text-ink-base hover:bg-surface-2 transition-colors"
@@ -76,7 +76,7 @@ export function AboutModal({ onClose }: { onClose: () => void }) {
               GitHub
             </a>
             <a
-              href="https://huggingface.co/spaces/ruslanmv/MediBot"
+              href="https://huggingface.co/spaces/kishan/MediBot"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border border-line/60 text-sm font-semibold text-ink-base hover:bg-surface-2 transition-colors"

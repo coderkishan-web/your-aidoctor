@@ -55,7 +55,7 @@ export async function fetchAvailableModels(): Promise<OllaBridgeModel[]> {
   const baseURL =
     configUrl ||
     process.env.OLLABRIDGE_URL ||
-    'https://ruslanmv-ollabridge.hf.space';
+    'https://kishan-ollabridge.hf.space';
   const apiKey = configKey || process.env.OLLABRIDGE_API_KEY || '';
 
   try {

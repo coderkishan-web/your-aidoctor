@@ -28,13 +28,13 @@ MedOS runs as **3 independent HuggingFace Spaces** + an optional **Vercel fronte
 │                                                             │
 │  Vercel (optional)              OR    HuggingFace Space     │
 │  ai-medical-chabot.com               huggingface.co/spaces/ │
-│  Frontend only                        ruslanmv/MediBot      │
+│  Frontend only                        kishan/MediBot      │
 │  /api/proxy/* → MediBot              Full app (FE + BE)     │
 └──────────┬──────────────────────────────┬───────────────────┘
            │                              │
            ▼                              ▼
 ┌─────────────────────────────────────────────────────────────┐
-│  MediBot Space (ruslanmv/MediBot)                           │
+│  MediBot Space (kishan/MediBot)                           │
 │  Next.js 14 + SQLite                                        │
 │                                                             │
 │  /api/chat     → LLM providers (Llama, Qwen, Gemma, etc.)  │
@@ -87,7 +87,7 @@ export HF_TOKEN=hf_your_write_token_here
 bash 9-HuggingFace-Global/scripts/deploy-hf.sh
 
 # 3. Verify
-curl https://ruslanmv-medibot.hf.space/api/health
+curl https://kishan-medibot.hf.space/api/health
 # → {"status":"ok"}
 ```
 
@@ -95,7 +95,7 @@ curl https://ruslanmv-medibot.hf.space/api/health
 - Copies `9-HuggingFace-Global/` (backend) as the base
 - Overlays `web/` (frontend components, hooks, styles)
 - Rewrites `/api/proxy/` → `/api/` in all frontend files
-- Force-pushes to `ruslanmv/MediBot` HF Space
+- Force-pushes to `kishan/MediBot` HF Space
 
 **After deployment**, set these secrets in the Space settings:
 
@@ -103,8 +103,8 @@ curl https://ruslanmv-medibot.hf.space/api/health
 |--------|-------|-----------|
 | `HF_TOKEN` | Your HF token (for LLM inference) | Yes |
 | `HF_TOKEN_INFERENCE` | Token with inference permissions | For scanner proxy |
-| `NEARBY_URL` | `https://ruslanmv-metaengine-nearby.hf.space` | Default works |
-| `SCANNER_URL` | `https://ruslanmv-medicine-scanner.hf.space` | Default works |
+| `NEARBY_URL` | `https://kishan-metaengine-nearby.hf.space` | Default works |
+| `SCANNER_URL` | `https://kishan-medicine-scanner.hf.space` | Default works |
 | `DB_PATH` | `/data/medos.db` | Default works |
 
 ---
@@ -118,7 +118,7 @@ export HF_TOKEN=hf_your_write_token_here
 bash 11-Medicine-Scanner/deploy-scanner.sh
 
 # Verify
-curl https://ruslanmv-medicine-scanner.hf.space/api/health
+curl https://kishan-medicine-scanner.hf.space/api/health
 # → {"status":"ok","service":"medicine-scanner"}
 ```
 
@@ -130,7 +130,7 @@ curl https://ruslanmv-medicine-scanner.hf.space/api/health
 
 **Test the scanner:**
 ```bash
-curl -X POST https://ruslanmv-medicine-scanner.hf.space/api/scan \
+curl -X POST https://kishan-medicine-scanner.hf.space/api/scan \
   -F "image=@photo_of_medicine.jpg"
 ```
 
@@ -145,7 +145,7 @@ export HF_TOKEN=hf_your_write_token_here
 bash 12-MetaEngine-Nearby/deploy-nearby.sh
 
 # Verify
-curl https://ruslanmv-metaengine-nearby.hf.space/api/health
+curl https://kishan-metaengine-nearby.hf.space/api/health
 # → {"status":"ok","service":"nearby-finder"}
 ```
 
@@ -153,7 +153,7 @@ No secrets needed — uses free OpenStreetMap APIs.
 
 **Test the finder:**
 ```bash
-curl -X POST https://ruslanmv-metaengine-nearby.hf.space/api/search \
+curl -X POST https://kishan-metaengine-nearby.hf.space/api/search \
   -H "Content-Type: application/json" \
   -d '{"lat": 40.7128, "lon": -74.006, "entity_type": "pharmacy", "limit": 5}'
 ```
@@ -171,7 +171,7 @@ For custom domains (e.g., `ai-medical-chabot.com`):
 
 | Variable | Value |
 |----------|-------|
-| `NEXT_PUBLIC_BACKEND_URL` | `https://ruslanmv-medibot.hf.space` |
+| `NEXT_PUBLIC_BACKEND_URL` | `https://kishan-medibot.hf.space` |
 
 5. Click **Deploy**
 6. Add custom domain in Vercel → Settings → Domains
@@ -265,7 +265,7 @@ Server-side configuration:
 | Default Preset | Default AI model for new users | `free-best` |
 | Ollama Base URL | Local Ollama server (if running) | `http://localhost:11434` |
 | HF Default Model | Default model for HF Inference | `meta-llama/Llama-3.3-70B-Instruct` |
-| Application URL | Public URL (used in emails) | `https://ruslanmv-medibot.hf.space` |
+| Application URL | Public URL (used in emails) | `https://kishan-medibot.hf.space` |
 | Allowed Origins | CORS origins (comma-separated) | Your Vercel URL |
 
 Changes are saved to `/data/medos-config.json` and persist across restarts.
@@ -465,10 +465,10 @@ User enters location → MedOS frontend
 | `SMTP_USER` | No | — | SMTP username |
 | `SMTP_PASS` | No | — | SMTP password |
 | `FROM_EMAIL` | No | `MedOS <noreply@medos.health>` | Sender email |
-| `APP_URL` | No | `https://ruslanmv-medibot.hf.space` | Public URL |
+| `APP_URL` | No | `https://kishan-medibot.hf.space` | Public URL |
 | `ALLOWED_ORIGINS` | No | `*` | CORS allowed origins |
-| `NEARBY_URL` | No | `https://ruslanmv-metaengine-nearby.hf.space` | Nearby finder URL |
-| `SCANNER_URL` | No | `https://ruslanmv-medicine-scanner.hf.space` | Scanner URL |
+| `NEARBY_URL` | No | `https://kishan-metaengine-nearby.hf.space` | Nearby finder URL |
+| `SCANNER_URL` | No | `https://kishan-medicine-scanner.hf.space` | Scanner URL |
 | `HF_TOKEN_INFERENCE` | No | — | Inference token for scanner proxy |
 | `OLLABRIDGE_URL` | No | — | Custom OllaBridge gateway URL |
 | `OLLABRIDGE_API_KEY` | No | — | OllaBridge API key |
@@ -488,7 +488,7 @@ No environment variables needed. Uses free OpenStreetMap APIs.
 
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
-| `NEXT_PUBLIC_BACKEND_URL` | Yes | `https://ruslanmv-medibot.hf.space` | MediBot Space URL |
+| `NEXT_PUBLIC_BACKEND_URL` | Yes | `https://kishan-medibot.hf.space` | MediBot Space URL |
 
 ---
 
@@ -503,13 +503,13 @@ No environment variables needed. Uses free OpenStreetMap APIs.
 
 ### Medicine Scanner shows "Scan failed"
 
-1. Check the Scanner Space is running: visit [huggingface.co/spaces/ruslanmv/Medicine-Scanner](https://huggingface.co/spaces/ruslanmv/Medicine-Scanner)
+1. Check the Scanner Space is running: visit [huggingface.co/spaces/kishan/Medicine-Scanner](https://huggingface.co/spaces/kishan/Medicine-Scanner)
 2. If sleeping, any request will wake it (takes ~30 seconds)
 3. Check `HF_TOKEN` secret is set with inference permissions
 
 ### Nearby search returns no results
 
-1. Check MetaEngine Space is running: visit [huggingface.co/spaces/ruslanmv/MetaEngine-Nearby](https://huggingface.co/spaces/ruslanmv/MetaEngine-Nearby)
+1. Check MetaEngine Space is running: visit [huggingface.co/spaces/kishan/MetaEngine-Nearby](https://huggingface.co/spaces/kishan/MetaEngine-Nearby)
 2. Overpass API may be slow — retry after a few seconds
 3. Try a different location (some areas have fewer OSM entries)
 
@@ -519,7 +519,7 @@ This happens when the MediBot Space is sleeping and the Vercel proxy times out w
 
 **Fixes:**
 1. `vercel.json` sets `maxDuration: 60` (increased from 30s)
-2. If still timing out, wake MediBot first: visit [huggingface.co/spaces/ruslanmv/MediBot](https://huggingface.co/spaces/ruslanmv/MediBot) and wait ~30s
+2. If still timing out, wake MediBot first: visit [huggingface.co/spaces/kishan/MediBot](https://huggingface.co/spaces/kishan/MediBot) and wait ~30s
 3. For always-on, upgrade the MediBot HF Space to a paid plan
 
 **Why it happens:**
@@ -542,7 +542,7 @@ This happens when the MediBot Space is sleeping and the Vercel proxy times out w
 
 ### Space shows "Building" or "Error"
 
-1. Check Space logs at `huggingface.co/spaces/ruslanmv/SpaceName` → Logs tab
+1. Check Space logs at `huggingface.co/spaces/kishan/SpaceName` → Logs tab
 2. Common issues:
    - Missing `HF_TOKEN` secret → auth errors
    - Dependency conflict → check requirements.txt
@@ -589,7 +589,7 @@ Set these in **GitHub → Settings → Secrets → Actions**:
 | Secret | Value |
 |--------|-------|
 | `HF_TOKEN` | HuggingFace write token |
-| `HF_USERNAME` | `ruslanmv` (your HF username) |
+| `HF_USERNAME` | `kishan` (your HF username) |
 | `HF_TOKEN_INFERENCE` | Token with inference permissions (for scanner) |
 
 ### Manual Deployment
