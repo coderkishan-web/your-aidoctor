@@ -13,8 +13,10 @@ import {
   Mic,
   Sparkles,
   Zap,
+  Download,
 } from "lucide-react";
 import { Toggle } from "../chat/Toggle";
+import { useInstallPrompt } from "@/lib/hooks/useInstallPrompt";
 import {
   t,
   LANGUAGE_NAMES,
@@ -71,6 +73,8 @@ export function SettingsView({
     answer?: string;
     error?: string;
   } | null>(null);
+
+  const { canInstall, promptInstall } = useInstallPrompt();
 
   // Test backend connection by sending a quick probe to the backend
   const handleTestConnection = async () => {
@@ -317,6 +321,30 @@ export function SettingsView({
             </span>
           </div>
         </SettingsSection>
+
+        {/* ============================================ */}
+        {/* APP INSTALL                                  */}
+        {/* ============================================ */}
+        {canInstall && (
+          <SettingsSection icon={Download} title="App">
+            <div className="flex items-center justify-between py-2 gap-3">
+              <div>
+                <span className="text-sm text-ink-base font-medium block">
+                  Install YourAIDoctor
+                </span>
+                <span className="text-xs text-ink-muted">
+                  Add to home screen for instant access.
+                </span>
+              </div>
+              <button
+                onClick={() => promptInstall()}
+                className="px-4 py-2 rounded-xl bg-brand-gradient text-white text-sm font-bold shadow-glow hover:brightness-110 shrink-0"
+              >
+                Install
+              </button>
+            </div>
+          </SettingsSection>
+        )}
 
         <div className="h-8" />
       </div>

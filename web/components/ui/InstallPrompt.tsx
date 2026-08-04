@@ -1,47 +1,63 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Download, X } from "lucide-react";
-
-interface BeforeInstallPromptEvent extends Event {
-  prompt: () => Promise<void>;
-  userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
-}
+import { useInstallPrompt } from "@/lib/hooks/useInstallPrompt";
 
 const DISMISS_KEY = "medora_install_dismissed";
-const DELAY_MS = 8000;
+const IDLE_TIMEOUT_MS = 60000; // 1 minute
 
 /**
- * PWA install prompt. Shows after a short delay on the first session.
+ * PWA install prompt. Shows after 1 minute of idle time.
  * Dismissed state persisted in localStorage. Skips if already installed.
  */
 export function InstallPrompt() {
-  const [evt, setEvt] = useState<BeforeInstallPromptEvent | null>(null);
+  const { canInstall, promptInstall } = useInstallPrompt();
   const [visible, setVisible] = useState(false);
+  const idleTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (localStorage.getItem(DISMISS_KEY) === "1") return;
     if (window.matchMedia?.("(display-mode: standalone)").matches) return;
+    
+    // Only start tracking idle time if the app is installable
+    if (!canInstall) {
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+      return;
+    }
 
-    const handler = (e: Event) => {
-      e.preventDefault();
-      setEvt(e as BeforeInstallPromptEvent);
-      setTimeout(() => setVisible(true), DELAY_MS);
+    const resetIdleTimer = () => {
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+      idleTimerRef.current = setTimeout(() => {
+        setVisible(true);
+      }, IDLE_TIMEOUT_MS);
     };
-    window.addEventListener("beforeinstallprompt", handler as EventListener);
-    return () => window.removeEventListener("beforeinstallprompt", handler as EventListener);
-  }, []);
+
+    // Initial timer start
+    resetIdleTimer();
+
+    // Listeners for user activity
+    window.addEventListener("mousemove", resetIdleTimer);
+    window.addEventListener("keydown", resetIdleTimer);
+    window.addEventListener("touchstart", resetIdleTimer);
+    window.addEventListener("scroll", resetIdleTimer);
+
+    return () => {
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+      window.removeEventListener("mousemove", resetIdleTimer);
+      window.removeEventListener("keydown", resetIdleTimer);
+      window.removeEventListener("touchstart", resetIdleTimer);
+      window.removeEventListener("scroll", resetIdleTimer);
+    };
+  }, [canInstall]);
 
   const install = async () => {
-    if (!evt) return;
-    try {
-      await evt.prompt();
-      const choice = await evt.userChoice;
-      if (choice.outcome === "accepted") localStorage.setItem(DISMISS_KEY, "1");
-    } catch {}
+    const success = await promptInstall();
+    if (success) {
+      localStorage.setItem(DISMISS_KEY, "1");
+    }
     setVisible(false);
-    setEvt(null);
   };
 
   const dismiss = () => {
@@ -49,7 +65,7 @@ export function InstallPrompt() {
     setVisible(false);
   };
 
-  if (!visible || !evt) return null;
+  if (!visible || !canInstall) return null;
 
   return (
     <div className="fixed left-1/2 -translate-x-1/2 bottom-16 md:bottom-4 z-50 w-[calc(100%-2rem)] max-w-sm rounded-2xl bg-surface-1 border border-line/60 shadow-card backdrop-blur-xl animate-in fade-in slide-in-from-bottom-4 duration-300">
@@ -76,3 +92,4 @@ export function InstallPrompt() {
     </div>
   );
 }
+
