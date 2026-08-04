@@ -14,7 +14,10 @@ import {
   ArrowUp,
   X,
   Compass,
-  CheckCircle2
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
+  List
 } from "lucide-react";
 import "leaflet/dist/leaflet.css";
 
@@ -59,224 +62,47 @@ function getDistanceKm(lat1: number, lon1: number, lat2: number, lon2: number): 
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-// Fallback places near coordinates (generated tightly around user GPS)
-function generateFallbackPlaces(lat: number, lng: number, category: "hospital" | "pharmacy"): Place[] {
-  if (category === "pharmacy") {
-    const list = [
-      {
-        id: "pharm-1",
-        name: "Apollo Pharmacy (24x7 Emergency Branch)",
-        category: "pharmacy" as const,
-        lat: lat + 0.0025,
-        lng: lng + 0.003,
-        address: "Near Station Road, Sector 1",
-        phone: "1860-500-0101",
-        open24x7: true,
-      },
-      {
-        id: "pharm-2",
-        name: "MedPlus 24 Hours Chemist & Druggist",
-        category: "pharmacy" as const,
-        lat: lat - 0.0035,
-        lng: lng + 0.0045,
-        address: "Main Market Road, Corner Shop #2",
-        phone: "022-28901122",
-        open24x7: true,
-      },
-      {
-        id: "pharm-3",
-        name: "Wellness Forever Day & Night Medicals",
-        category: "pharmacy" as const,
-        lat: lat + 0.005,
-        lng: lng - 0.003,
-        address: "Green Park Avenue, Block A",
-        phone: "1800-102-4242",
-        open24x7: true,
-      },
-      {
-        id: "pharm-4",
-        name: "Local Care Emergency Chemist",
-        category: "pharmacy" as const,
-        lat: lat - 0.006,
-        lng: lng - 0.005,
-        address: "Civil Hospital Gate Entrance",
-        phone: "022-25443322",
-        open24x7: true,
-      },
-      {
-        id: "pharm-5",
-        name: "LifeLine Medical & Surgical Store",
-        category: "pharmacy" as const,
-        lat: lat + 0.008,
-        lng: lng + 0.006,
-        address: "Cross Road Plaza, Shop #12",
-        phone: "+91 9820011223",
-        open24x7: true,
-      },
-    ];
-
-    return list
-      .map((p) => {
-        const dist = getDistanceKm(lat, lng, p.lat, p.lng);
-        return {
-          ...p,
-          distKm: parseFloat(dist.toFixed(2)),
-          etaMins: Math.max(1, Math.round(dist * 2.5 + 1)),
-        };
-      })
-      .sort((a, b) => a.distKm - b.distKm);
-  }
-
-  const list = [
-    {
-      id: "hosp-1",
-      name: "City Care Super Speciality & Emergency Hospital",
-      category: "hospital" as const,
-      lat: lat + 0.009,
-      lng: lng + 0.007,
-      address: "Central Hospital Road, Medical Hub",
-      phone: "108 / +91 9876543210",
-      open24x7: true,
-    },
-    {
-      id: "hosp-2",
-      name: "Apex LifeLine Trauma & Emergency Center",
-      category: "hospital" as const,
-      lat: lat - 0.012,
-      lng: lng + 0.014,
-      address: "Main Highway Crossing, Sector 4",
-      phone: "112 / +91 9876543211",
-      open24x7: true,
-    },
-    {
-      id: "hosp-3",
-      name: "Government District Civil Emergency Hospital",
-      category: "hospital" as const,
-      lat: lat + 0.018,
-      lng: lng - 0.011,
-      address: "Civil Hospital Complex, Station Road",
-      phone: "108 / 022-25678900",
-      open24x7: true,
-    },
-    {
-      id: "hosp-4",
-      name: "Apollo Multi-Speciality Emergency Care",
-      category: "hospital" as const,
-      lat: lat - 0.022,
-      lng: lng - 0.018,
-      address: "Green Park Avenue, Block B",
-      phone: "1860-500-1066",
-      open24x7: true,
-    },
-    {
-      id: "hosp-5",
-      name: "Max Healthcare & Trauma Institute",
-      category: "hospital" as const,
-      lat: lat + 0.031,
-      lng: lng + 0.024,
-      address: "Ring Road Interchange, Phase 2",
-      phone: "011-26515050",
-      open24x7: true,
-    },
-  ];
-
-  return list
-    .map((h) => {
-      const dist = getDistanceKm(lat, lng, h.lat, h.lng);
-      return {
-        ...h,
-        distKm: parseFloat(dist.toFixed(2)),
-        etaMins: Math.max(2, Math.round(dist * 3 + 2)),
-      };
-    })
-    .sort((a, b) => a.distKm - b.distKm);
-}
-
-// Overpass API fetch for hospitals / pharmacies
-async function fetchPlacesOverpass(
+// ── Fetch from our server-side API route (/api/geo/nearby) ───────────────────
+// Uses free OpenStreetMap (Overpass API) via parallel mirror race. Zero dummy data.
+async function fetchNearbyPlaces(
   lat: number,
   lng: number,
-  category: "hospital" | "pharmacy"
-): Promise<Place[]> {
-  const radius = 6000;
-  const filterQuery =
-    category === "pharmacy"
-      ? `
-        node["amenity"="pharmacy"](around:${radius},${lat},${lng});
-        way["amenity"="pharmacy"](around:${radius},${lat},${lng});
-        node["healthcare"="pharmacy"](around:${radius},${lat},${lng});
-        node["shop"="chemist"](around:${radius},${lat},${lng});
-      `
-      : `
-        node["amenity"="hospital"](around:${radius},${lat},${lng});
-        way["amenity"="hospital"](around:${radius},${lat},${lng});
-        node["amenity"="clinic"](around:${radius},${lat},${lng});
-        node["healthcare"="hospital"](around:${radius},${lat},${lng});
-      `;
-
-  const query = `
-    [out:json][timeout:8];
-    (
-      ${filterQuery}
-    );
-    out center 15;
-  `;
-
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 8000);
-
+  category: "hospital" | "pharmacy",
+  onStatus?: (msg: string) => void
+): Promise<{ places: Place[]; source: "osm" }> {
+  onStatus?.("Searching OpenStreetMap for nearby " + (category === "pharmacy" ? "pharmacies" : "hospitals") + "…");
   try {
-    const res = await fetch("https://overpass-api.de/api/interpreter", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Accept: "application/json",
-      },
-      body: "data=" + encodeURIComponent(query),
-      signal: controller.signal,
-    });
-    clearTimeout(timeoutId);
-
-    if (!res.ok) throw new Error("Overpass query failed");
-    const json = await res.json();
-
-    const items: Place[] = (json.elements || [])
-      .map((el: any) => {
-        const elLat = el.lat || el.center?.lat;
-        const elLng = el.lon || el.center?.lon;
-        if (!elLat || !elLng) return null;
-
-        const dist = getDistanceKm(lat, lng, elLat, elLng);
-        return {
-          id: el.id,
-          name:
-            el.tags?.name ||
-            el.tags?.["name:en"] ||
-            (category === "pharmacy" ? "24/7 Pharmacy & Medical Store" : "Emergency Hospital / Clinic"),
-          category,
-          lat: elLat,
-          lng: elLng,
-          address:
-            [el.tags?.["addr:street"], el.tags?.["addr:suburb"], el.tags?.["addr:city"]]
-              .filter(Boolean)
-              .join(", ") || (category === "pharmacy" ? "Local Medical Store" : "Nearby Hospital Center"),
-          phone: el.tags?.phone || el.tags?.["contact:phone"] || (category === "pharmacy" ? "Contact Chemist" : "108 / 112"),
-          distKm: parseFloat(dist.toFixed(2)),
-          etaMins: Math.max(1, Math.round(dist * 2.5 + 1)),
-          open24x7: el.tags?.["opening_hours"] === "24/7" || true,
-        };
-      })
-      .filter(Boolean)
-      .sort((a: Place, b: Place) => a.distKm - b.distKm)
-      .slice(0, 5);
-
-    if (items.length > 0) return items;
-    return generateFallbackPlaces(lat, lng, category);
+    const res = await fetch(
+      `/api/geo/nearby?lat=${lat}&lng=${lng}&type=${category}`,
+      { signal: AbortSignal.timeout(20000) }
+    );
+    if (!res.ok) throw new Error(`API ${res.status}`);
+    const data = await res.json();
+    const places: Place[] = (data.places || []).map((p: any) => ({
+      id: p.id,
+      name: p.name,
+      category,
+      lat: p.lat,
+      lng: p.lng,
+      address: p.address,
+      phone: p.phone,
+      distKm: p.distKm,
+      etaMins: p.etaMins,
+      open24x7: p.open24x7,
+    }));
+    if (places.length > 0) {
+      onStatus?.(`✓ Found ${places.length} verified ${category === "pharmacy" ? "pharmacies" : "hospitals"} on OpenStreetMap.`);
+      return { places, source: "osm" };
+    }
+    onStatus?.("No registered " + (category === "pharmacy" ? "pharmacies" : "hospitals") + " within 10 km on OpenStreetMap.");
+    return { places: [], source: "osm" };
   } catch (err) {
-    console.warn("Overpass API fallback used:", err);
-    return generateFallbackPlaces(lat, lng, category);
+    console.warn("[EmergencyMap] fetchNearbyPlaces error:", err);
+    onStatus?.("⚠ Could not reach map server. Dial emergency hotline below.");
+    return { places: [], source: "osm" };
   }
 }
+
 
 // OSRM Routing Fetcher (Real-time turn-by-turn guidance)
 async function fetchOSRMRoute(
@@ -398,8 +224,11 @@ export function EmergencyMap() {
   const [isClient, setIsClient] = useState(false);
   const [activeCategory, setActiveCategory] = useState<"hospital" | "pharmacy">("hospital");
   const [userCoords, setUserCoords] = useState<{ lat: number; lng: number } | null>(null);
+  const [panelOpen, setPanelOpen] = useState(false);
   const [places, setPlaces] = useState<Place[]>([]);
   const [loading, setLoading] = useState(true);
+  const [statusMsg, setStatusMsg] = useState<string>("Requesting GPS location…");
+  const [dataSource, setDataSource] = useState<"google" | "osm" | "estimate" | null>(null);
   const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
   const [activeRoute, setActiveRoute] = useState<RouteInfo | null>(null);
   const [routeLoading, setRouteLoading] = useState(false);
@@ -457,12 +286,16 @@ export function EmergencyMap() {
 
   const detectLocation = useCallback((cat: "hospital" | "pharmacy" = activeCategory) => {
     setLoading(true);
+    setPlaces([]);
+    setDataSource(null);
     setActiveRoute(null);
+    setStatusMsg("Requesting GPS location…");
     const defaultLat = 19.076;
     const defaultLng = 72.8777;
 
     const fetchForCategory = async (lat: number, lng: number) => {
-      const nearest = await fetchPlacesOverpass(lat, lng, cat);
+      const { places: nearest, source } = await fetchNearbyPlaces(lat, lng, cat, setStatusMsg);
+      setDataSource(source);
       setPlaces(nearest);
       if (nearest.length > 0) setSelectedPlace(nearest[0]);
       setLoading(false);
@@ -474,16 +307,18 @@ export function EmergencyMap() {
           const lat = pos.coords.latitude;
           const lng = pos.coords.longitude;
           setUserCoords({ lat, lng });
-          setLocationName(`GPS: ${lat.toFixed(4)}, ${lng.toFixed(4)}`);
+          setLocationName(`GPS: ${lat.toFixed(4)}, ${lng.toFixed(4)} (Accuracy: ~${Math.round(pos.coords.accuracy || 10)}m)`);
+          setStatusMsg("GPS permission granted — searching hospitals around your location…");
           fetchForCategory(lat, lng);
         },
         (err) => {
-          console.warn("Geolocation fallback used", err);
+          console.warn("Geolocation permission or position error:", err);
           setUserCoords({ lat: defaultLat, lng: defaultLng });
           setLocationName("Location fallback (Mumbai)");
+          setStatusMsg("GPS permission denied/unavailable — using default coordinates…");
           fetchForCategory(defaultLat, defaultLng);
         },
-        { timeout: 10000, enableHighAccuracy: true }
+        { timeout: 15000, enableHighAccuracy: true, maximumAge: 0 }
       );
     } else {
       setUserCoords({ lat: defaultLat, lng: defaultLng });
@@ -516,9 +351,12 @@ export function EmergencyMap() {
 
   if (!isClient || !LeafletComponents || !userCoords) {
     return (
-      <div className="w-full h-80 bg-slate-100 rounded-2xl border border-slate-200 flex flex-col items-center justify-center gap-3 p-6">
-        <RefreshCw size={28} className="text-blue-600 animate-spin" />
-        <p className="text-sm font-semibold text-slate-600">Initializing Live Hospital & Navigation Engine...</p>
+      <div className="w-full h-80 bg-surface-2 rounded-2xl border border-line/50 flex flex-col items-center justify-center gap-3 p-6">
+        <RefreshCw size={26} className="text-brand-500 animate-spin" />
+        <p className="text-sm font-semibold text-ink-base">{statusMsg}</p>
+        <p className="text-xs text-ink-muted max-w-xs text-center">
+          Querying up to 3 OpenStreetMap servers in parallel. This may take up to 25 seconds.
+        </p>
       </div>
     );
   }
@@ -575,10 +413,11 @@ export function EmergencyMap() {
         </div>
       </div>
 
-      {/* Map + Places Grid */}
-      <div className="grid lg:grid-cols-12 gap-6">
-        {/* Leaflet Interactive Map View */}
-        <div className="lg:col-span-7 h-[460px] rounded-2xl overflow-hidden border-2 border-slate-200 shadow-md relative z-0">
+      {/* ── Map + Sliding Overlay Panel ─────────────────────────────── */}
+      <div className="relative w-full h-[460px] rounded-2xl overflow-hidden border border-line/60 shadow-soft">
+
+        {/* Full-width Leaflet Map — always 100% */}
+        <div className="absolute inset-0 z-0">
           <MapContainer
             center={[userCoords.lat, userCoords.lng]}
             zoom={14}
@@ -590,7 +429,6 @@ export function EmergencyMap() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
-            {/* Auto Map Zoom & Bounds Controller */}
             <MapBoundsAutoFitter
               userCoords={userCoords}
               selectedPlace={selectedPlace}
@@ -615,9 +453,7 @@ export function EmergencyMap() {
                 key={p.id}
                 position={[p.lat, p.lng]}
                 icon={p.category === "pharmacy" ? pharmacyIcon : hospitalIcon}
-                eventHandlers={{
-                  click: () => handleShowRoute(p),
-                }}
+                eventHandlers={{ click: () => handleShowRoute(p) }}
               >
                 <Popup>
                   <div className="p-1 font-sans space-y-1">
@@ -637,198 +473,245 @@ export function EmergencyMap() {
               </Marker>
             ))}
 
-            {/* High-Contrast Multi-Layer Route Polyline */}
+            {/* Route Polylines */}
             {activeRoute && (
               <>
-                {/* Casing border for sharp contrast on OpenStreetMap */}
-                <Polyline
-                  positions={activeRoute.coordinates}
-                  color="#0f172a"
-                  weight={10}
-                  opacity={0.8}
-                />
-                {/* Vivid primary route line */}
-                <Polyline
-                  positions={activeRoute.coordinates}
-                  color="#2563eb"
-                  weight={6}
-                  opacity={1.0}
-                />
-                {/* Bright core highlights */}
-                <Polyline
-                  positions={activeRoute.coordinates}
-                  color="#60a5fa"
-                  weight={2}
-                  opacity={0.9}
-                />
+                <Polyline positions={activeRoute.coordinates} color="#0f172a" weight={10} opacity={0.8} />
+                <Polyline positions={activeRoute.coordinates} color="#2563eb" weight={6} opacity={1.0} />
+                <Polyline positions={activeRoute.coordinates} color="#60a5fa" weight={2} opacity={0.9} />
               </>
             )}
           </MapContainer>
-
-          {/* Active Navigation Summary Overlay */}
-          {activeRoute && selectedPlace && (
-            <div className="absolute top-3 left-3 right-3 bg-white/95 backdrop-blur-md border border-blue-200 rounded-2xl p-3.5 shadow-xl z-10 flex justify-between items-center">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-blue-600 text-white rounded-xl animate-pulse">
-                  <Compass size={18} />
-                </div>
-                <div>
-                  <h4 className="font-extrabold text-slate-800 text-xs">
-                    Navigating to: {selectedPlace.name}
-                  </h4>
-                  <p className="text-[11px] font-bold text-blue-600">
-                    {activeRoute.distanceKm} km • ~{activeRoute.durationMins} mins drive
-                  </p>
-                </div>
-              </div>
-
-              <button
-                onClick={() => setActiveRoute(null)}
-                className="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl transition"
-                title="Clear route"
-              >
-                <X size={16} />
-              </button>
-            </div>
-          )}
         </div>
 
-        {/* Right Side: Places List or Turn-by-Turn Guidance */}
-        <div className="lg:col-span-5 space-y-4">
-          {activeRoute && selectedPlace ? (
-            /* TURN-BY-TURN IN-APP NAVIGATION PANEL */
-            <div className="bg-white rounded-2xl p-5 border-2 border-blue-200 shadow-md space-y-4 max-h-[460px] overflow-y-auto">
-              <div className="flex justify-between items-start pb-3 border-b border-slate-100">
-                <div>
-                  <span className="px-2.5 py-0.5 bg-blue-100 text-blue-700 text-[10px] font-extrabold rounded-full uppercase tracking-wider">
-                    In-App Turn-by-Turn Guidance
-                  </span>
-                  <h3 className="font-bold text-slate-800 text-base mt-1">{selectedPlace.name}</h3>
-                  <p className="text-xs text-slate-500">{selectedPlace.address}</p>
-                </div>
+        {/* ── Active Route Banner Overlay (top of map) ── */}
+        {activeRoute && selectedPlace && (
+          <div className="absolute top-3 left-3 right-16 bg-white/95 backdrop-blur-md border border-blue-200 rounded-2xl p-3.5 shadow-xl z-20 flex justify-between items-center">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-blue-600 text-white rounded-xl animate-pulse">
+                <Compass size={18} />
+              </div>
+              <div>
+                <h4 className="font-extrabold text-slate-800 text-xs">Navigating to: {selectedPlace.name}</h4>
+                <p className="text-[11px] font-bold text-blue-600">
+                  {activeRoute.distanceKm} km • ~{activeRoute.durationMins} mins drive
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => setActiveRoute(null)}
+              className="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl transition"
+            >
+              <X size={16} />
+            </button>
+          </div>
+        )}
 
+        {/* ── Floating Tab Toggle ── anchored to right edge, outside the panel */}
+        {!panelOpen && (
+          <button
+            onClick={() => setPanelOpen(true)}
+            className="absolute top-1/2 -translate-y-1/2 right-0 z-20
+                       flex items-center gap-2 pl-3 pr-2 py-4
+                       bg-surface-1/95 backdrop-blur-sm
+                       border border-line/70 border-r-0
+                       rounded-l-2xl shadow-card
+                       hover:bg-brand-50 hover:border-brand-300
+                       transition-all duration-200 group"
+            title="Show hospital list"
+          >
+            <div className="flex flex-col items-center gap-1.5">
+              <Building2 size={15} className="text-brand-500 group-hover:text-brand-600" />
+              <span
+                className="text-[10px] font-bold text-ink-muted group-hover:text-brand-600 uppercase tracking-widest"
+                style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+              >
+                {activeCategory === "pharmacy" ? "Pharmacies" : "Hospitals"}
+              </span>
+              <ChevronLeft size={13} className="text-ink-subtle group-hover:text-brand-500" />
+            </div>
+          </button>
+        )}
+
+        {/* ── Sliding Overlay Panel (right side) ── */}
+        <div
+          className={`absolute top-0 right-0 h-full z-10 transition-all duration-300 ease-in-out ${
+            panelOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+          style={{ width: "320px" }}
+        >
+          <div className="relative h-full w-full bg-surface-1/97 backdrop-blur-xl border-l border-line/60 flex flex-col shadow-card">
+
+            {/* Panel header with close tab */}
+            <div className="flex items-center justify-between px-4 py-3 border-b border-line/50 flex-shrink-0">
+              <div className="flex items-center gap-2">
+                <ShieldAlert size={16} className="text-brand-500" />
+                <span className="font-bold text-ink-base text-sm">
+                  Top 5 Nearest {activeCategory === "pharmacy" ? "Pharmacies" : "Hospitals"}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                {dataSource && (
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                    dataSource === "google"
+                      ? "bg-blue-100 text-blue-700 dark:bg-blue-500/15 dark:text-blue-400"
+                      : dataSource === "osm"
+                      ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-400"
+                      : "bg-amber-100 text-amber-700 dark:bg-amber-500/15 dark:text-amber-400"
+                  }`}>
+                    {dataSource === "google" ? "via Google" : dataSource === "osm" ? "via OSM" : "Estimate"}
+                  </span>
+                )}
                 <button
-                  onClick={() => setActiveRoute(null)}
-                  className="text-xs font-bold text-slate-500 hover:text-slate-800 bg-slate-100 px-2.5 py-1 rounded-lg"
+                  onClick={() => setPanelOpen(false)}
+                  className="p-1.5 bg-surface-2 hover:bg-surface-3 text-ink-muted rounded-lg transition-all"
+                  title="Close list"
                 >
-                  Exit Route
+                  <ChevronRight size={15} />
                 </button>
               </div>
+            </div>
 
-              <div className="flex items-center justify-between bg-blue-50 p-3 rounded-xl border border-blue-100 text-xs">
-                <span className="font-bold text-slate-700">Estimated Drive:</span>
-                <span className="font-extrabold text-blue-700 text-sm">
-                  {activeRoute.distanceKm} km ({activeRoute.durationMins} mins)
-                </span>
-              </div>
-
-              {/* Step-by-step maneuvers list */}
-              <div className="space-y-2">
-                <h4 className="font-bold text-xs text-slate-700 uppercase tracking-wider">
-                  Live Maneuver Steps
-                </h4>
-                <div className="space-y-2">
-                  {activeRoute.steps.map((st, idx) => (
-                    <div
-                      key={idx}
-                      className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl flex items-start gap-3 text-xs text-slate-700"
-                    >
-                      <div className="p-1.5 bg-blue-600 text-white rounded-lg flex-shrink-0 mt-0.5">
-                        {idx === activeRoute.steps.length - 1 ? (
-                          <CheckCircle2 size={14} />
-                        ) : st.modifier?.includes("right") ? (
-                          <CornerUpRight size={14} />
-                        ) : (
-                          <ArrowUp size={14} />
-                        )}
-                      </div>
-                      <div className="flex-1">
-                        <p className="font-bold text-slate-800">{st.instruction}</p>
-                        {st.distanceMeters > 0 && (
-                          <p className="text-[10px] text-slate-500 mt-0.5">
-                            In {st.distanceMeters}m ({Math.round(st.durationSecs / 60)} min)
-                          </p>
-                        )}
-                      </div>
+            {/* Panel content */}
+            <div className="flex-1 overflow-y-auto p-3 space-y-2">
+              {activeRoute && selectedPlace ? (
+                /* TURN-BY-TURN IN-APP NAVIGATION PANEL */
+                <div className="space-y-3">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <span className="px-2 py-0.5 bg-brand-100 text-brand-700 text-[10px] font-bold rounded-full uppercase tracking-wider">
+                        Turn-by-Turn Guidance
+                      </span>
+                      <h3 className="font-bold text-ink-base text-sm mt-1">{selectedPlace.name}</h3>
+                      <p className="text-xs text-ink-muted">{selectedPlace.address}</p>
                     </div>
-                  ))}
+                    <button
+                      onClick={() => setActiveRoute(null)}
+                      className="text-xs font-bold text-ink-muted hover:text-ink-base bg-surface-2 px-2 py-1 rounded-lg"
+                    >
+                      Exit
+                    </button>
+                  </div>
+
+                  <div className="flex items-center justify-between bg-brand-50 dark:bg-brand-500/10 p-3 rounded-xl border border-brand-200/60 dark:border-brand-500/30 text-xs">
+                    <span className="font-semibold text-ink-muted">Estimated Drive:</span>
+                    <span className="font-bold text-brand-600 text-sm">
+                      {activeRoute.distanceKm} km ({activeRoute.durationMins} mins)
+                    </span>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-xs text-ink-muted uppercase tracking-wider">Maneuver Steps</h4>
+                    {activeRoute.steps.map((st, idx) => (
+                      <div
+                        key={idx}
+                        className="p-3 bg-surface-2/50 border border-line/40 rounded-xl flex items-start gap-2.5 text-xs"
+                      >
+                        <div className="p-1.5 bg-brand-500 text-white rounded-lg flex-shrink-0 mt-0.5">
+                          {idx === activeRoute.steps.length - 1 ? (
+                            <CheckCircle2 size={13} />
+                          ) : st.modifier?.includes("right") ? (
+                            <CornerUpRight size={13} />
+                          ) : (
+                            <ArrowUp size={13} />
+                          )}
+                        </div>
+                        <div className="flex-1">
+                          <p className="font-semibold text-ink-base">{st.instruction}</p>
+                          {st.distanceMeters > 0 && (
+                            <p className="text-[10px] text-ink-muted mt-0.5">
+                              In {st.distanceMeters}m ({Math.round(st.durationSecs / 60)} min)
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </div>
-          ) : (
-            /* TOP 5 PLACES LIST CARDS */
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <h3 className="font-bold text-slate-800 text-base flex items-center gap-2">
-                  <ShieldAlert size={18} className="text-blue-600" />
-                  Top 5 Nearest {activeCategory === "pharmacy" ? "Pharmacies" : "Hospitals"}
-                </h3>
-                <span className="text-xs font-bold px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-full">
-                  GPS Verified
-                </span>
-              </div>
-
-              <div className="space-y-3 max-h-[400px] overflow-y-auto pr-1">
-                {places.map((p, idx) => {
-                  const isSelected = selectedPlace?.id === p.id;
-                  return (
-                    <div
-                      key={p.id}
-                      onClick={() => handleShowRoute(p)}
-                      className={`p-4 rounded-2xl border transition cursor-pointer shadow-xs ${
-                        isSelected
-                          ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-500/20"
-                          : "border-slate-200 bg-white hover:border-slate-300"
-                      }`}
-                    >
-                      <div className="flex justify-between items-start mb-1.5">
-                        <div className="flex items-center gap-2">
-                          <span className="w-5 h-5 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center">
-                            {idx + 1}
-                          </span>
-                          <h4 className="font-bold text-slate-800 text-sm leading-tight">{p.name}</h4>
-                        </div>
-                        <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-[10px] rounded-full flex-shrink-0">
-                          24x7 Open
-                        </span>
+              ) : (
+                /* PLACES LIST CARDS OR CLEAN EMPTY STATE */
+                <div className="space-y-2">
+                  {places.length === 0 ? (
+                    <div className="p-4 bg-surface-2/60 border border-line/50 rounded-xl text-center space-y-3">
+                      <ShieldAlert size={28} className="text-amber-500 mx-auto" />
+                      <div>
+                        <h4 className="font-bold text-ink-base text-xs">No OSM {activeCategory === "pharmacy" ? "Pharmacies" : "Hospitals"} Found</h4>
+                        <p className="text-[11px] text-ink-muted mt-1 leading-snug">
+                          No tagged {activeCategory === "pharmacy" ? "pharmacies" : "hospitals"} found in OpenStreetMap within 10 km of your current GPS location.
+                        </p>
                       </div>
-
-                      <p className="text-xs text-slate-500 mb-3 pl-7">{p.address}</p>
-
-                      <div className="flex items-center justify-between text-xs pt-2.5 border-t border-slate-100">
-                        <div className="font-semibold text-slate-700">
-                          <span className="text-blue-600 font-bold">{p.distKm} km</span> ({p.etaMins} mins drive)
-                        </div>
-
-                        <div className="flex items-center gap-2">
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleShowRoute(p);
-                            }}
-                            disabled={routeLoading}
-                            className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl transition flex items-center gap-1.5 shadow-xs disabled:opacity-50"
-                          >
-                            <Navigation size={12} />
-                            {routeLoading && selectedPlace?.id === p.id ? "Routing..." : "In-App Route"}
-                          </button>
-
-                          <a
-                            href={`tel:${p.phone.split("/")[0].trim()}`}
-                            onClick={(e) => e.stopPropagation()}
-                            className="px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition flex items-center gap-1.5 shadow-xs"
-                          >
-                            <Phone size={12} /> Call
-                          </a>
-                        </div>
+                      <div className="space-y-1.5 pt-1">
+                        <a
+                          href="tel:108"
+                          className="w-full py-2 bg-danger-500 hover:bg-danger-600 text-white font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-1.5 shadow-danger-glow"
+                        >
+                          <Phone size={12} /> Call 108 (Emergency Ambulance)
+                        </a>
+                        <a
+                          href="tel:112"
+                          className="w-full py-2 bg-surface-1 hover:bg-surface-3 text-ink-base font-bold text-xs rounded-lg border border-line/60 transition-all flex items-center justify-center gap-1.5"
+                        >
+                          <Phone size={12} /> Call 112 (National Helpline)
+                        </a>
                       </div>
                     </div>
-                  );
-                })}
-              </div>
+                  ) : (
+                    places.map((p, idx) => {
+                      const isSelected = selectedPlace?.id === p.id;
+                      return (
+                        <div
+                          key={p.id}
+                          onClick={() => handleShowRoute(p)}
+                          className={`p-3 rounded-xl border transition-all cursor-pointer ${
+                            isSelected
+                              ? "border-brand-400 bg-brand-50/60 dark:bg-brand-500/10 ring-1 ring-brand-400/30"
+                              : "border-line/60 bg-surface-2/40 hover:bg-surface-1 hover:border-line hover:shadow-soft"
+                          }`}
+                        >
+                          <div className="flex justify-between items-start mb-1">
+                            <div className="flex items-center gap-2">
+                              <span className="w-5 h-5 rounded-full bg-brand-500 text-white font-bold text-xs flex items-center justify-center flex-shrink-0">
+                                {idx + 1}
+                              </span>
+                              <h4 className="font-semibold text-ink-base text-xs leading-tight">{p.name}</h4>
+                            </div>
+                            <span className="px-1.5 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-400 font-bold text-[10px] rounded-full flex-shrink-0">
+                              24x7
+                            </span>
+                          </div>
+
+                          <p className="text-[11px] text-ink-muted mb-2 pl-7">{p.address}</p>
+
+                          <div className="flex items-center justify-between pl-7">
+                            <span className="text-xs font-semibold text-brand-600">{p.distKm} km</span>
+                            <div className="flex items-center gap-1.5">
+                              <button
+                                onClick={(e) => { e.stopPropagation(); handleShowRoute(p); }}
+                                disabled={routeLoading}
+                                className="px-2.5 py-1 bg-brand-500 hover:bg-brand-600 text-white font-bold text-[11px] rounded-lg transition flex items-center gap-1 disabled:opacity-50"
+                              >
+                                <Navigation size={11} />
+                                {routeLoading && selectedPlace?.id === p.id ? "..." : "Route"}
+                              </button>
+                              <a
+                                href={`tel:${p.phone.split("/")[0].trim()}`}
+                                onClick={(e) => e.stopPropagation()}
+                                className="px-2.5 py-1 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-[11px] rounded-lg transition flex items-center gap-1"
+                              >
+                                <Phone size={11} /> Call
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })
+                  )}
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
+
       </div>
     </div>
   );
