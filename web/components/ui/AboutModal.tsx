@@ -22,7 +22,7 @@ export function AboutModal({ onClose }: { onClose: () => void }) {
               <Heart size={20} strokeWidth={2.5} />
             </div>
             <div>
-              <h2 className="font-bold text-lg text-ink-base">YourAIDoctor</h2>
+              <h2 className="font-bold text-lg text-ink-base">Medora</h2>
               <p className="text-xs text-ink-muted">v1.0.0</p>
             </div>
           </div>
@@ -37,7 +37,7 @@ export function AboutModal({ onClose }: { onClose: () => void }) {
         <div className="p-5 space-y-5">
           {/* Description */}
           <p className="text-sm text-ink-base leading-relaxed">
-            YourAIDoctor is a free, open-source AI medical assistant that speaks
+            Medora is a free, open-source AI medical assistant that speaks
             20 languages. It provides general health guidance aligned with
             WHO, CDC, and NHS guidelines — always available, completely
             private, no sign-up required.
@@ -76,7 +76,7 @@ export function AboutModal({ onClose }: { onClose: () => void }) {
               GitHub
             </a>
             <a
-              href="https://youraidoctor.in"
+              href="https://medora.in"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border border-line/60 text-sm font-semibold text-ink-base hover:bg-surface-2 transition-colors"
@@ -88,7 +88,7 @@ export function AboutModal({ onClose }: { onClose: () => void }) {
 
           {/* Disclaimer */}
           <p className="text-[10px] text-ink-subtle leading-relaxed text-center">
-            YourAIDoctor provides general health information only. It is NOT a
+            Medora provides general health information only. It is NOT a
             substitute for professional medical advice, diagnosis, or
             treatment. Always consult a qualified healthcare provider.
           </p>

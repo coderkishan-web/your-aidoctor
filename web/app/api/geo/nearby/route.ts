@@ -48,7 +48,7 @@ async function fetchOverpassPlaces(lat: number, lng: number, type: "hospital" | 
       const res = await fetch(url, {
         method: "GET",
         headers: {
-          "User-Agent": "YourAIDoctor/1.0 (Emergency Medical Locator; contact@youraidoctor.app)",
+          "User-Agent": "Medora/1.0 (Emergency Medical Locator; contact@medora.app)",
           "Accept": "application/json",
         },
         signal: AbortSignal.timeout(12000),

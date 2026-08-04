@@ -127,7 +127,7 @@ export function SettingsView({
               <div>
                 <div className="text-sm font-semibold text-ink-base">Google Gemini API</div>
                 <p className="text-xs text-ink-muted mt-0.5">
-                  Powered by Google Gemini — handled securely on the YourAIDoctor backend. No configuration needed.
+                  Powered by Google Gemini — handled securely on the Medora backend. No configuration needed.
                 </p>
               </div>
               <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-success-500/10 text-success-600 shrink-0">

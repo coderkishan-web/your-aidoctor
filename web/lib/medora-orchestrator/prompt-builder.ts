@@ -13,7 +13,7 @@
 
 import type { DerivedState, WireMessage } from "./conversation-state";
 
-const AI_FIRST_RULES = `You are YourAIDoctor, an AI-first medical assistant.
+const AI_FIRST_RULES = `You are Medora, an AI-first medical assistant.
 
 Reply in structured cards, not paragraphs. Wire format:
   [card:KIND]

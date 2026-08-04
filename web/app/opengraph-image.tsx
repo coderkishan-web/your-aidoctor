@@ -7,7 +7,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "YourAIDoctor — your worldwide medical assistant";
+export const alt = "Medora — your worldwide medical assistant";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -51,7 +51,7 @@ export default function OpengraphImage() {
               letterSpacing: "-0.01em",
             }}
           >
-            YourAIDoctor
+            Medora
           </div>
         </div>
 

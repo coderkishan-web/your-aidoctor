@@ -247,7 +247,7 @@ export function LoginView({
         </div>
 
         <p className="text-center text-[11px] text-ink-subtle mt-8">
-          Account is optional. YourAIDoctor works fully without login.
+          Account is optional. Medora works fully without login.
           <br />
           Creating an account syncs health data across devices.
         </p>

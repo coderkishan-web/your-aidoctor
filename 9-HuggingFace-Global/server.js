@@ -38,8 +38,8 @@ app.use(cors({
       'http://localhost:5178',
       'http://localhost:5179',
       'http://localhost:5180',
-      'https://youraidoctor.vercel.app',
-      'https://youraidoctor-bk7o.vercel.app',
+      'https://medora.vercel.app',
+      'https://medora-bk7o.vercel.app',
       'https://adminprescriptodr.vercel.app',
       'https://prescriptoapp-wheat.vercel.app',
     ];
