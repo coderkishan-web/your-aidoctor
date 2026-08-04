@@ -23,7 +23,6 @@ import {
 } from "lucide-react";
 import { t, type SupportedLanguage } from "@/lib/i18n";
 import { ConversationList } from "./ConversationList";
-import { ThemeToggle } from "../ThemeToggle";
 import type { ConversationSummary } from "@/lib/health-store";
 
 interface AppDrawerProps {
@@ -206,12 +205,9 @@ export function AppDrawer({
               <LogOut size={16} /> {t("drawer_logout", language)}
             </button>
           )}
-          <div className="flex items-center justify-between px-1">
-            <p className="text-[10px] text-ink-subtle leading-snug">
-              {t("badge_not_doctor", language)}
-            </p>
-            <ThemeToggle />
-          </div>
+          <p className="text-[10px] text-ink-subtle leading-snug px-1">
+            {t("badge_not_doctor", language)}
+          </p>
         </div>
       </aside>
     </div>

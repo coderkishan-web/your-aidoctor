@@ -752,9 +752,7 @@ function MedoraAppInner() {
               onDismiss={notif.dismiss}
               onDismissAll={notif.dismissAll}
             />
-            <div className="hidden md:block">
-              <ThemeToggle />
-            </div>
+            <ThemeToggle />
           </div>
         </header>
 
