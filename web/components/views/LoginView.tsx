@@ -34,7 +34,7 @@ interface LoginViewProps {
   language: SupportedLanguage;
   /**
    * Optional pre-fill — used when the user lands here via a password-reset
-   * email link (?action=reset&email=…&code=…). MedOSApp parses the URL and
+   * email link (?action=reset&email=…&code=…). MedoraApp parses the URL and
    * passes these so the form drops straight into the "set new password" step.
    */
   initialFlow?: AuthFlow;

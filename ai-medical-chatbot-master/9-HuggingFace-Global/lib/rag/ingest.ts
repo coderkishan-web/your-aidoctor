@@ -3,7 +3,7 @@
  *
  * Reads source-attributed documents from `data/corpus/*.jsonl`, splits long
  * text into passages, embeds each passage (HF Inference), and writes the
- * chunks + FTS index + a corpus manifest into /data/medos.db. Re-runnable:
+ * chunks + FTS index + a corpus manifest into /data/medora.db. Re-runnable:
  * a version is fully replaced on re-ingest, and exactly one version is
  * marked active.
  *

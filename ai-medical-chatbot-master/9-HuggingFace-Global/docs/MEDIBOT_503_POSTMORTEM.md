@@ -7,7 +7,7 @@
 **Root cause:** missing environment variable on the MediBot Space.
 **Time to repair (operator action):** ~2 minutes.
 
-This document is the professional, evidence-based answer to "MedOS says
+This document is the professional, evidence-based answer to "Medora says
 all providers are unavailable but we want real LLM answers". It separates
 the immediate operator fix from the architectural fix designed in
 [`MEDIBOT_OLLABRIDGE_V2.md`](./MEDIBOT_OLLABRIDGE_V2.md).
@@ -80,7 +80,7 @@ MediBot just has nothing pointing at it.
 
 ```
 $ curl https://kishan-medibot.hf.space/api/health
-HTTP 200  {"status":"healthy","service":"medos-global","version":"1.0.0"}
+HTTP 200  {"status":"healthy","service":"medora-global","version":"1.0.0"}
 ```
 
 So the application is up, the route is reachable, the database is fine.
@@ -146,7 +146,7 @@ only in OllaBridge — MediBot needs none.
    ```
 
 3. **Restart the Space** (or wait ~10 s — `loadConfig()` re-reads
-   `/data/medos-config.json` per request, but env-only secrets need a
+   `/data/medora-config.json` per request, but env-only secrets need a
    restart).
 
 4. **Verify** with the same logs API:
@@ -239,7 +239,7 @@ failures are configuration-shaped (`HF token not configured`,
 
 ```json
 {
-  "error": "MedOS LLM gateway is not configured. The operator needs to set OLLABRIDGE_URL or HF_TOKEN on the Space.",
+  "error": "Medora LLM gateway is not configured. The operator needs to set OLLABRIDGE_URL or HF_TOKEN on the Space.",
   "code": "llm_not_configured"
 }
 ```
@@ -300,7 +300,7 @@ operator action.
 If users noticed:
 
 > "Chat was briefly returning a 'service unavailable' message for some
-> users on May 22. The MedOS gateway URL was missing from the Space
+> users on May 22. The Medora gateway URL was missing from the Space
 > configuration — a one-line setting change has restored service. We
 > are adding boot-time configuration checks and an admin diagnostics
 > tile so this exact problem can never recur silently."

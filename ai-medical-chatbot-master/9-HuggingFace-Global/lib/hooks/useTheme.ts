@@ -15,7 +15,7 @@ function applyDomClass(dark: boolean): void {
   root.style.colorScheme = dark ? 'dark' : 'light';
 }
 
-const STORAGE_KEY = 'medos-theme';
+const STORAGE_KEY = 'medora-theme';
 
 /**
  * Lightweight theme hook for the HuggingFace Space.

@@ -15,15 +15,15 @@ describe("storage scope — guest ephemerality + per-user isolation", () => {
   it("guest data goes to sessionStorage under the bare key (never localStorage)", () => {
     hs.setStorageScope({ kind: "guest" });
     hs.saveMedication({ name: "Aspirin" } as any);
-    expect(window.sessionStorage.getItem("medos_medications")).not.toBeNull();
-    expect(window.localStorage.getItem("medos_medications")).toBeNull();
+    expect(window.sessionStorage.getItem("medora_medications")).not.toBeNull();
+    expect(window.localStorage.getItem("medora_medications")).toBeNull();
   });
 
   it("user data goes to localStorage under a per-user namespaced key", () => {
     hs.setStorageScope({ kind: "user", id: "alice" });
     hs.saveMedication({ name: "Aspirin" } as any);
-    expect(window.localStorage.getItem("medos_medications__alice")).not.toBeNull();
-    expect(window.sessionStorage.getItem("medos_medications")).toBeNull();
+    expect(window.localStorage.getItem("medora_medications__alice")).not.toBeNull();
+    expect(window.sessionStorage.getItem("medora_medications")).toBeNull();
   });
 
   it("two users never see each other's data on the same browser", () => {
@@ -37,12 +37,12 @@ describe("storage scope — guest ephemerality + per-user isolation", () => {
 
   it("migrateLegacyToUser moves pre-namespacing bare keys into the user namespace", () => {
     window.localStorage.setItem(
-      "medos_medications",
+      "medora_medications",
       JSON.stringify([{ id: "m1", name: "Old" }]),
     );
     hs.migrateLegacyToUser("alice");
-    expect(window.localStorage.getItem("medos_medications")).toBeNull(); // bare key removed
-    expect(window.localStorage.getItem("medos_medications__alice")).not.toBeNull();
+    expect(window.localStorage.getItem("medora_medications")).toBeNull(); // bare key removed
+    expect(window.localStorage.getItem("medora_medications__alice")).not.toBeNull();
     hs.setStorageScope({ kind: "user", id: "alice" });
     expect(hs.loadMedications()).toHaveLength(1);
   });
@@ -53,7 +53,7 @@ describe("storage scope — guest ephemerality + per-user isolation", () => {
     hs.setStorageScope({ kind: "guest" });
     hs.saveMedication({ name: "G" } as any);
     hs.clearGuestData();
-    expect(window.sessionStorage.getItem("medos_medications")).toBeNull();
+    expect(window.sessionStorage.getItem("medora_medications")).toBeNull();
     hs.setStorageScope({ kind: "user", id: "alice" });
     expect(hs.loadMedications()).toHaveLength(1);
   });
@@ -63,6 +63,6 @@ describe("storage scope — guest ephemerality + per-user isolation", () => {
     hs.saveMedication({ name: "X" } as any);
     hs.clearAllHealthData();
     expect(hs.loadMedications()).toHaveLength(0);
-    expect(window.localStorage.getItem("medos_medications__alice")).toBeNull();
+    expect(window.localStorage.getItem("medora_medications__alice")).toBeNull();
   });
 });

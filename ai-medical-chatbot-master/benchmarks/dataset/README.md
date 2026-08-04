@@ -1,4 +1,4 @@
-# MedOS dataset pipeline
+# Medora dataset pipeline
 
 Two layers:
 
@@ -8,7 +8,7 @@ Two layers:
 ## Quick start
 
 ```bash
-# 1. Make sure the MedOS dev server is running locally:
+# 1. Make sure the Medora dev server is running locally:
 #    cd ../9-HuggingFace-Global && npx next dev -p 3050
 # 2. Build the dataset:
 make dataset
@@ -20,7 +20,7 @@ head -1 dataset/generated/stage3-sft.jsonl | python3 -m json.tool
 ## Why this pipeline beats hand-writing fine-tuning data
 
 We don't author the "ideal" answer by hand. We replay the source
-questions against the LIVE MedOS server. The server's card emitters,
+questions against the LIVE Medora server. The server's card emitters,
 allergy guard, drug-interaction lookup, locale logic, and symptom
 flow state machine ALL fire — and we capture exactly what they
 produce. The captured output IS the ideal answer because the production
@@ -31,7 +31,7 @@ Then stage 2 enriches each capture with KB citations matched by topic
 DeepSeek v4 supervised fine-tuning.
 
 After fine-tuning:
-- The MedOS server becomes a thin safety harness (preCheck + audit)
+- The Medora server becomes a thin safety harness (preCheck + audit)
 - The fine-tuned model alone produces the cards, citations, locale
   numbers, allergy avoidance, brevity, and structure
 - No more dependency on the 7000-char system prompt at inference time
@@ -69,7 +69,7 @@ After fine-tuning:
 {
   "id": "back-pain-simple-001#turn1",
   "messages": [
-    { "role": "system",    "content": "<MedOS card-format system prompt>" },
+    { "role": "system",    "content": "<Medora card-format system prompt>" },
     { "role": "user",      "content": "I have pain in my lower back.\n<patient_context>...</patient_context>" },
     { "role": "assistant", "content": "[card:safety_check]\n{...}\n[/card]" }
   ],
@@ -103,7 +103,7 @@ example corpus for production fine-tuning:
    without code changes.
 
 4. **(Future) Add a DPO/RLHF preference layer** by generating multiple
-   variants per question (vary the MedOS server's routing profile)
+   variants per question (vary the Medora server's routing profile)
    and pairing the preferred output with a dispreferred one.
 
 ## Stage outputs are reviewable

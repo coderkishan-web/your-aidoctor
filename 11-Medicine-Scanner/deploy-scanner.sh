@@ -40,7 +40,7 @@ cd "$BUILD_DIR"
 git init
 git branch -M main
 git add -A
-git -c user.name="deploy" -c user.email="deploy@medos" -c commit.gpgsign=false \
+git -c user.name="deploy" -c user.email="deploy@medora" -c commit.gpgsign=false \
   commit -m "Deploy Medicine Scanner v1.0.3 — Gradio SDK"
 
 HF_USER=$(echo "$SPACE_NAME" | cut -d'/' -f1)

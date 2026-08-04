@@ -1,5 +1,5 @@
 /**
- * Public surface of the MedOS safety engine.
+ * Public surface of the Medora safety engine.
  *
  * The chat route should import only from this barrel — internal modules
  * remain free to evolve.

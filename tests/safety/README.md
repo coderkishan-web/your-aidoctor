@@ -79,4 +79,4 @@ These are tracked in the roadmap.
 
 ## Disclaimer
 
-This is **not** a substitute for clinical validation. The MedOS team does **not** claim that passing this test set means the system is safe for clinical use. The set exists to prevent obvious regressions in the deterministic safety floor.
+This is **not** a substitute for clinical validation. The Medora team does **not** claim that passing this test set means the system is safe for clinical use. The set exists to prevent obvious regressions in the deterministic safety floor.

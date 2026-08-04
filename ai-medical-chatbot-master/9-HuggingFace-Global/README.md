@@ -72,12 +72,12 @@ datasets:
 ## How it works
 
 1. You type (or speak) a health question
-2. MedOS checks for emergency red flags first
+2. Medora checks for emergency red flags first
 3. It searches a medical knowledge base for relevant context
 4. Your question + context go to **Llama 3.3 70B** (via Groq, free)
 5. You get a structured answer: Summary, Possible causes, Self-care, When to see a doctor
 
-If the main model is busy, MedOS automatically tries other free models until one responds.
+If the main model is busy, Medora automatically tries other free models until one responds.
 
 ## Built with
 
@@ -94,13 +94,13 @@ If the main model is busy, MedOS automatically tries other free models until one
 
 Apache 2.0 — free to use, modify, and distribute.
 
-## MedOS Family family mode
+## Medora Family family mode
 
-This branch adds an additive first version of the MedOS Family family layer:
+This branch adds an additive first version of the Medora Family family layer:
 
-- `lib/family-health.ts` — local-first family tree, MedOS modes, invites, monthly records
+- `lib/family-health.ts` — local-first family tree, Medora modes, invites, monthly records
 - `lib/hooks/useFamilyHealth.ts` — React hook for family state
-- `components/views/FamilyHealthView.tsx` — Family Admin / MedOS Family dashboard
-- Sidebar integration through the new **MedOS Family** navigation item
+- `components/views/FamilyHealthView.tsx` — Family Admin / Medora Family dashboard
+- Sidebar integration through the new **Medora Family** navigation item
 
-The MVP keeps data local-first and prepares for the contracts documented in `../13-MedOS-Family/02-contracts/`.
+The MVP keeps data local-first and prepares for the contracts documented in `../13-Medora-Family/02-contracts/`.

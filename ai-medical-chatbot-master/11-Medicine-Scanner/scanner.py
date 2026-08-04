@@ -1,5 +1,5 @@
 """
-MedOS Medicine Scanner — AI-powered medicine label extraction.
+Medora Medicine Scanner — AI-powered medicine label extraction.
 
 Uses HuggingFace Inference Providers (router.huggingface.co) with
 the huggingface_hub InferenceClient for automatic provider selection

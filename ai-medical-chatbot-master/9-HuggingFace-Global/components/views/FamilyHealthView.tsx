@@ -19,7 +19,7 @@ import type {
   FamilyConsentStatus,
   FamilyMember,
   FamilyRelationship,
-  MedOSMode,
+  MedoraMode,
   MonthlyHealthRecord,
   MonthlyStatus,
 } from "@/lib/family-health";
@@ -27,11 +27,11 @@ import { currentMonth } from "@/lib/family-health";
 import { type SupportedLanguage } from "@/lib/i18n";
 
 interface FamilyHealthViewProps {
-  mode: MedOSMode;
+  mode: MedoraMode;
   members: FamilyMember[];
   records: MonthlyHealthRecord[];
   currentMemberId: string | null;
-  onSetMode: (mode: MedOSMode) => void;
+  onSetMode: (mode: MedoraMode) => void;
   onSetCurrentMember: (memberId: string) => void;
   onSeedDefaultFamily: () => void;
   onAddMember: (member: Omit<FamilyMember, "id" | "createdAt" | "updatedAt">) => void;
@@ -39,13 +39,13 @@ interface FamilyHealthViewProps {
   onUpsertMonthlyRecord: (
     record: Omit<MonthlyHealthRecord, "id" | "createdAt" | "updatedAt">,
   ) => void;
-  onCreateInvite: (memberId: string, mode: MedOSMode) => { code: string; expiresAt: string };
+  onCreateInvite: (memberId: string, mode: MedoraMode) => { code: string; expiresAt: string };
   onExport: () => unknown;
   language: SupportedLanguage;
 }
 
-const MODE_META: Record<MedOSMode, { label: string; description: string; icon: any }> = {
-  standard: { label: "Standard", description: "Simple personal MedOS", icon: UserRound },
+const MODE_META: Record<MedoraMode, { label: string; description: string; icon: any }> = {
+  standard: { label: "Standard", description: "Simple personal Medora", icon: UserRound },
   adult: { label: "Adult Mode", description: "Consent-based sharing for adults", icon: ShieldCheck },
   child: { label: "Child Mode", description: "Guardian-managed child profile", icon: Baby },
   "family-admin": { label: "Family Admin", description: "Manage Family Health Tree", icon: Crown },
@@ -59,7 +59,7 @@ const STATUS_META: Record<MonthlyStatus, { label: string; className: string }> =
 };
 
 const RELATIONSHIPS: FamilyRelationship[] = ["self", "spouse", "child", "parent", "guardian", "other"];
-const MODES: MedOSMode[] = ["standard", "adult", "child", "family-admin"];
+const MODES: MedoraMode[] = ["standard", "adult", "child", "family-admin"];
 const CONSENTS: FamilyConsentStatus[] = ["owner", "accepted", "pending", "guardian-managed", "revoked"];
 
 export function FamilyHealthView({
@@ -96,7 +96,7 @@ export function FamilyHealthView({
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `medos-family-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `medora-family-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -107,9 +107,9 @@ export function FamilyHealthView({
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 text-brand-600 dark:text-brand-400 text-xs font-bold mb-3">
-              <Users size={14} /> MedOS Family
+              <Users size={14} /> Medora Family
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-ink-base">MedOS Family</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-ink-base">Medora Family</h2>
             <p className="text-sm text-ink-muted mt-1 max-w-2xl">
               Create your Family Health Tree, invite family members, manage child profiles, and coordinate medicines, appointments, vitals, records, and monthly health notes.
             </p>
@@ -265,9 +265,9 @@ function EmptyFamily({ onSeed, onAdd }: { onSeed: () => void; onAdd: () => void 
   return (
     <div className="text-center rounded-3xl bg-surface-1 border border-line/60 p-10 shadow-soft">
       <Users size={42} className="mx-auto text-brand-500 mb-4" />
-      <h3 className="text-xl font-bold text-ink-base mb-2">Create your MedOS Family</h3>
+      <h3 className="text-xl font-bold text-ink-base mb-2">Create your Medora Family</h3>
       <p className="text-sm text-ink-muted max-w-xl mx-auto mb-5">
-        Welcome to MedOS Family. Create your Family Health Tree, invite family members, and coordinate medicines, appointments, vitals, records, and monthly health notes in one private dashboard.
+        Welcome to Medora Family. Create your Family Health Tree, invite family members, and coordinate medicines, appointments, vitals, records, and monthly health notes in one private dashboard.
       </p>
       <div className="flex justify-center gap-2">
         <button onClick={onSeed} className="px-4 py-2 rounded-xl bg-brand-gradient text-white font-bold text-sm shadow-glow">
@@ -290,7 +290,7 @@ function AddMemberCard({
 }) {
   const [displayName, setDisplayName] = useState("");
   const [relationship, setRelationship] = useState<FamilyRelationship>("child");
-  const [mode, setMode] = useState<MedOSMode>("child");
+  const [mode, setMode] = useState<MedoraMode>("child");
   const [avatarEmoji, setAvatarEmoji] = useState("👤");
 
   const defaultConsent: FamilyConsentStatus = mode === "child" ? "guardian-managed" : mode === "family-admin" ? "owner" : "pending";
@@ -309,7 +309,7 @@ function AddMemberCard({
           <select value={relationship} onChange={(e) => setRelationship(e.target.value as FamilyRelationship)} className="px-3 py-2 rounded-xl bg-surface-0 border border-line/60 text-ink-base text-sm">
             {RELATIONSHIPS.map((r) => <option key={r} value={r}>{r}</option>)}
           </select>
-          <select value={mode} onChange={(e) => setMode(e.target.value as MedOSMode)} className="px-3 py-2 rounded-xl bg-surface-0 border border-line/60 text-ink-base text-sm">
+          <select value={mode} onChange={(e) => setMode(e.target.value as MedoraMode)} className="px-3 py-2 rounded-xl bg-surface-0 border border-line/60 text-ink-base text-sm">
             {MODES.map((m) => <option key={m} value={m}>{MODE_META[m].label}</option>)}
           </select>
         </div>
@@ -461,9 +461,9 @@ function MemberPanel({
 
         <aside className="space-y-3">
           <div className="rounded-2xl bg-surface-0 border border-line/60 p-4">
-            <h4 className="font-bold text-ink-base flex items-center gap-2 mb-2"><Link2 size={16} /> Link own MedOS</h4>
+            <h4 className="font-bold text-ink-base flex items-center gap-2 mb-2"><Link2 size={16} /> Link own Medora</h4>
             <p className="text-xs text-ink-muted mb-3">
-              Create a temporary code so this member can install MedOS and link to MedOS Family.
+              Create a temporary code so this member can install Medora and link to Medora Family.
             </p>
             <button onClick={onCreateInvite} className="w-full px-3 py-2 rounded-xl bg-surface-2 border border-line/60 text-sm font-bold text-ink-base">
               Generate invite code
@@ -479,7 +479,7 @@ function MemberPanel({
           <div className="rounded-2xl bg-warning-500/10 border border-warning-500/30 p-4">
             <h4 className="font-bold text-warning-700 dark:text-warning-400 flex items-center gap-2"><HeartPulse size={16} /> Safety</h4>
             <p className="text-xs text-ink-muted mt-2">
-              MedOS Family helps you remember medicines based on the schedule you enter. It does not prescribe, change doses, or replace medical advice.
+              Medora Family helps you remember medicines based on the schedule you enter. It does not prescribe, change doses, or replace medical advice.
             </p>
           </div>
         </aside>

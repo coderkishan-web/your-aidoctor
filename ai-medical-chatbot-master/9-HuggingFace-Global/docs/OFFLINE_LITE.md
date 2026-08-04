@@ -1,8 +1,8 @@
-# MedOS Offline-Lite
+# Medora Offline-Lite
 
 **Status:** design only. Implementation lands when a contributor picks it up.
 
-This document describes a deliberately small, deliberately limited offline mode for MedOS. It is **not** a promise of a full offline medical AI. The deterministic safety floor is what works offline; an LLM is only added on top of it as a small-model best-effort.
+This document describes a deliberately small, deliberately limited offline mode for Medora. It is **not** a promise of a full offline medical AI. The deterministic safety floor is what works offline; an LLM is only added on top of it as a small-model best-effort.
 
 Read this together with `SAFETY.md` at the repo root.
 
@@ -90,7 +90,7 @@ A contributor implementing this would touch:
 - Diagnosis (it never does, online or offline).
 - Dose recommendations.
 - "You're fine, no need to see a doctor." The post-filter blocks this on every path.
-- Pretending to be the same product as online MedOS. The banner is loud about the limits.
+- Pretending to be the same product as online Medora. The banner is loud about the limits.
 
 ## Testing
 
@@ -102,7 +102,7 @@ A few extra cases tagged `offline_lite` may be added if specific failure modes a
 
 - **Step 1.** Pre-cache the medical packs in the service worker. (Self-contained, no model.)
 - **Step 2.** Add a clear Offline banner that surfaces emergency numbers regardless of model availability.
-- **Step 3.** Add Offline-Lite small-model provider behind a feature flag (`MEDOS_OFFLINE_LITE_ENABLED=true`). Keep the flag off by default while validation runs.
+- **Step 3.** Add Offline-Lite small-model provider behind a feature flag (`MEDORA_OFFLINE_LITE_ENABLED=true`). Keep the flag off by default while validation runs.
 - **Step 4.** Run the full golden set in offline mode; require the same R5/R4 sensitivity targets as the online path before flipping the flag on.
 
 Until Step 4 passes, Offline-Lite is documented but not enabled. The deterministic safety floor + emergency numbers + cached FAQ already give users a useful, honest offline experience.

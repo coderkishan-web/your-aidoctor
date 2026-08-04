@@ -9,7 +9,7 @@ import type { DoctorSummaryCard as DoctorSummaryCardData } from "@/lib/medical-f
  *
  * This is the killer enterprise feature: a clinician-formatted summary
  * the user can copy, share, or print. Generic chatbots give you a wall
- * of text; MedOS gives you something you can hand to a doctor.
+ * of text; Medora gives you something you can hand to a doctor.
  *
  * Format mirrors a SOAP-lite chart entry:
  *   Chief complaint · Duration · Severity · Red flags checked /

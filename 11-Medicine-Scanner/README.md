@@ -1,5 +1,5 @@
 ---
-title: MedOS Medicine Scanner
+title: Medora Medicine Scanner
 emoji: 💊
 colorFrom: blue
 colorTo: green
@@ -11,7 +11,7 @@ pinned: false
 license: mit
 ---
 
-# MedOS Medicine Scanner
+# Medora Medicine Scanner
 
 AI-powered medicine label scanner that extracts structured information from
 photos of medicine packaging, labels, and prescriptions.
@@ -20,7 +20,7 @@ photos of medicine packaging, labels, and prescriptions.
 
 - **Multimodal AI**: Uses Qwen2.5-VL via HuggingFace Inference API for
   intelligent label understanding
-- **Structured JSON output**: Returns data compatible with MedOS "My Medicines"
+- **Structured JSON output**: Returns data compatible with Medora "My Medicines"
 - **REST API**: POST `/api/scan` for programmatic access
 - **Mobile-friendly**: Supports camera capture directly from phone
 - **Free**: Runs on HuggingFace Spaces with free inference

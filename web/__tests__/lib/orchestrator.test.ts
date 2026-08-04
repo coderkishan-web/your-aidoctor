@@ -2,10 +2,10 @@ import { describe, it, expect } from "vitest";
 import {
   deriveConversationState,
   type WireMessage,
-} from "@/lib/medos-orchestrator/conversation-state";
-import { buildDoctorSummary } from "@/lib/medos-orchestrator/doctor-summary-builder";
-import { route } from "@/lib/medos-orchestrator/action-router";
-import { classifyContextSwitch } from "@/lib/medos-orchestrator/context-switch-classifier";
+} from "@/lib/medora-orchestrator/conversation-state";
+import { buildDoctorSummary } from "@/lib/medora-orchestrator/doctor-summary-builder";
+import { route } from "@/lib/medora-orchestrator/action-router";
+import { classifyContextSwitch } from "@/lib/medora-orchestrator/context-switch-classifier";
 
 /** Build a synthetic chest-pain consultation that ends right after the
  *  next_steps card appears — i.e. the exact moment the user clicks

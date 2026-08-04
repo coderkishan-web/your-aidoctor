@@ -4,7 +4,7 @@
  *
  * Why this exists
  * ───────────────
- * MedOS is an AI-first clinical conversation engine: the model
+ * Medora is an AI-first clinical conversation engine: the model
  * generates the next question, the option list, the guidance bullets,
  * and the doctor summary every turn — see
  * `benchmarks/scripts/stages/format_sft.py` SYSTEM_PROMPT for the full

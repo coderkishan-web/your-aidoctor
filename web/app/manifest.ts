@@ -7,8 +7,8 @@ import type { MetadataRoute } from "next";
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "MedOS — your medical assistant",
-    short_name: "MedOS",
+    name: "Medora — your medical assistant",
+    short_name: "Medora",
     description:
       "Free AI medical assistant. 20 languages. No sign-up. Private.",
     start_url: "/?source=pwa",

@@ -35,7 +35,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   // Hydrate from localStorage on mount.
   useEffect(() => {
-    const stored = (localStorage.getItem("medos_theme") as ThemeMode | null) ?? "light";
+    const stored = (localStorage.getItem("medora_theme") as ThemeMode | null) ?? "light";
     setThemeState(stored);
     const dark = stored === "dark" || (stored === "system" && systemPrefersDark());
     setResolved(dark ? "dark" : "light");
@@ -56,7 +56,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const setTheme = useCallback((t: ThemeMode) => {
     setThemeState(t);
-    localStorage.setItem("medos_theme", t);
+    localStorage.setItem("medora_theme", t);
     const dark = t === "dark" || (t === "system" && systemPrefersDark());
     setResolved(dark ? "dark" : "light");
     applyDomClass(dark);

@@ -3,7 +3,7 @@
  *
  * Every card emission and care-level classification produces an audit
  * record. These records are written to the same SQLite DB the rest of
- * MedOS uses (better-sqlite3, server-only) and are scoped to a single
+ * Medora uses (better-sqlite3, server-only) and are scoped to a single
  * user — anonymous conversations are logged with `user_id = NULL` so
  * the schema remains uniform.
  *

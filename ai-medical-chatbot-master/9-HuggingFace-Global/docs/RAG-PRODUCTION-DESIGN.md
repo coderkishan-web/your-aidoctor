@@ -1,4 +1,4 @@
-# MedOS RAG — Production Design Plan (HuggingFace‑deployable)
+# Medora RAG — Production Design Plan (HuggingFace‑deployable)
 
 > Status: **Phases 1–3 implemented + Phase 4 first tests** (Phase 1/2 behind flags, default OFF) · design for Phase 5 · Target: `kishan-medibot.hf.space` (this app) + `ai-medical-chabot.com` (Vercel proxy)
 >
@@ -29,7 +29,7 @@ This plan adapts the 5‑phase trustworthiness roadmap to the real constraints o
 **Goals**
 - Every clinical answer is **grounded in retrieved, versioned, source‑attributed content** and shows a real **evidence receipt** (source, organization, date/version, chunk, score).
 - Keep the **deterministic safety floor** (R0–R5, emergency pre‑check, allergy/interaction guards) — it is already strong.
-- Be **deployable on a single HF Docker Space** with no exotic infra: vector search and provenance live in the existing `/data/medos.db`; embeddings/rerank use the already‑installed `@huggingface/inference` client.
+- Be **deployable on a single HF Docker Space** with no exotic infra: vector search and provenance live in the existing `/data/medora.db`; embeddings/rerank use the already‑installed `@huggingface/inference` client.
 
 **Non‑goals (Tier A on HF Spaces)**
 - Processing real **PHI** under HIPAA — a public HF Space cannot satisfy BAA/VPC/residency. PHI workloads belong to **Tier B** (see §8).
@@ -47,7 +47,7 @@ This plan adapts the 5‑phase trustworthiness roadmap to the real constraints o
    │ 4 SAFETY PRE-CHECK  (R0–R5, deterministic floor)            lib/safety/safety-engine  │
    │ 5 QUERY REWRITE  (multilingual → canonical clinical query)  lib/rag/query.ts   [NEW]  │
    │ 6 HYBRID RETRIEVE  FTS5(keyword) + vector(cosine) → RRF fuse lib/rag/retriever.ts[NEW]│
-   │       store: /data/medos.db  (chunks + FTS5 + embeddings)                              │
+   │       store: /data/medora.db  (chunks + FTS5 + embeddings)                              │
    │ 7 RERANK (optional, remote cross-encoder)                   lib/rag/rerank.ts  [NEW]  │
    │ 8 BUILD GROUNDED CONTEXT (+ provenance)                     lib/rag/context.ts [NEW]  │
    │ 9 patient context (auth only) → system prompt (grounded-only instruction)             │
@@ -58,12 +58,12 @@ This plan adapts the 5‑phase trustworthiness roadmap to the real constraints o
    │ 14 EVIDENCE RECEIPT  (SSE metadata + persisted, PHI-free)   extends existing SSE      │
    └───────────────────────────────────────────────────────────────────────────────────┘
                          │                              │
-          embeddings/rerank: @huggingface/inference     vector+keyword+receipts: /data/medos.db
+          embeddings/rerank: @huggingface/inference     vector+keyword+receipts: /data/medora.db
           (remote, query-time only)                     (HF Persistent Storage)
 ```
 
 **Why this fits HF Spaces**
-- Vector + keyword search live **inside `/data/medos.db`** (already the persistent SQLite store, `lib/db.ts:21`). No external vector DB needed for Tier A.
+- Vector + keyword search live **inside `/data/medora.db`** (already the persistent SQLite store, `lib/db.ts:21`). No external vector DB needed for Tier A.
 - **Document** embeddings are computed **once at ingest** and stored; at request time we embed only the **query** (1 remote call). Keeps latency inside the proxy's **50 s** budget.
 - `@huggingface/inference` and `better-sqlite3` are **already dependencies** — no new native stack.
 
@@ -74,7 +74,7 @@ This plan adapts the 5‑phase trustworthiness roadmap to the real constraints o
 | Decision | Tier A (HF Space) | Rationale |
 |---|---|---|
 | Hosting | Single Docker Space, **always‑on paid hardware** (≥ CPU‑upgrade, ≥16 GB) | Avoid 48 h sleep + cold‑start reloading the index |
-| Persistence | **Enable Persistent Storage** (`/data`) | `medos.db` (chunks, embeddings, FTS5, receipts, audit) must survive restarts (`DB_PATH=/data/medos.db`) |
+| Persistence | **Enable Persistent Storage** (`/data`) | `medora.db` (chunks, embeddings, FTS5, receipts, audit) must survive restarts (`DB_PATH=/data/medora.db`) |
 | Vector store | **Embeddings as BLOB in SQLite + brute‑force cosine** for the current small corpus; upgrade to **`sqlite-vec`** (loadable ext) or **pgvector** (Tier B) when chunks > ~50k | No native‑extension risk on Alpine musl; trivially fast for a few‑thousand‑chunk corpus |
 | Keyword index | **SQLite FTS5** (bundled with better‑sqlite3) | In‑process BM25‑style search, no new dep |
 | Embeddings | **HF Inference** via `@huggingface/inference` (e.g. `intfloat/multilingual-e5-base` or `BAAI/bge-m3`) | Multilingual (20 langs), remote, query‑only at runtime |
@@ -109,7 +109,7 @@ This plan adapts the 5‑phase trustworthiness roadmap to the real constraints o
 
 **Versioning.** A `corpus_manifest` row (version + per‑source dates + embedding model id) is stamped into **every evidence receipt**, so any answer is reproducible against a known corpus snapshot. Updating the corpus = re‑run ingest → bump `corpus_version`.
 
-**Build vs runtime.** Ingestion is **offline** (`scripts/ingest-corpus.ts`): read sources → clean → chunk (200–400 tokens, overlap) → embed via HF Inference → write `chunks` + FTS5 + manifest into `/data/medos.db`. Because `/data` persists, the index is built once (locally or as a one‑off job) and the Space boots fast. Bundled fallback corpus (like `data/health-topics/*.json`) ships in the image for first‑boot bootstrap.
+**Build vs runtime.** Ingestion is **offline** (`scripts/ingest-corpus.ts`): read sources → clean → chunk (200–400 tokens, overlap) → embed via HF Inference → write `chunks` + FTS5 + manifest into `/data/medora.db`. Because `/data` persists, the index is built once (locally or as a one‑off job) and the Space boots fast. Bundled fallback corpus (like `data/health-topics/*.json`) ships in the image for first‑boot bootstrap.
 
 ---
 
@@ -121,7 +121,7 @@ Each phase lists **objective → design → HF implementation (files/env) → ac
 - **Objective:** replace the 24‑entry keyword KB with real retrieval over the versioned corpus.
 - **Design:** FTS5 (keyword) + cosine (vector) candidate sets → **Reciprocal Rank Fusion** → top‑k chunks with metadata.
 - **HF impl:**
-  - `scripts/ingest-corpus.ts` — build `/data/medos.db` (tables in §6).
+  - `scripts/ingest-corpus.ts` — build `/data/medora.db` (tables in §6).
   - `lib/rag/embeddings.ts` — activate query embedding via `@huggingface/inference` (already scaffolded); add an embedding‑cache table.
   - `lib/rag/retriever.ts` *(new)* — `hybridSearch(query, k)` → `RetrievedChunk[]`.
   - `lib/rag/query.ts` *(new)* — query rewrite/normalise (cheap LLM or rules).
@@ -187,7 +187,7 @@ The browser renders `retrieved_sources` as chips; a PHI‑free copy is persisted
 
 ---
 
-## 6. Data model (all inside `/data/medos.db`)
+## 6. Data model (all inside `/data/medora.db`)
 
 ```sql
 -- corpus chunks (retrieval unit)
@@ -229,7 +229,7 @@ CREATE TABLE answer_receipts (
    - **Enable Persistent Storage** (≥20 GB) → `/data` durable.
    - **Hardware:** upgrade to an **always‑on** tier (no sleep) with ≥16 GB RAM.
 2. **Secrets** (Space → Settings → Secrets): `HF_TOKEN`, `HF_TOKEN_INFERENCE`, `GROQ_API_KEY`, `OLLABRIDGE_URL`, `OLLABRIDGE_API_KEY`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `RESEND_API_KEY`, `ALLOWED_ORIGINS` (Vercel origin). New: `RAG_EMBED_MODEL`, `RAG_TOPK`, `RAG_HYBRID`, `RAG_FAITHFULNESS`, `RAG_FAITHFULNESS_MIN_RISK`, `RAG_RERANK`.
-3. **Build the index** (one‑off): run `scripts/ingest-corpus.ts` against `/data/medos.db` (locally with the volume, or as a first‑boot job). Bump `corpus_version`.
+3. **Build the index** (one‑off): run `scripts/ingest-corpus.ts` against `/data/medora.db` (locally with the volume, or as a first‑boot job). Bump `corpus_version`.
 4. **Frontend sync + deploy:** `bash scripts/sync-frontend.sh` then `bash scripts/deploy-hf.sh` (push to the Space). Dockerfile already produces a Next standalone server on 7860 with `/api/health` for the healthcheck.
 5. **Vercel:** unchanged — it proxies `/api/chat` to the Space and streams SSE; CORS via `ALLOWED_ORIGINS`.
 

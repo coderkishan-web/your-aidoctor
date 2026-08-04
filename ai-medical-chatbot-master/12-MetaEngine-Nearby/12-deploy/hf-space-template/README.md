@@ -1,5 +1,5 @@
 ---
-title: MedOS Nearby Finder
+title: Medora Nearby Finder
 emoji: 🏥
 colorFrom: blue
 colorTo: green
@@ -11,7 +11,7 @@ pinned: false
 license: mit
 ---
 
-# MedOS Nearby Finder
+# Medora Nearby Finder
 
 Find nearby pharmacies and doctors using OpenStreetMap.
 

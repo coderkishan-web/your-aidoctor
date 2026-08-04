@@ -1,6 +1,6 @@
 # Governance
 
-MedOS is open-source and community-driven. To keep it **safe**, **trustworthy**, and **moving forward**, this document defines who can approve what, and what kind of review each change requires.
+Medora is open-source and community-driven. To keep it **safe**, **trustworthy**, and **moving forward**, this document defines who can approve what, and what kind of review each change requires.
 
 ## Roles
 
@@ -19,7 +19,7 @@ Every PR is classified at review time. The class determines who must approve bef
 | Class | Examples | Required approvals |
 |---|---|---|
 | **Docs** | Typos, README, comments, design folder text-only changes | 1 maintainer |
-| **Frontend / non-safety code** | UI, pages under `13-MedOS-Family/frontend/`, `17-MedOS-Research/frontend/`, styling in `web/` | 1 maintainer |
+| **Frontend / non-safety code** | UI, pages under `13-Medora-Family/frontend/`, `17-Medora-Research/frontend/`, styling in `web/` | 1 maintainer |
 | **Backend / non-safety code** | API routes that don't touch the safety sandwich, database wiring, providers | 1 maintainer |
 | **Safety-sensitive** | Anything in `9-HuggingFace-Global/lib/safety/`, golden prompt set, red-flag rules, refusal rules, R0–R5 thresholds, emergency-number changes, disclaimer copy | 1 maintainer **+** 1 clinical advisor |
 | **Security-sensitive** | Auth flow, password hashing, session, secrets handling, CSP, CORS, audit-log shape, dependency upgrade across many packages | 1 maintainer **+** 1 security reviewer |
@@ -73,7 +73,7 @@ Incidents are handled like security incidents:
 
 For routine work, lazy consensus + 1 maintainer is enough.
 
-For larger directional decisions — adding a new MedOS module, removing a sub-project, changing the license, switching the default model family — we run a written **proposal** thread (RFC-style) on the issue tracker, with a 7-day comment window. The maintainer takes the final call after weighing community input.
+For larger directional decisions — adding a new Medora module, removing a sub-project, changing the license, switching the default model family — we run a written **proposal** thread (RFC-style) on the issue tracker, with a 7-day comment window. The maintainer takes the final call after weighing community input.
 
 ## Changing this document
 

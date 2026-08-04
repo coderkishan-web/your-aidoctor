@@ -64,9 +64,9 @@ make test
 - Easier integration into your Medical OS main app as a microservice.
 
 
-## MedOS MetaEngine Compatibility
+## Medora MetaEngine Compatibility
 
-The API now supports a MedOS-style meta endpoint:
+The API now supports a Medora-style meta endpoint:
 
 - `POST /meta/search` with `entity_type` = `pharmacy`, `doctor`, or `all`
 - `limit` parameter for bounded response size
@@ -94,7 +94,7 @@ python 12-deploy/deploy_hf_space.py --space-id <your_username>/metaengine-nearby
 https://huggingface.co/spaces/<your_username>/metaengine-nearby
 ```
 
-## New MedOS-style Web UI Page (independent)
+## New Medora-style Web UI Page (independent)
 
 A new page is available at:
 

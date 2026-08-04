@@ -79,7 +79,7 @@ interface SidebarProps {
   onNewChat?: () => void;
 }
 
-const COLLAPSED_KEY = "medos_sidebar_collapsed";
+const COLLAPSED_KEY = "medora_sidebar_collapsed";
 
 export function Sidebar({
   activeNav,

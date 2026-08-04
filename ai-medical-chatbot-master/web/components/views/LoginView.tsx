@@ -34,7 +34,7 @@ interface LoginViewProps {
   language: SupportedLanguage;
   /**
    * Optional pre-fill — used when the user lands here via a password-reset
-   * email link (?action=reset&email=…&code=…). MedOSApp parses the URL and
+   * email link (?action=reset&email=…&code=…). MedoraApp parses the URL and
    * passes these so the form drops straight into the "set new password" step.
    */
   initialFlow?: AuthFlow;
@@ -247,7 +247,7 @@ export function LoginView({
         </div>
 
         <p className="text-center text-[11px] text-ink-subtle mt-8">
-          Account is optional. MedOS works fully without login.
+          Account is optional. Medora works fully without login.
           <br />
           Creating an account syncs health data across devices.
         </p>

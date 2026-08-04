@@ -1,6 +1,6 @@
 # Auth email — verification & password reset
 
-MedOS sends two transactional emails:
+Medora sends two transactional emails:
 
 | Email | Trigger | Code expiry |
 |---|---|---|
@@ -50,7 +50,7 @@ the transport name and the outcome:
 
 ```
 [Register] queued verification email via transport=resend to=user@example.com
-[EMAIL Resend] ok id=abc123 to=user@example.com subject="MedOS — verify your email"
+[EMAIL Resend] ok id=abc123 to=user@example.com subject="Medora — verify your email"
 ```
 
 If you see `transport=console`, no email has been sent.
@@ -67,7 +67,7 @@ If you see `transport=console`, no email has been sent.
    | Key | Type | Value |
    |---|---|---|
    | `RESEND_API_KEY` | secret | your Resend API key |
-   | `FROM_EMAIL` | variable | `MedOS <onboarding@resend.dev>` (or `noreply@your-verified-domain`) |
+   | `FROM_EMAIL` | variable | `Medora <onboarding@resend.dev>` (or `noreply@your-verified-domain`) |
    | `APP_URL` | variable | `https://kishan-medibot.hf.space` (or your Vercel URL) |
 
 5. Restart the Space so the new env loads.
@@ -100,7 +100,7 @@ Any SMTP provider works — `lib/email.ts` doesn't hard-code anyone.
    `sendPasswordResetEmail(email, code)`.
 3. Email arrives with two ways to act:
    - **Click the Reset password button** — opens `${APP_URL}?action=reset&email=…&code=…`.
-     The frontend (`usePasswordResetLink` hook + MedOSApp) parses
+     The frontend (`usePasswordResetLink` hook + MedoraApp) parses
      those params on mount, switches the LoginView to its `reset`
      step with email and code pre-filled, and strips the params from
      the URL so they don't sit in browser history.

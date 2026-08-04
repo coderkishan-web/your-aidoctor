@@ -63,7 +63,7 @@ export function NotificationBell({
             onClick={() => setOpen(false)}
           />
 
-          <div className="absolute right-0 top-full mt-2 w-80 max-h-96 bg-surface-1 border border-line/60 rounded-2xl shadow-card z-50 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
+          <div className="fixed top-16 left-2 right-2 sm:absolute sm:top-full sm:left-auto sm:right-0 sm:w-80 sm:mt-2 max-h-96 bg-surface-1 border border-line/60 rounded-2xl shadow-card z-50 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-line/40">
               <h3 className="font-bold text-sm text-ink-base">Notifications</h3>

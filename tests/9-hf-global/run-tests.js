@@ -1,5 +1,5 @@
 /**
- * MedOS Global - Unit Tests
+ * Medora Global - Unit Tests
  * Runs without any external test framework (pure Node.js).
  * Tests the core logic modules: providers, safety, i18n, RAG.
  */

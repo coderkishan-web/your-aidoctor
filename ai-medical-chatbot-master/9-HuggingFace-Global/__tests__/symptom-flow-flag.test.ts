@@ -9,16 +9,16 @@ import { preCheck } from '@/lib/safety/safety-engine';
 
 describe('symptom-flow cards flag', () => {
   afterEach(() => {
-    delete process.env.MEDOS_SYMPTOM_CARDS_ENABLED;
+    delete process.env.MEDORA_SYMPTOM_CARDS_ENABLED;
   });
 
   it('is OFF by default — symptom turns fall through to the LLM', () => {
-    delete process.env.MEDOS_SYMPTOM_CARDS_ENABLED;
+    delete process.env.MEDORA_SYMPTOM_CARDS_ENABLED;
     expect(symptomCardsEnabled()).toBe(false);
   });
 
   it('can be re-enabled via env (A/B / clinician pilot)', () => {
-    process.env.MEDOS_SYMPTOM_CARDS_ENABLED = 'true';
+    process.env.MEDORA_SYMPTOM_CARDS_ENABLED = 'true';
     expect(symptomCardsEnabled()).toBe(true);
   });
 });

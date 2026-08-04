@@ -79,7 +79,7 @@ interface SidebarProps {
   onNewChat?: () => void;
 }
 
-const COLLAPSED_KEY = "medos_sidebar_collapsed";
+const COLLAPSED_KEY = "medora_sidebar_collapsed";
 
 export function Sidebar({
   activeNav,
@@ -158,7 +158,7 @@ export function Sidebar({
               </div>
               <div className="min-w-0">
                 <h1 className="font-bold text-base text-ink-base tracking-tight leading-none">
-                  MedOS
+                  Medora
                 </h1>
               </div>
             </div>
@@ -399,7 +399,7 @@ export function Sidebar({
                   />
                   <GuestLink
                     icon={Info}
-                    label="About MedOS"
+                    label="About Medora"
                     detail="v1.0"
                     onClick={() => setShowAbout(true)}
                   />

@@ -8,7 +8,7 @@
 
 | Parameter | Specification |
 |---|---|
-| **App Name** | **YourAIDoctor** (formerly MedOS) |
+| **App Name** | **YourAIDoctor** (formerly Medora) |
 | **Frontend Framework** | Next.js 14 (App Router) + React 18 + Tailwind CSS + Lucide Icons |
 | **Backend Framework** | Node.js + Express.js (ES Modules `type: module`) |
 | **AI Engine** | Google Gemini API (`gemini-flash-latest`) + 15-Step Cognitive Pipeline |
@@ -31,7 +31,7 @@ repoclone/
 │   │   ├── layout.tsx               ← Main HTML root layout & meta tags
 │   │   └── page.tsx                 ← Application entry point
 │   ├── components/                  ← React UI Components
-│   │   ├── MedOSApp.tsx             ← Core app shell, navigation router & view dispatcher
+│   │   ├── MedoraApp.tsx             ← Core app shell, navigation router & view dispatcher
 │   │   ├── chat/                    ← Chat bubbles, greeting cards, typing indicators
 │   │   └── views/                   ← Main page views
 │   │       ├── ChatView.tsx         ← Interactive AI consultation chat screen
@@ -49,7 +49,7 @@ repoclone/
 │   │   │   ├── useAuth.ts           ← Authentication token & session state
 │   │   │   └── useHealth.ts         ← Local health metrics & appointments manager
 │   │   ├── i18n/                    ← Multi-language translation dictionaries
-│   │   └── medos-orchestrator/      ← Offline fallback providers
+│   │   └── medora-orchestrator/      ← Offline fallback providers
 │   ├── .env.local                   ← Frontend local environment config
 │   └── package.json                 ← Frontend dependencies
 │

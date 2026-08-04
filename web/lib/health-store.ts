@@ -1,5 +1,5 @@
 /**
- * MedOS Health Store — client-side health data persistence.
+ * Medora Health Store — client-side health data persistence.
  *
  * All data is stored in localStorage as JSON. Zero server calls, zero
  * accounts, fully private. The patient owns their data and can export
@@ -236,7 +236,7 @@ export const ALLERGY_COMMON = [
 // EHR storage (single record per user, keyed as "ehr_profile")
 // ============================================================
 
-const EHR_KEY = 'medos_ehr_profile';
+const EHR_KEY = 'medora_ehr_profile';
 
 export function loadEHRProfile(): EHRProfile {
   const store = medium();
@@ -379,14 +379,14 @@ export const FREQUENCY_LABELS: Record<Medication['frequency'], string> = {
 // ============================================================
 
 const KEYS = {
-  medications: 'medos_medications',
-  medicationLogs: 'medos_medication_logs',
-  appointments: 'medos_appointments',
-  vitals: 'medos_vitals',
-  records: 'medos_records',
-  history: 'medos_history',
-  medicines: 'medos_medicines',
-  contacts: 'medos_contacts',
+  medications: 'medora_medications',
+  medicationLogs: 'medora_medication_logs',
+  appointments: 'medora_appointments',
+  vitals: 'medora_vitals',
+  records: 'medora_records',
+  history: 'medora_history',
+  medicines: 'medora_medicines',
+  contacts: 'medora_contacts',
 } as const;
 
 // ============================================================
@@ -436,7 +436,9 @@ function load<T>(key: string): T[] {
   const store = medium();
   if (!store) return [];
   try {
-    const raw = store.getItem(scopedKey(key));
+    const primaryKey = scopedKey(key);
+    const legacyKey = primaryKey.replace(/^medora_/, "medos_");
+    const raw = store.getItem(primaryKey) ?? store.getItem(legacyKey);
     return raw ? JSON.parse(raw) : [];
   } catch {
     return [];
@@ -768,7 +770,7 @@ export function clearGuestData(): void {
 
 /**
  * One-time migration of pre-namespacing data. Older builds stored every
- * user's data under bare localStorage keys (medos_medications, …). When a
+ * user's data under bare localStorage keys (medora_medications, …). When a
  * user scope is first activated, copy any such legacy data into that
  * user's namespace (only if the namespace is still empty) and drop the bare
  * keys, so existing single-account installs keep their data after the
@@ -915,7 +917,7 @@ export function downloadHealthData(): void {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `medos-health-data-${new Date().toISOString().slice(0, 10)}.json`;
+  a.download = `medora-health-data-${new Date().toISOString().slice(0, 10)}.json`;
   a.click();
   URL.revokeObjectURL(url);
 }

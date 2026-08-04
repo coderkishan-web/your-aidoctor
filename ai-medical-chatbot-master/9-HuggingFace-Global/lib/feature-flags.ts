@@ -1,5 +1,5 @@
 /**
- * MedOS feature flags.
+ * Medora feature flags.
  *
  * Single, typed, server-side source of truth for feature flags. Read once
  * per process from env vars. Any new flag must:
@@ -28,7 +28,7 @@ const truthy = (v: string | undefined): boolean =>
  * See: 9-HuggingFace-Global/docs/OLLABRIDGE_INTEGRATION.md
  */
 export const perUserOllaBridgeEnabled = (): boolean =>
-  truthy(process.env.MEDOS_PER_USER_OLLABRIDGE);
+  truthy(process.env.MEDORA_PER_USER_OLLABRIDGE);
 
 /**
  * Offline-Lite small-model provider.
@@ -45,7 +45,7 @@ export const perUserOllaBridgeEnabled = (): boolean =>
  * See: 9-HuggingFace-Global/docs/OFFLINE_LITE.md
  */
 export const offlineLiteEnabled = (): boolean =>
-  truthy(process.env.MEDOS_OFFLINE_LITE_ENABLED);
+  truthy(process.env.MEDORA_OFFLINE_LITE_ENABLED);
 
 /**
  * Emergency card emission.
@@ -68,12 +68,12 @@ export const offlineLiteEnabled = (): boolean =>
  * guidance flow instead, which still tells them what to do, just
  * less dramatically.
  *
- * Re-enable by setting MEDOS_EMERGENCY_CARD_ENABLED=true on the
+ * Re-enable by setting MEDORA_EMERGENCY_CARD_ENABLED=true on the
  * environment for the deployment that needs it (e.g. an internal
  * clinician-supervised pilot where the alarm UI is welcome).
  */
 export const emergencyCardEnabled = (): boolean =>
-  truthy(process.env.MEDOS_EMERGENCY_CARD_ENABLED);
+  truthy(process.env.MEDORA_EMERGENCY_CARD_ENABLED);
 
 /**
  * Deterministic symptom-flow cards.
@@ -96,16 +96,16 @@ export const emergencyCardEnabled = (): boolean =>
  * "chest pain radiating to the arm") still escalate to the emergency floor
  * whether this is ON or OFF.
  *
- * Re-enable the structured flow with MEDOS_SYMPTOM_CARDS_ENABLED=true.
+ * Re-enable the structured flow with MEDORA_SYMPTOM_CARDS_ENABLED=true.
  */
 export const symptomCardsEnabled = (): boolean =>
-  truthy(process.env.MEDOS_SYMPTOM_CARDS_ENABLED);
+  truthy(process.env.MEDORA_SYMPTOM_CARDS_ENABLED);
 
 /**
  * Grounded hybrid RAG.
  *
  * When ON, the chat route retrieves from the versioned, source-attributed
- * corpus in `/data/medos.db` (FTS5 keyword + vector cosine, fused with
+ * corpus in `/data/medora.db` (FTS5 keyword + vector cosine, fused with
  * RRF) instead of the in-memory keyword KB. The KB remains the automatic
  * fallback whenever the corpus is not yet ingested or retrieval fails, so
  * flipping this on can never produce an empty pipeline.
@@ -158,10 +158,10 @@ export const faithfulnessMinRisk = (): string =>
  */
 export function snapshotFlags(): Record<string, boolean> {
   return {
-    MEDOS_PER_USER_OLLABRIDGE: perUserOllaBridgeEnabled(),
-    MEDOS_OFFLINE_LITE_ENABLED: offlineLiteEnabled(),
-    MEDOS_EMERGENCY_CARD_ENABLED: emergencyCardEnabled(),
-    MEDOS_SYMPTOM_CARDS_ENABLED: symptomCardsEnabled(),
+    MEDORA_PER_USER_OLLABRIDGE: perUserOllaBridgeEnabled(),
+    MEDORA_OFFLINE_LITE_ENABLED: offlineLiteEnabled(),
+    MEDORA_EMERGENCY_CARD_ENABLED: emergencyCardEnabled(),
+    MEDORA_SYMPTOM_CARDS_ENABLED: symptomCardsEnabled(),
     RAG_HYBRID: ragHybridEnabled(),
     RAG_REQUIRE_EVIDENCE: ragRequireEvidence(),
     RAG_FAITHFULNESS: faithfulnessEnabled(),

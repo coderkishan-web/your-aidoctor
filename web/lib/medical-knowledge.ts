@@ -1,5 +1,5 @@
 /**
- * MedOS — universal medical knowledge scaffold.
+ * Medora — universal medical knowledge scaffold.
  *
  * This module is the single source of truth for the "knowledge base" the
  * model is grounded on. It is intentionally *not* a RAG index — the model

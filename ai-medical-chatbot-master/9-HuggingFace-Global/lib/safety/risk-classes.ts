@@ -1,5 +1,5 @@
 /**
- * R0–R5 risk classes for MedOS.
+ * R0–R5 risk classes for Medora.
  *
  * Definitions, defaults, and hard rules for what the LLM is allowed to do
  * at each level. The deterministic safety engine uses this taxonomy; the

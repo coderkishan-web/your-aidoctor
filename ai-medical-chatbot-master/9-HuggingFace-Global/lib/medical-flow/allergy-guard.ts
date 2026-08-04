@@ -164,7 +164,7 @@ export function scanForAllergyViolation(
     headline: 'Allergy safety override',
     reason: `The reply mentioned a drug you reported an allergy to: ${hits.join(
       ', ',
-    )}. MedOS has flagged those mentions in the answer below. Please confirm any antibiotic or analgesic with a pharmacist or clinician — alternatives outside the ${allergies.join(', ')} class are usually safer.`,
+    )}. Medora has flagged those mentions in the answer below. Please confirm any antibiotic or analgesic with a pharmacist or clinician — alternatives outside the ${allergies.join(', ')} class are usually safer.`,
     emergency_number: emergencyNumber,
     actions: [
       {

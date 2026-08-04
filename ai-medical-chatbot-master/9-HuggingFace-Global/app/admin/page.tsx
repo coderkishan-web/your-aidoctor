@@ -131,7 +131,7 @@ export default function AdminPage() {
               <Lock size={24} className="text-white" />
             </div>
             <h1 className="text-2xl font-bold text-slate-100">Admin Panel</h1>
-            <p className="text-sm text-slate-400 mt-1">MedOS server administration</p>
+            <p className="text-sm text-slate-400 mt-1">Medora server administration</p>
           </div>
           {loginError && (
             <div className="mb-4 p-3 rounded-xl bg-red-950/50 border border-red-700/50 text-sm text-red-300">
@@ -176,7 +176,7 @@ export default function AdminPage() {
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center">
             <Shield size={16} className="text-white" />
           </div>
-          <h1 className="font-bold text-lg">MedOS Admin</h1>
+          <h1 className="font-bold text-lg">Medora Admin</h1>
         </div>
         <button
           onClick={() => { fetchStats(); fetchUsers(); }}
@@ -368,7 +368,7 @@ function TabButton({
  * Configures the URL and admin-minted API key (format `ob_…`) for the
  * OllaBridge Cloud admin our chatbot fans requests out through. The
  * actual key minting happens in the OllaBridge Cloud admin UI under
- * "API Keys"; this tab just persists the chosen URL+key in MedOS so
+ * "API Keys"; this tab just persists the chosen URL+key in Medora so
  * the chat route's provider chain can use it without a redeploy.
  *
  * Field semantics:
@@ -481,7 +481,7 @@ function OllaBridgeTab({ headers }: { headers: () => Record<string, string> }) {
         <p className="text-xs text-slate-500 mt-4 mb-5 leading-relaxed">
           Paste an API key minted in the OllaBridge Cloud admin under{' '}
           <span className="text-slate-300 font-mono">Admin → API Keys</span>. The key
-          looks like <span className="text-cyan-400 font-mono">ob_…</span>. MedOS sends
+          looks like <span className="text-cyan-400 font-mono">ob_…</span>. Medora sends
           it as <span className="text-slate-300 font-mono">Authorization: Bearer …</span>{' '}
           on every chat request; the OllaBridge Cloud then routes through whichever
           provider its active routing profile selects (Speed, Production, etc.).

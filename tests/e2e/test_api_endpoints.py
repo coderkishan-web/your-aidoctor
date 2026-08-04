@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-MedOS End-to-End API Tests
+Medora End-to-End API Tests
 
 Verifies that all 3 HuggingFace Spaces are running and responding
 correctly, and that the Vercel frontend can proxy to the backend.
@@ -218,12 +218,12 @@ def test_vercel_chat():
 # ============================================================
 
 def main():
-    parser = argparse.ArgumentParser(description="MedOS E2E API Tests")
+    parser = argparse.ArgumentParser(description="Medora E2E API Tests")
     parser.add_argument("--vercel", action="store_true", help="Also test Vercel proxy")
     parser.add_argument("--verbose", "-v", action="store_true", help="Show detailed output")
     args = parser.parse_args()
 
-    print("\n\033[1mMedOS E2E API Tests\033[0m\n")
+    print("\n\033[1mMedora E2E API Tests\033[0m\n")
 
     print("\033[1mMediBot (Main App)\033[0m")
     test("Health check returns 200", test_medibot_health)

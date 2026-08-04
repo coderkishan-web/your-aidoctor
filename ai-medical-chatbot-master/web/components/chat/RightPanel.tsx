@@ -267,7 +267,7 @@ export function RightPanel({
 
         {/* Empty state.
          *
-         * MedOSApp now only mounts RightPanel for authenticated users,
+         * MedoraApp now only mounts RightPanel for authenticated users,
          * so the right rail is always personal context — no duplicate
          * sign-up card here (the left sidebar already carries the auth
          * CTA). When the user is signed in but has no data yet, we keep

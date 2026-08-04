@@ -4,11 +4,11 @@
 Usage:
     python run.py                       # dataset/cases.jsonl → out/results.csv
     python run.py --cases custom.jsonl --output out/foo.csv
-    python run.py --skip-chatgpt        # MedOS only (faster smoke test)
+    python run.py --skip-chatgpt        # Medora only (faster smoke test)
 
 Env (loaded from .env if present):
-    MEDOS_BASE_URL       MedOS deployment under test
-    MEDOS_AUTH_TOKEN     optional — leave blank for guest path
+    MEDORA_BASE_URL       Medora deployment under test
+    MEDORA_AUTH_TOKEN     optional — leave blank for guest path
     OPENAI_API_KEY       required unless --skip-chatgpt
     OPENAI_MODEL         default gpt-4o-mini
 """
@@ -26,19 +26,19 @@ from dotenv import load_dotenv
 # Allow `python run.py` from the benchmarks/ directory without installing.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from medos_bench.clients import ChatClient, MedOSClient, OpenAIClient
-from medos_bench.runner import load_cases, run
+from medora_bench.clients import ChatClient, MedoraClient, OpenAIClient
+from medora_bench.runner import load_cases, run
 
 
 HERE = Path(__file__).resolve().parent
 
 
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="MedOS vs ChatGPT benchmark")
+    p = argparse.ArgumentParser(description="Medora vs ChatGPT benchmark")
     p.add_argument("--cases", type=Path, default=HERE / "dataset" / "cases.jsonl")
     p.add_argument("--output", type=Path, default=HERE / "out" / "results.csv")
-    p.add_argument("--skip-chatgpt", action="store_true", help="MedOS only")
-    p.add_argument("--skip-medos", action="store_true", help="ChatGPT only")
+    p.add_argument("--skip-chatgpt", action="store_true", help="Medora only")
+    p.add_argument("--skip-medora", action="store_true", help="ChatGPT only")
     return p.parse_args()
 
 
@@ -50,11 +50,11 @@ async def main() -> None:
     print(f"loaded {len(cases)} case(s) from {args.cases}")
 
     clients: list[ChatClient] = []
-    if not args.skip_medos:
-        base = os.environ.get("MEDOS_BASE_URL", "http://localhost:3000")
-        token = os.environ.get("MEDOS_AUTH_TOKEN") or None
-        clients.append(MedOSClient(base_url=base, auth_token=token))
-        print(f"  + MedOS @ {base}")
+    if not args.skip_medora:
+        base = os.environ.get("MEDORA_BASE_URL", "http://localhost:3000")
+        token = os.environ.get("MEDORA_AUTH_TOKEN") or None
+        clients.append(MedoraClient(base_url=base, auth_token=token))
+        print(f"  + Medora @ {base}")
     if not args.skip_chatgpt:
         api_key = os.environ.get("OPENAI_API_KEY")
         if not api_key:

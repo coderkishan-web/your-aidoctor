@@ -1,4 +1,4 @@
-# MedOS-specific Semgrep rules.
+# Medora-specific Semgrep rules.
 #
 # These rules enforce repo-wide policies that the public Semgrep packs do
 # not cover. Edits here are SECURITY-SENSITIVE under GOVERNANCE.md.
@@ -6,7 +6,7 @@
 rules:
 
   # ───── No raw user input in logs ──────────────────────────────────
-  - id: medos-no-raw-chat-content-in-logs
+  - id: medora-no-raw-chat-content-in-logs
     message: >
       Do not pass raw chat content to logs / console. The audit and log
       surfaces must remain PHI-free per PRIVACY.md and SAFETY.md. Use the
@@ -37,7 +37,7 @@ rules:
       - pattern: console.error($... cleanUserContent ...)
 
   # ───── No PHI in audit log meta ───────────────────────────────────
-  - id: medos-no-phi-in-audit-meta
+  - id: medora-no-phi-in-audit-meta
     message: >
       auditLog meta must not contain raw chat content, symptoms, or other
       PHI. Use stable identifiers, counts, latencies, and rule ids only.
@@ -53,7 +53,7 @@ rules:
         - '9-HuggingFace-Global/**'
 
   # ───── Chat surfaces must not use dangerouslySetInnerHTML ─────────
-  - id: medos-chat-no-dangerously-set-inner-html
+  - id: medora-chat-no-dangerously-set-inner-html
     message: >
       Chat / message surfaces must not use dangerouslySetInnerHTML.
       Render via escaped React text or a sanitised markdown renderer.
@@ -67,7 +67,7 @@ rules:
     pattern: dangerouslySetInnerHTML={...}
 
   # ───── No client-side provider keys ──────────────────────────────
-  - id: medos-no-public-provider-keys
+  - id: medora-no-public-provider-keys
     message: >
       Provider API keys must be server-only. Do NOT expose them on the
       client via NEXT_PUBLIC_* or similar. See PRIVACY.md and SECURITY.md.
@@ -77,7 +77,7 @@ rules:
       NEXT_PUBLIC_(GROQ|HF|HUGGINGFACE|GEMINI|OPENAI|ANTHROPIC|GOOGLE)_(API_)?KEY
 
   # ───── Safety engine must not be bypassed ────────────────────────
-  - id: medos-chat-route-must-call-safety-engine
+  - id: medora-chat-route-must-call-safety-engine
     message: >
       The chat API route must call preCheck() and postCheck() from the
       safety engine. If you genuinely need to bypass them, this rule must

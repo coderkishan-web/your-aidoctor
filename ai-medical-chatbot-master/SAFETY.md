@@ -1,9 +1,9 @@
 # Safety
 
-MedOS — including the live AI Medical Chatbot, the MedOS Family / Connect / Classify / Pathogen / Research design layers, and any future module — operates under a single, non-negotiable safety contract:
+Medora — including the live AI Medical Chatbot, the Medora Family / Connect / Classify / Pathogen / Research design layers, and any future module — operates under a single, non-negotiable safety contract:
 
-> **MedOS is not a doctor.**
-> MedOS does not diagnose, prescribe, or replace emergency services. It helps you understand symptoms, ask better questions, and decide when to seek professional care.
+> **Medora is not a doctor.**
+> Medora does not diagnose, prescribe, or replace emergency services. It helps you understand symptoms, ask better questions, and decide when to seek professional care.
 
 This document is the single source of truth that every contributor and every module must conform to.
 
@@ -11,15 +11,15 @@ This document is the single source of truth that every contributor and every mod
 
 These rules cannot be relaxed by any model, prompt, or contributor.
 
-1. **No diagnosis.** MedOS never tells a user "you have X." It can describe possibilities and signal urgency.
-2. **No prescription, no dose changes.** MedOS never instructs a user to start, stop, or change a medication or its dose.
+1. **No diagnosis.** Medora never tells a user "you have X." It can describe possibilities and signal urgency.
+2. **No prescription, no dose changes.** Medora never instructs a user to start, stop, or change a medication or its dose.
 3. **No replacement of emergency services.** When a red flag fires, the response routes to the local emergency number for the user's region. The model cannot soften or override this.
 4. **No "you don't need a doctor."** Reassurance phrases that imply care isn't needed are blocked at the output filter.
 5. **No PHI in logs by default.** Audit logs record metadata (risk class, rule fires, model versions, latency, request id) — not raw symptoms, names, files, or medical history.
 
 ## How safety is enforced
 
-MedOS uses a **safety sandwich**:
+Medora uses a **safety sandwich**:
 
 ```text
 User message
@@ -104,13 +104,13 @@ Phrasing for these audiences is conservative by default; the bar to reach R0/R1 
 
 - `9-HuggingFace-Global/lib/safety/` — runtime engine.
 - `tests/safety/golden_prompts.jsonl` — clinician-reviewable test set.
-- `15-MedOS-Classify/02-mcp/MCP_TOOL_CONTRACTS.md` — the multi-head triage MCP design.
-- `15-MedOS-Classify/06-evaluation/EVALUATION.md` — evaluation gates and subgroup metrics.
-- `15-MedOS-Classify/07-safety/SAFETY_AND_COMPLIANCE.md` — extended safety policy.
-- `13-MedOS-Family/08-security/PRIVACY_AND_SAFETY.md` — family / consent model.
+- `15-Medora-Classify/02-mcp/MCP_TOOL_CONTRACTS.md` — the multi-head triage MCP design.
+- `15-Medora-Classify/06-evaluation/EVALUATION.md` — evaluation gates and subgroup metrics.
+- `15-Medora-Classify/07-safety/SAFETY_AND_COMPLIANCE.md` — extended safety policy.
+- `13-Medora-Family/08-security/PRIVACY_AND_SAFETY.md` — family / consent model.
 - `THREAT_MODEL.md` — assets, threats, mitigations.
 - `GOVERNANCE.md` — who can approve safety-sensitive changes.
 
 ## Reporting a safety issue
 
-If you find a way for MedOS to give unsafe medical advice — including jailbreaks of the safety sandwich — please report it through the channel in [`SECURITY.md`](./SECURITY.md) **rather than opening a public issue**. Safety vulnerabilities are treated like security vulnerabilities: coordinated disclosure first.
+If you find a way for Medora to give unsafe medical advice — including jailbreaks of the safety sandwich — please report it through the channel in [`SECURITY.md`](./SECURITY.md) **rather than opening a public issue**. Safety vulnerabilities are treated like security vulnerabilities: coordinated disclosure first.

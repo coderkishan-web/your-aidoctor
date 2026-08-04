@@ -72,7 +72,7 @@ function viewTitle(nav: NavView, language: SupportedLanguage): string {
     case "my-medicines":
       return "My Medicines";
     case "family-health":
-      return "MedOS Family";
+      return "Medora Family";
     case "share":
       return "Share";
     case "login":
@@ -87,15 +87,15 @@ function viewTitle(nav: NavView, language: SupportedLanguage): string {
   }
 }
 
-export default function MedOSApp() {
+export default function MedoraApp() {
   return (
     <ThemeProvider>
-      <MedOSAppInner />
+      <MedoraAppInner />
     </ThemeProvider>
   );
 }
 
-function MedOSAppInner() {
+function MedoraAppInner() {
   // The app opens directly on the chat surface. There is no separate
   // "Home" composer screen anymore — the chat's empty state IS the
   // landing (one chat product, like ChatGPT / Claude / Gemini).
@@ -598,7 +598,7 @@ function MedOSAppInner() {
             <div className="w-9 h-9 rounded-xl bg-brand-gradient flex items-center justify-center text-white shadow-soft">
               <Heart size={16} />
             </div>
-            <span className="font-bold text-ink-base tracking-tight text-base">MedOS</span>
+            <span className="font-bold text-ink-base tracking-tight text-base">Medora</span>
           </div>
 
           <h2 className="hidden md:block font-bold text-lg text-ink-base tracking-tight">

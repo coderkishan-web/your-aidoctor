@@ -19,7 +19,7 @@ interface ShareViewProps {
 }
 
 /**
- * ShareView — distribution surface for MedOS.
+ * ShareView — distribution surface for Medora.
  *
  * Hierarchy is deliberate so the page reads as a healthcare utility,
  * not a marketing dashboard:
@@ -35,7 +35,7 @@ interface ShareViewProps {
 export function ShareView({ language }: ShareViewProps) {
   const [copiedLink, setCopiedLink] = useState(false);
   const [copiedEmbed, setCopiedEmbed] = useState(false);
-  const [appUrl, setAppUrl] = useState("https://medos.health");
+  const [appUrl, setAppUrl] = useState("https://medora.health");
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [embedOpen, setEmbedOpen] = useState(false);
 
@@ -62,7 +62,7 @@ export function ShareView({ language }: ShareViewProps) {
   };
 
   const SHARE_MSG = encodeURIComponent(
-    `Get free AI medical advice! MedOS — 20 languages, no sign-up: ${appUrl}`,
+    `Get free AI medical advice! Medora — 20 languages, no sign-up: ${appUrl}`,
   );
   const ENC_URL = encodeURIComponent(appUrl);
 
@@ -101,7 +101,7 @@ export function ShareView({ language }: ShareViewProps) {
     if (typeof navigator !== "undefined" && (navigator as any).share) {
       try {
         await (navigator as any).share({
-          title: "MedOS — Free AI Medical Assistant",
+          title: "Medora — Free AI Medical Assistant",
           text: "Get free AI medical advice in 20 languages:",
           url: appUrl,
         });
@@ -116,7 +116,7 @@ export function ShareView({ language }: ShareViewProps) {
   return (
     <div className="flex-1 overflow-y-auto p-6 sm:p-8 pb-mobile-nav scroll-touch">
       <div className="max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500">
-        <h2 className="text-2xl font-bold text-ink-base mb-1">Share MedOS</h2>
+        <h2 className="text-2xl font-bold text-ink-base mb-1">Share Medora</h2>
         <p className="text-sm text-ink-muted mb-6">
           Help others get free medical guidance — works in any browser, no sign-up.
         </p>
@@ -184,7 +184,7 @@ export function ShareView({ language }: ShareViewProps) {
           {embedOpen && (
             <div className="px-4 pb-4 border-t border-line/40 animate-in fade-in slide-in-from-top-1 duration-200">
               <p className="text-xs text-ink-muted my-3">
-                Copy this code to embed MedOS on any website, blog, or health portal.
+                Copy this code to embed Medora on any website, blog, or health portal.
               </p>
               <div className="relative">
                 <pre className="bg-surface-2 border border-line/60 rounded-xl p-4 text-xs text-ink-base overflow-x-auto whitespace-pre-wrap break-all">
@@ -306,7 +306,7 @@ function ShareModal({
               id="share-modal-title"
               className="text-lg font-bold text-ink-base"
             >
-              Share MedOS
+              Share Medora
             </h2>
             <p className="mt-1 text-sm text-ink-muted">
               Choose where to share this free medical assistant.

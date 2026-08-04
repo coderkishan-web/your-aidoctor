@@ -8,7 +8,7 @@
  *     → PostgresAdapter
  *
  *   DATABASE_URL unset or invalid:
- *     → SqliteAdapter at $DB_PATH (default /data/medos.db)
+ *     → SqliteAdapter at $DB_PATH (default /data/medora.db)
  *
  *   …UNLESS we appear to be running in production and the URL is
  *   missing, in which case we refuse to start. The check is implicit
@@ -42,7 +42,7 @@ export function getDbAdapter(): DbAdapter {
   }
 
   const { SqliteAdapter } = require('./sqlite') as typeof import('./sqlite');
-  cached = new SqliteAdapter(process.env.DB_PATH || '/data/medos.db');
+  cached = new SqliteAdapter(process.env.DB_PATH || '/data/medora.db');
   return cached;
 }
 

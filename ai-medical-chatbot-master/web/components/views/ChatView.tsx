@@ -292,7 +292,7 @@ function ProfileWelcome({
         </div>
         <div className="flex-1 min-w-0">
           <p className="font-semibold text-ink-base text-sm">
-            Profile saved — MedOS will tailor its replies
+            Profile saved — Medora will tailor its replies
           </p>
           {summary && (
             <p className="mt-0.5 text-xs text-ink-muted truncate">

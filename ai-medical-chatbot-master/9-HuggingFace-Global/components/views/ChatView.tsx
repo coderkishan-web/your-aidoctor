@@ -22,7 +22,7 @@ interface ChatViewProps {
   onNavigateEmergency?: () => void;
   /** Fired when the user taps a button/chip inside a rendered card.
    *  The parent maps `action.value` to either a navigation event or a
-   *  synthetic follow-up user message (see MedOSApp). */
+   *  synthetic follow-up user message (see MedoraApp). */
   onCardAction?: (action: Action, card: Card) => void;
   /** Threaded into every AI message so the medical-flow validator can
    *  pin the locale-correct emergency number and scrub allergy-crossing

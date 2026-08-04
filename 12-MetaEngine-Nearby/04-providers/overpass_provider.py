@@ -26,7 +26,7 @@ def fetch_nearby_from_overpass(
     radius_m: int,
     entity_type: str,
     overpass_url: str = "https://overpass-api.de/api/interpreter",
-    user_agent: str = "medos-metaengine-nearby/1.0",
+    user_agent: str = "medora-metaengine-nearby/1.0",
 ) -> List[Place]:
     tag = "pharmacy" if entity_type == "pharmacy" else "doctors"
     query = f"""

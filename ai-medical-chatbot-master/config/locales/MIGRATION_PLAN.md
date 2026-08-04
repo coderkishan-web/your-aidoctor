@@ -6,7 +6,7 @@ This is a multi-week, contributor-friendly migration. Doing it in one big PR wou
 
 ## Scope
 
-- **In scope.** UI strings in `web/`, `9-HuggingFace-Global/`, `13-MedOS-Family/frontend/`, `17-MedOS-Research/frontend/`.
+- **In scope.** UI strings in `web/`, `9-HuggingFace-Global/`, `13-Medora-Family/frontend/`, `17-Medora-Research/frontend/`.
 - **Out of scope here.** Medical regional data — already lives in `config/locales/*.medical.json` and is loaded by `lib/safety/locale-pack.ts`.
 
 ## Tooling decision
@@ -15,7 +15,7 @@ This is a multi-week, contributor-friendly migration. Doing it in one big PR wou
 
 - Source format: **i18next-flat JSON** (single key tree per locale).
 - Frontend library: **i18next + react-i18next** in the Next.js apps.
-- One translation namespace per surface (`web.app`, `family.frontend`, `research.frontend`, `medos-global.api`) so PRs stay focused.
+- One translation namespace per surface (`web.app`, `family.frontend`, `research.frontend`, `medora-global.api`) so PRs stay focused.
 
 ## Target directory layout
 
@@ -37,11 +37,11 @@ web/locales/
   en-US/common.json
   ...
 
-13-MedOS-Family/frontend/locales/
+13-Medora-Family/frontend/locales/
   en-US/common.json
   ...
 
-17-MedOS-Research/frontend/locales/
+17-Medora-Research/frontend/locales/
   en-US/common.json
   ...
 
@@ -83,8 +83,8 @@ Recommended order:
 | 4 | Health Tracker | ~150 |
 | 5 | Medicine Scanner | ~50 |
 | 6 | Settings | ~70 |
-| 7 | MedOS Family frontend | ~200 |
-| 8 | MedOS Research frontend | ~200 |
+| 7 | Medora Family frontend | ~200 |
+| 8 | Medora Research frontend | ~200 |
 | 9 | Errors / toasts / 404 | ~40 |
 
 ### Phase C — Open contributions (continuous)

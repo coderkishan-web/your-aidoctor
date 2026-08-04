@@ -310,7 +310,7 @@ export async function POST(request: NextRequest) {
     // Prepare summary) the user can tap right now, while the LLM
     // turn that follows adds contextual reasoning. Cards are never
     // gated by login or profile.
-    // Emergency-card emission is gated behind MEDOS_EMERGENCY_CARD_ENABLED
+    // Emergency-card emission is gated behind MEDORA_EMERGENCY_CARD_ENABLED
     // (default OFF). When off, the dedicated `[card:emergency]` UI is
     // suppressed and the chat falls through to the existing
     // emergency-banner-prepend path (banner text is still injected

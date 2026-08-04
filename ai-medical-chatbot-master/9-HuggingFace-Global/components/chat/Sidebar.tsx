@@ -68,12 +68,12 @@ interface SidebarProps {
   isAuthenticated?: boolean;
   username?: string;
   email?: string;
-  /** Sign the user out. Wired from MedOSApp (clears the auth token and
+  /** Sign the user out. Wired from MedoraApp (clears the auth token and
    *  returns to the chat surface). Surfaced in the account menu. */
   onLogout?: () => void;
 }
 
-const COLLAPSED_KEY = "medos_sidebar_collapsed";
+const COLLAPSED_KEY = "medora_sidebar_collapsed";
 
 export function Sidebar({
   activeNav,
@@ -146,7 +146,7 @@ export function Sidebar({
               </div>
               <div className="min-w-0">
                 <h1 className="font-bold text-base text-ink-base tracking-tight leading-none">
-                  MedOS
+                  Medora
                 </h1>
               </div>
             </div>
@@ -164,7 +164,7 @@ export function Sidebar({
          * Health-tracker items only render for authenticated users. For
          * logged-out visitors the private routes (Dashboard / Schedule /
          * Medications / Appointments / Vitals / Records / My Medicines /
-         * MedOS Family) require saved personal data and would otherwise
+         * Medora Family) require saved personal data and would otherwise
          * surface empty or error states. The logged-out shell collapses
          * to: New Chat, History, and the Tools group (Emergency, Nearby,
          * Topics, Share). Sign-in lives in the bottom auth card. */}
@@ -200,7 +200,7 @@ export function Sidebar({
               <NavItem icon={Activity} label={t("nav_vitals", language)} active={activeNav === "vitals"} onClick={() => setActiveNav("vitals")} collapsed={collapsed} />
               <NavItem icon={FileText} label={t("nav_records", language)} active={activeNav === "records"} onClick={() => setActiveNav("records")} collapsed={collapsed} />
               <NavItem icon={Package} label="My Medicines" active={activeNav === "my-medicines"} onClick={() => setActiveNav("my-medicines")} collapsed={collapsed} />
-              <NavItem icon={UsersRound} label="MedOS Family" active={activeNav === "family-health"} onClick={() => setActiveNav("family-health")} collapsed={collapsed} />
+              <NavItem icon={UsersRound} label="Medora Family" active={activeNav === "family-health"} onClick={() => setActiveNav("family-health")} collapsed={collapsed} />
             </>
           )}
 

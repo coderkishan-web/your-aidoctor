@@ -1,5 +1,5 @@
-import MedOSApp from "@/components/MedOSApp";
+import MedoraApp from "@/components/MedoraApp";
 
 export default function HomePage() {
-  return <MedOSApp />;
+  return <MedoraApp />;
 }

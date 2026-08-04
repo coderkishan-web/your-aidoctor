@@ -17,7 +17,7 @@ set -e
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 HF_DIR="$REPO_ROOT/9-HuggingFace-Global"
 WEB_DIR="$REPO_ROOT/web"
-BUILD_DIR="/tmp/medos-hf-deploy"
+BUILD_DIR="/tmp/medora-hf-deploy"
 
 if [ -z "$HF_TOKEN" ]; then
   echo "ERROR: Set HF_TOKEN environment variable" && exit 1
@@ -47,14 +47,14 @@ for dir in views chat ui; do
 done
 
 # Root components
-for f in MedOSApp.tsx ThemeProvider.tsx ThemeToggle.tsx WelcomeScreen.tsx; do
+for f in MedoraApp.tsx ThemeProvider.tsx ThemeToggle.tsx WelcomeScreen.tsx; do
   [ -f "$WEB_DIR/components/$f" ] && cp "$WEB_DIR/components/$f" "$BUILD_DIR/components/"
 done
 
 # Hooks. The list is explicit (not a wildcard) on purpose: HF has its
 # own backend-flavored hooks under 9-HuggingFace-Global/lib/hooks that
 # we DON'T want overwritten silently. When you add a new web/ hook
-# that MedOSApp imports, add it here too — otherwise the HF build
+# that MedoraApp imports, add it here too — otherwise the HF build
 # breaks with "Module not found: @/lib/hooks/<your-hook>".
 mkdir -p "$BUILD_DIR/lib/hooks"
 for f in \
@@ -84,8 +84,8 @@ cp "$WEB_DIR/tailwind.config.ts" "$BUILD_DIR/"
 
 # Page shell
 cat > "$BUILD_DIR/app/page.tsx" << 'EOF'
-import MedOSApp from "@/components/MedOSApp";
-export default function HomePage() { return <MedOSApp />; }
+import MedoraApp from "@/components/MedoraApp";
+export default function HomePage() { return <MedoraApp />; }
 EOF
 
 # Remove Vercel-only proxy route if it leaked in

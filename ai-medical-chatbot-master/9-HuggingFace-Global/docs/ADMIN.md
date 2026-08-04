@@ -1,6 +1,6 @@
-# MedOS Admin Guide
+# Medora Admin Guide
 
-Complete guide for deploying, configuring, and managing the MedOS platform.
+Complete guide for deploying, configuring, and managing the Medora platform.
 
 ---
 
@@ -20,7 +20,7 @@ Complete guide for deploying, configuring, and managing the MedOS platform.
 
 ## Architecture Overview
 
-MedOS runs as **3 independent HuggingFace Spaces** + an optional **Vercel frontend**:
+Medora runs as **3 independent HuggingFace Spaces** + an optional **Vercel frontend**:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -105,7 +105,7 @@ curl https://kishan-medibot.hf.space/api/health
 | `HF_TOKEN_INFERENCE` | Token with inference permissions | For scanner proxy |
 | `NEARBY_URL` | `https://kishan-metaengine-nearby.hf.space` | Default works |
 | `SCANNER_URL` | `https://kishan-medicine-scanner.hf.space` | Default works |
-| `DB_PATH` | `/data/medos.db` | Default works |
+| `DB_PATH` | `/data/medora.db` | Default works |
 
 ---
 
@@ -184,9 +184,9 @@ The Vercel frontend is a thin proxy — all API calls go to the MediBot Space.
 
 ### How to Access
 
-1. Go to your MedOS instance (HF Space or Vercel URL)
+1. Go to your Medora instance (HF Space or Vercel URL)
 2. Log in with the default admin account:
-   - **Email:** `admin@medos.health`
+   - **Email:** `admin@medora.health`
    - **Password:** `admin123456`
 3. **Change the password immediately** after first login
 4. The **Admin** section appears in the desktop sidebar (bottom, under Tools)
@@ -243,10 +243,10 @@ SMTP configuration for email verification and password reset:
 |-------|-------------|---------|
 | SMTP Host | Mail server hostname | `smtp.gmail.com` |
 | SMTP Port | Usually 587 (TLS) or 465 (SSL) | `587` |
-| SMTP Username | Your email account | `medos@yourdomain.com` |
+| SMTP Username | Your email account | `medora@yourdomain.com` |
 | SMTP Password | App password (not your login password) | `xxxx xxxx xxxx xxxx` |
-| From Email | Sender display name + email | `MedOS <noreply@medos.health>` |
-| Recovery Email | Support contact for users | `support@medos.health` |
+| From Email | Sender display name + email | `Medora <noreply@medora.health>` |
+| Recovery Email | Support contact for users | `support@medora.health` |
 
 **Gmail setup:**
 1. Go to [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)
@@ -268,7 +268,7 @@ Server-side configuration:
 | Application URL | Public URL (used in emails) | `https://kishan-medibot.hf.space` |
 | Allowed Origins | CORS origins (comma-separated) | Your Vercel URL |
 
-Changes are saved to `/data/medos-config.json` and persist across restarts.
+Changes are saved to `/data/medora-config.json` and persist across restarts.
 
 ---
 
@@ -339,12 +339,12 @@ OllaBridge is tried FIRST in the fallback chain, before HuggingFace.
 
 1. Enable 2FA on your Google account
 2. Generate an app password: [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)
-3. In MedOS Admin → Email tab:
+3. In Medora Admin → Email tab:
    - Host: `smtp.gmail.com`
    - Port: `587`
    - User: `your.email@gmail.com`
    - Password: (the app password from step 2)
-   - From: `MedOS <your.email@gmail.com>`
+   - From: `Medora <your.email@gmail.com>`
 4. Click **Save Configuration**
 
 ### Other Providers
@@ -371,7 +371,7 @@ If SMTP is not configured, all verification codes are **logged to the console**.
 
 ```
 [EMAIL] To: user@example.com
-[EMAIL] Subject: MedOS — verify your email
+[EMAIL] Subject: Medora — verify your email
 [EMAIL] Body: Your verification code is: 847291
 ```
 
@@ -410,7 +410,7 @@ Set it as `HF_TOKEN` in the Medicine-Scanner Space settings.
 ### How It Works
 
 ```
-User takes photo → MedOS frontend
+User takes photo → Medora frontend
     → POST /api/scan (MediBot proxy)
     → POST /api/scan (Scanner Space)
     → Encode image as base64
@@ -432,7 +432,7 @@ MetaEngine-Nearby uses free APIs — no tokens or secrets required:
 ### How It Works
 
 ```
-User enters location → MedOS frontend
+User enters location → Medora frontend
     → POST /api/nearby (MediBot proxy)
     → POST /gradio_api/call/search_ui (MetaEngine Space)
     → Query Overpass API for pharmacies/doctors within radius
@@ -457,14 +457,14 @@ User enters location → MedOS frontend
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
 | `HF_TOKEN` | Yes | — | HuggingFace token (inference + write) |
-| `DB_PATH` | No | `/data/medos.db` | SQLite database path |
-| `ADMIN_EMAIL` | No | `admin@medos.health` | Default admin email |
+| `DB_PATH` | No | `/data/medora.db` | SQLite database path |
+| `ADMIN_EMAIL` | No | `admin@medora.health` | Default admin email |
 | `ADMIN_PASSWORD` | No | `admin123456` | Default admin password |
 | `SMTP_HOST` | No | — | SMTP server hostname |
 | `SMTP_PORT` | No | `587` | SMTP port |
 | `SMTP_USER` | No | — | SMTP username |
 | `SMTP_PASS` | No | — | SMTP password |
-| `FROM_EMAIL` | No | `MedOS <noreply@medos.health>` | Sender email |
+| `FROM_EMAIL` | No | `Medora <noreply@medora.health>` | Sender email |
 | `APP_URL` | No | `https://kishan-medibot.hf.space` | Public URL |
 | `ALLOWED_ORIGINS` | No | `*` | CORS allowed origins |
 | `NEARBY_URL` | No | `https://kishan-metaengine-nearby.hf.space` | Nearby finder URL |
@@ -551,7 +551,7 @@ This happens when the MediBot Space is sleeping and the Vercel proxy times out w
 ### Admin panel not visible
 
 1. You must be logged in as an admin user
-2. Default admin: `admin@medos.health` / `admin123456`
+2. Default admin: `admin@medora.health` / `admin123456`
 3. The Admin section only appears in the **desktop sidebar** (not mobile drawer for security)
 4. If the admin account doesn't exist, restart the Space (it auto-seeds on startup)
 
@@ -559,7 +559,7 @@ This happens when the MediBot Space is sleeping and the Vercel proxy times out w
 
 Free-tier HF Spaces sleep after ~15 minutes of inactivity.
 - Any request wakes them automatically (~30-60 seconds)
-- The MedOS frontend shows "waking up" status during this time
+- The Medora frontend shows "waking up" status during this time
 - For always-on, upgrade to a paid HF Space plan
 
 ### Database reset
@@ -580,7 +580,7 @@ Automated deployment is configured via GitHub workflows:
 | `deploy-medibot.yml` | Push to `main` (changes in `9-HuggingFace-Global/` or `web/`) | MediBot |
 | `deploy-medicine-scanner.yml` | Push to `main` (changes in `11-Medicine-Scanner/`) | Medicine-Scanner |
 | `deploy-metaengine-nearby.yml` | Push to `main` (changes in `12-MetaEngine-Nearby/`) | MetaEngine-Nearby |
-| `ci-medos-global.yml` | Push to any branch | Runs 88 tests + build |
+| `ci-medora-global.yml` | Push to any branch | Runs 88 tests + build |
 
 ### GitHub Secrets Required
 
@@ -622,4 +622,4 @@ HF_TOKEN=hf_xxx bash 12-MetaEngine-Nearby/deploy-nearby.sh
 ---
 
 *Last updated: April 2026*
-*MedOS v1.0 — Free & Open Source*
+*Medora v1.0 — Free & Open Source*

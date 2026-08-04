@@ -19,17 +19,17 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from medos_bench.dashboard import build_dashboard
+from medora_bench.dashboard import build_dashboard
 
 
 HERE = Path(__file__).resolve().parent
 
 
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="Build the MedOS benchmark HTML dashboard")
+    p = argparse.ArgumentParser(description="Build the Medora benchmark HTML dashboard")
     p.add_argument("--csv", type=Path, default=HERE / "out" / "results.csv")
     p.add_argument("--output", type=Path, default=HERE / "out" / "dashboard.html")
-    p.add_argument("--title", default="MedOS vs ChatGPT — Medical Benchmark")
+    p.add_argument("--title", default="Medora vs ChatGPT — Medical Benchmark")
     return p.parse_args()
 
 

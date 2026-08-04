@@ -21,8 +21,8 @@ cp "$TEMPLATE_DIR/Dockerfile" "$BUILD_DIR/" 2>/dev/null || true
 echo "[deploy] Pushing to https://huggingface.co/spaces/$SPACE_NAME ..."
 cd "$BUILD_DIR"
 git init && git branch -M main && git add -A
-git -c user.name="deploy" -c user.email="deploy@medos" -c commit.gpgsign=false \
-  commit -m "Deploy MedOS Nearby Finder v1.0"
+git -c user.name="deploy" -c user.email="deploy@medora" -c commit.gpgsign=false \
+  commit -m "Deploy Medora Nearby Finder v1.0"
 
 HF_USER=$(echo "$SPACE_NAME" | cut -d'/' -f1)
 git remote add hf "https://${HF_USER}:${HF_TOKEN}@huggingface.co/spaces/${SPACE_NAME}"

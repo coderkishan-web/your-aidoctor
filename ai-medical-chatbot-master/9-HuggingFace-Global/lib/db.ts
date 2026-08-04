@@ -1,8 +1,8 @@
 /**
- * MedOS database layer — SQLite via better-sqlite3.
+ * Medora database layer — SQLite via better-sqlite3.
  *
  * Architecture:
- *   - SQLite, single file at `$DB_PATH` (/data/medos.db on HF Spaces).
+ *   - SQLite, single file at `$DB_PATH` (/data/medora.db on HF Spaces).
  *   - WAL mode for concurrent reads during SSE streaming.
  *   - Auto-migration via PRAGMA user_version.
  *   - All queries use parameterized statements (no SQL injection).
@@ -18,7 +18,7 @@
 import Database from 'better-sqlite3';
 import { randomUUID, randomInt } from 'crypto';
 
-const DB_PATH = process.env.DB_PATH || '/data/medos.db';
+const DB_PATH = process.env.DB_PATH || '/data/medora.db';
 
 let _db: Database.Database | null = null;
 
@@ -278,14 +278,14 @@ export function pruneExpiredSessions(): void {
 
 /**
  * Seed the default admin account on first start. The admin email is
- * read from ADMIN_EMAIL env (default: admin@medos.health) and the
+ * read from ADMIN_EMAIL env (default: admin@medora.health) and the
  * initial password from ADMIN_PASSWORD (default: admin123456).
  *
  * Change the password immediately after first login.
  */
 export function seedAdmin(): void {
   const db = getDb();
-  const adminEmail = (process.env.ADMIN_EMAIL || 'admin@medos.health').toLowerCase();
+  const adminEmail = (process.env.ADMIN_EMAIL || 'admin@medora.health').toLowerCase();
   const adminPassword = process.env.ADMIN_PASSWORD || 'admin123456';
 
   const existing = db.prepare('SELECT id FROM users WHERE email = ?').get(adminEmail);

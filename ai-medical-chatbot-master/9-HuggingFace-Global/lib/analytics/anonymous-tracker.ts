@@ -6,7 +6,7 @@
  * Zero PII — only increments a global counter per chat session.
  */
 
-const SESSION_KEY = 'medos-session-tracked';
+const SESSION_KEY = 'medora-session-tracked';
 
 /**
  * Track a new session (called once per page load).

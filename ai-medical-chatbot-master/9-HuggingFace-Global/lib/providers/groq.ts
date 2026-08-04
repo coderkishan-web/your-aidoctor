@@ -9,7 +9,7 @@ import { loadConfig } from '@/lib/server-config';
  *   • LPU inference is fast enough (~400 tok/s) to keep p50 first-token
  *     latency under 1s, which is critical on a medical assistant.
  *   • Generous free tier (currently 30 RPM, 14.4k TPM on llama-3.3-70b-versatile)
- *     covers all observed MedOS traffic without billing surprises.
+ *     covers all observed Medora traffic without billing surprises.
  *   • llama-3.3-70b-versatile is large enough to follow a 3.7k-char
  *     clinical system prompt and structured output contract — the
  *     previous primary (qwen2.5:1.5b on a CPU-basic Space) was not.

@@ -18,7 +18,7 @@ import path from 'path';
  * Resolve a writable persistence directory.
  *
  * Order: `PERSISTENT_DIR` env (operator override) → `/data` (HF Spaces
- * paid tier + Docker volume mounts) → `/tmp/medos` (always writable but
+ * paid tier + Docker volume mounts) → `/tmp/medora` (always writable but
  * ephemeral, used as last-resort fallback on free-tier HF Spaces where
  * /data is absent). Cached on first call so we never probe twice in
  * the same process.
@@ -50,7 +50,7 @@ function resolvePersistenceDir(): { path: string; persistent: boolean } {
   if (envDir) candidates.push({ path: envDir, persistent: true });
   candidates.push(
     { path: '/data', persistent: true },
-    { path: path.join(os.tmpdir(), 'medos'), persistent: false },
+    { path: path.join(os.tmpdir(), 'medora'), persistent: false },
   );
   for (const c of candidates) {
     if (isDirWritable(c.path)) {
@@ -74,12 +74,12 @@ function resolvePersistenceDir(): { path: string; persistent: boolean } {
 
 export function getPersistenceStatus(): { path: string; persistent: boolean } {
   const dir = resolvePersistenceDir();
-  return { path: path.join(dir.path, 'medos-config.json'), persistent: dir.persistent };
+  return { path: path.join(dir.path, 'medora-config.json'), persistent: dir.persistent };
 }
 
 /** Lazy getter — resolves once, then memoized via the dir cache. */
 export function getConfigPath(): string {
-  return path.join(resolvePersistenceDir().path, 'medos-config.json');
+  return path.join(resolvePersistenceDir().path, 'medora-config.json');
 }
 
 // Eager export for legacy callers (system-info route). Safe because
@@ -140,7 +140,7 @@ export function getDefaultConfig(): ServerConfig {
       port: parseInt(process.env.SMTP_PORT || '587', 10),
       user: process.env.SMTP_USER || '',
       pass: process.env.SMTP_PASS || '',
-      fromEmail: process.env.FROM_EMAIL || 'MedOS <noreply@medos.health>',
+      fromEmail: process.env.FROM_EMAIL || 'Medora <noreply@medora.health>',
       recoveryEmail: process.env.RECOVERY_EMAIL || '',
     },
     llm: {

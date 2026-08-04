@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="web/public/favicon.svg" alt="MedOS" width="80" />
+<img src="web/public/favicon.svg" alt="Medora" width="80" />
 
 # AI Medical Chatbot
 
@@ -8,7 +8,7 @@
 
 <br/>
 
-[![Try MedOS Free](https://img.shields.io/badge/%F0%9F%8F%A5%20Try%20MedOS-Free%20for%20Everyone-0078D4?style=for-the-badge&logo=huggingface&logoColor=white)](https://huggingface.co/spaces/kishan/MediBot)
+[![Try Medora Free](https://img.shields.io/badge/%F0%9F%8F%A5%20Try%20Medora-Free%20for%20Everyone-0078D4?style=for-the-badge&logo=huggingface&logoColor=white)](https://huggingface.co/spaces/kishan/MediBot)
 &nbsp;&nbsp;
 [![GitHub Stars](https://img.shields.io/github/stars/kishan/ai-medical-chatbot?style=for-the-badge&logo=github&label=Star&color=gold)](https://github.com/kishan/ai-medical-chatbot)
 
@@ -34,7 +34,7 @@
   <a href="https://huggingface.co/spaces/kishan/MediBot"><img src="https://img.shields.io/badge/Try%20it%20now%20%E2%86%92%20MediBot-2e5bff?style=for-the-badge" alt="Try MediBot"/></a>
 </p>
 
-<p align="center"><sub>This project is free, open source, and runs on free-tier infrastructure. If MedOS is useful to you, <a href="https://github.com/sponsors/kishan">sponsor on GitHub</a> — every dollar helps keep healthcare guidance free for everyone, in every language.</sub></p>
+<p align="center"><sub>This project is free, open source, and runs on free-tier infrastructure. If Medora is useful to you, <a href="https://github.com/sponsors/kishan">sponsor on GitHub</a> — every dollar helps keep healthcare guidance free for everyone, in every language.</sub></p>
 
 </div>
 
@@ -56,13 +56,13 @@ If that mission resonates, you can keep it going: [**sponsor on GitHub →**](ht
 
 ## What you get
 
-### MedOS Platform
+### Medora Platform
 
 The full medical AI experience — chat with the AI, track your health, manage medications, and more.
 
 <div align="center">
 <a href="https://huggingface.co/spaces/kishan/MediBot">
-<img src="assets/2025-12-29-02-45-35.png" alt="MedOS Chat with AI Doctor" width="700" />
+<img src="assets/2025-12-29-02-45-35.png" alt="Medora Chat with AI Doctor" width="700" />
 </a>
 </div>
 
@@ -83,7 +83,7 @@ Your personal health dashboard — private, encrypted, on your device.
 
 <div align="center">
 <a href="https://huggingface.co/spaces/kishan/MediBot">
-<img src="assets/2025-12-29-02-47-19.png" alt="MedOS Health Tracker — Schedule & Routine" width="700" />
+<img src="assets/2025-12-29-02-47-19.png" alt="Medora Health Tracker — Schedule & Routine" width="700" />
 </a>
 </div>
 
@@ -104,7 +104,7 @@ Your personal health dashboard — private, encrypted, on your device.
 ```
 You speak or type your symptoms
               |
-         [ MedOS AI ]
+         [ Medora AI ]
               |
      Llama 3.3 70B ──── grounded in WHO, CDC, NHS guidelines
               |
@@ -126,9 +126,9 @@ Everything here is free and open. Every piece can be run independently, improved
 <div align="center">
 
 <a href="https://huggingface.co/spaces/kishan/MediBot">
-<img src="assets/2025-12-29-02-45-35.png" alt="MedOS" width="700" />
+<img src="assets/2025-12-29-02-45-35.png" alt="Medora" width="700" />
 <br/>
-<img src="https://img.shields.io/badge/MedOS-Web%20App-0078D4?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="MedOS Web App" />
+<img src="https://img.shields.io/badge/Medora-Web%20App-0078D4?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Medora Web App" />
 </a>
 <br/>
 Full medical platform — chat, health tracker, medicines, 13 languages
@@ -195,15 +195,15 @@ Point your camera at a medicine box — AI reads the label for you
 
 | # | Project | What it does | Links |
 |---|---|---|---|
-| | **[MedOS Web App](./web/)** | Full medical platform — chat, health tracker, medicine inventory, 13 languages | [![Live](https://img.shields.io/badge/Live-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/spaces/kishan/MediBot) |
-| | **[MedOS Backend](./9-HuggingFace-Global/)** | API server — auth, SQLite DB, LLM routing, emergency triage, RAG | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./9-HuggingFace-Global/) |
+| | **[Medora Web App](./web/)** | Full medical platform — chat, health tracker, medicine inventory, 13 languages | [![Live](https://img.shields.io/badge/Live-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/spaces/kishan/MediBot) |
+| | **[Medora Backend](./9-HuggingFace-Global/)** | API server — auth, SQLite DB, LLM routing, emergency triage, RAG | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./9-HuggingFace-Global/) |
 | 11 | **[Medicine Scanner](./11-Medicine-Scanner/)** | Camera scan of medicine labels via Qwen2.5-VL multimodal AI | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./11-Medicine-Scanner/) |
 | 12 | **[MetaEngine Nearby](./12-MetaEngine-Nearby/)** | Find nearby pharmacies and doctors via OpenStreetMap | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./12-MetaEngine-Nearby/) |
-| 13 | **[MedOS Family](./13-MedOS-Family/)** | Family health tree, adult consent, child mode, medicine reminders, family admin | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./13-MedOS-Family/) |
-| 14 | **[MedOS Connect](./14-MedOS-Connect/)** | Additive backend for device + vitals sync (Withings, Apple Health, Health Connect), reminders, notifications | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./14-MedOS-Connect/) |
-| 15 | **[MedOS Classify](./15-MedOS-Classify/)** | MCP clinical-classification + triage engine — multi-head, calibrated, red-flag floor, Hugging Face models | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./15-MedOS-Classify/) |
-| 16 | **[MedOS Pathogen](./16-MedOS-Pathogen/)** | MCP pathogen-ID layer — microscopy / chest X-ray / genomic sequence with calibrated probabilities and visible evidence | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./16-MedOS-Pathogen/) |
-| 17 | **[MedOS Research](./17-MedOS-Research/)** | R&D module — literature briefs, hypotheses, in-silico simulation plans, publication studio, safety reviewer | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./17-MedOS-Research/) |
+| 13 | **[Medora Family](./13-Medora-Family/)** | Family health tree, adult consent, child mode, medicine reminders, family admin | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./13-Medora-Family/) |
+| 14 | **[Medora Connect](./14-Medora-Connect/)** | Additive backend for device + vitals sync (Withings, Apple Health, Health Connect), reminders, notifications | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./14-Medora-Connect/) |
+| 15 | **[Medora Classify](./15-Medora-Classify/)** | MCP clinical-classification + triage engine — multi-head, calibrated, red-flag floor, Hugging Face models | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./15-Medora-Classify/) |
+| 16 | **[Medora Pathogen](./16-Medora-Pathogen/)** | MCP pathogen-ID layer — microscopy / chest X-ray / genomic sequence with calibrated probabilities and visible evidence | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./16-Medora-Pathogen/) |
+| 17 | **[Medora Research](./17-Medora-Research/)** | R&D module — literature briefs, hypotheses, in-silico simulation plans, publication studio, safety reviewer | [![Code](https://img.shields.io/badge/Code-blue?logo=github)](./17-Medora-Research/) |
 | | **[Medical Llama3 8B](https://huggingface.co/kishan/Medical-Llama3-8B)** | Fine-tuned Llama3 on 250K medical Q&A pairs | [![Model](https://img.shields.io/badge/Model-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/kishan/Medical-Llama3-8B) |
 | | **[Medical Llama3 v2](https://huggingface.co/kishan/Medical-Llama3-v2)** | Improved medical Llama3 with enhanced chatbot interface | [![Model](https://img.shields.io/badge/Model-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/kishan/Medical-Llama3-v2) |
 | | **[Medical Mixtral 7B](https://huggingface.co/kishan/Medical-Mixtral-7B-v2k)** | Fine-tuned Mixtral for medical assistance | [![Model](https://img.shields.io/badge/Model-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/kishan/Medical-Mixtral-7B-v2k) |
@@ -216,28 +216,28 @@ Point your camera at a medicine box — AI reads the label for you
 
 ---
 
-## MedOS Ecosystem
+## Medora Ecosystem
 
 <div align="center">
-<img src="assets/medos-ecosystem.svg" alt="MedOS Ecosystem — Patients · Core · Additive design layers (Family, Connect, Classify, Pathogen, Research)" width="100%" />
+<img src="assets/medora-ecosystem.svg" alt="Medora Ecosystem — Patients · Core · Additive design layers (Family, Connect, Classify, Pathogen, Research)" width="100%" />
 </div>
 
 <br/>
 
-The MedOS ecosystem is layered. The **Core** is what runs in production today — the web app, the backend API, the health tracker, the medicine scanner, and the nearby-care finder. The **Ecosystem** layer adds new modules on top, **purely additively**: each one ships as its own folder, behind a feature flag, with no destructive changes to existing files, tables, or APIs.
+The Medora ecosystem is layered. The **Core** is what runs in production today — the web app, the backend API, the health tracker, the medicine scanner, and the nearby-care finder. The **Ecosystem** layer adds new modules on top, **purely additively**: each one ships as its own folder, behind a feature flag, with no destructive changes to existing files, tables, or APIs.
 
 | Layer | Module | What it adds |
 |---|---|---|
-| Core | **MedOS Web App** | The medical platform users see today — chat, vitals, medicines, records, 13 languages. |
-| Core | **MedOS Backend** | Next.js API + SQLite + LLM routing + medical RAG + emergency triage. |
+| Core | **Medora Web App** | The medical platform users see today — chat, vitals, medicines, records, 13 languages. |
+| Core | **Medora Backend** | Next.js API + SQLite + LLM routing + medical RAG + emergency triage. |
 | Core | **Health Tracker** | Vitals, medicines, appointments, records, EHR wizard, JSON / print export. |
 | Core | **Medicine Scanner** | Camera → structured JSON via Qwen2.5-VL. |
 | Core | **Nearby Care** | Pharmacies and doctors via OpenStreetMap with ranking and route metadata. |
-| Ecosystem · 13 | **[MedOS Family](./13-MedOS-Family/)** | Family health tree, adult consent, child mode, medicine reminders, family admin. |
-| Ecosystem · 14 | **[MedOS Connect](./14-MedOS-Connect/)** | Device + vitals sync (Withings, Apple Health, Health Connect), reminders, notifications. |
-| Ecosystem · 15 | **[MedOS Classify](./15-MedOS-Classify/)** | MCP triage tools — multi-head, calibrated, red-flag-gated; ships through Hugging Face. |
-| Ecosystem · 16 | **[MedOS Pathogen](./16-MedOS-Pathogen/)** | MCP pathogen ID — microscopy, chest X-ray, genomic sequence; visible evidence. |
-| Ecosystem · 17 | **[MedOS Research](./17-MedOS-Research/)** | R&D module — literature briefs, hypotheses, in-silico simulation plans, safety-reviewed publication studio. |
+| Ecosystem · 13 | **[Medora Family](./13-Medora-Family/)** | Family health tree, adult consent, child mode, medicine reminders, family admin. |
+| Ecosystem · 14 | **[Medora Connect](./14-Medora-Connect/)** | Device + vitals sync (Withings, Apple Health, Health Connect), reminders, notifications. |
+| Ecosystem · 15 | **[Medora Classify](./15-Medora-Classify/)** | MCP triage tools — multi-head, calibrated, red-flag-gated; ships through Hugging Face. |
+| Ecosystem · 16 | **[Medora Pathogen](./16-Medora-Pathogen/)** | MCP pathogen ID — microscopy, chest X-ray, genomic sequence; visible evidence. |
+| Ecosystem · 17 | **[Medora Research](./17-Medora-Research/)** | R&D module — literature briefs, hypotheses, in-silico simulation plans, safety-reviewed publication studio. |
 
 Every Ecosystem module follows the same contract: **additive only, namespaced, feature-flagged, reversible, never auto-flowing patient PHI across boundaries.**
 
@@ -255,7 +255,7 @@ Every Ecosystem module follows the same contract: **additive only, namespaced, f
 
 ### Use it now (zero install)
 
-[![Open MedOS](https://img.shields.io/badge/%F0%9F%8F%A5%20Open-MedOS-0078D4?style=for-the-badge)](https://huggingface.co/spaces/kishan/MediBot)
+[![Open Medora](https://img.shields.io/badge/%F0%9F%8F%A5%20Open-Medora-0078D4?style=for-the-badge)](https://huggingface.co/spaces/kishan/MediBot)
 
 Just click. No account. No install. Free.
 
@@ -320,9 +320,9 @@ git checkout -b my-improvement
 
 ## Support the project
 
-MedOS is free for users forever. It runs on free-tier cloud and gets better only because people contribute time, translations, clinical review, and — increasingly — sponsorship to keep the lights on.
+Medora is free for users forever. It runs on free-tier cloud and gets better only because people contribute time, translations, clinical review, and — increasingly — sponsorship to keep the lights on.
 
-If MedOS has helped you understand a symptom, prepare for a doctor's visit, or just felt like a calm voice on a rough day, please consider supporting it.
+If Medora has helped you understand a symptom, prepare for a doctor's visit, or just felt like a calm voice on a rough day, please consider supporting it.
 
 <p align="center">
   <a href="https://github.com/sponsors/kishan"><img src="https://img.shields.io/badge/%F0%9F%92%96%20Sponsor%20on%20GitHub-ec4899?style=for-the-badge" alt="Sponsor on GitHub"/></a>
@@ -330,7 +330,7 @@ If MedOS has helped you understand a symptom, prepare for a doctor's visit, or j
   <a href="https://github.com/kishan/ai-medical-chatbot"><img src="https://img.shields.io/badge/%E2%AD%90%20Star%20the%20repo-gold?style=for-the-badge" alt="Star the repo"/></a>
 </p>
 
-Both help. Sponsorship pays for hosting beyond the free tiers, the LLM provider keys that keep the chat fast in every language, and the clinician review hours that keep the safety floor honest. Stars help the next person who needs MedOS actually find it.
+Both help. Sponsorship pays for hosting beyond the free tiers, the LLM provider keys that keep the chat fast in every language, and the clinician review hours that keep the safety floor honest. Stars help the next person who needs Medora actually find it.
 
 You can also help without spending anything:
 
@@ -368,6 +368,6 @@ Apache 2.0 — use it, modify it, deploy it, share it. **Free forever.**
 
 <br/>
 
-<a href="https://github.com/sponsors/kishan"><img src="https://img.shields.io/badge/%F0%9F%92%96%20Sponsor%20MedOS-ec4899?style=flat-square" alt="Sponsor MedOS"/></a>
+<a href="https://github.com/sponsors/kishan"><img src="https://img.shields.io/badge/%F0%9F%92%96%20Sponsor%20Medora-ec4899?style=flat-square" alt="Sponsor Medora"/></a>
 
 </div>

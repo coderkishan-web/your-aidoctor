@@ -255,7 +255,7 @@ export function MyMedicinesView({
         </div>
 
         {/* Filter pills — scrollable, large touch targets */}
-        <div className="flex gap-2 overflow-x-auto pb-1 mb-4 -mx-1 px-1 scroll-touch">
+        <div className="flex gap-2 overflow-x-auto pb-1 mb-4 -mx-1 px-1 scroll-touch scrollbar-none">
           {(["all", "active", "expiring", "expired", "low"] as FilterTab[]).map((f) => (
             <button
               key={f}
@@ -636,18 +636,18 @@ function AddMedicineModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
       <div className="w-full max-w-md bg-surface-1 border border-line/60 rounded-2xl shadow-card overflow-y-auto max-h-[90vh] animate-in fade-in slide-in-from-bottom-4 duration-300">
-        <div className="flex items-center justify-between p-5 border-b border-line/40">
+        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-line/40">
           <h3 className="font-bold text-lg text-ink-base">Add Medicine</h3>
           <button onClick={onClose} className="p-1.5 rounded-lg text-ink-subtle hover:text-ink-base hover:bg-surface-2">
             <X size={16} />
           </button>
         </div>
 
-        <div className="p-5 space-y-4">
+        <div className="p-4 sm:p-5 space-y-4">
           <Field label="Medicine name *" value={name} onChange={setName} placeholder="e.g. Metformin" />
           <Field label="Brand name" value={brandName} onChange={setBrandName} placeholder="e.g. Glucophage" />
           <Field label="Active ingredient" value={activeIngredient} onChange={setActiveIngredient} placeholder="e.g. Metformin HCl" />
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <Field label="Dose *" value={dose} onChange={setDose} placeholder="e.g. 500 mg" />
             <div>
               <label className="text-xs font-semibold text-ink-muted uppercase tracking-wider mb-1.5 block">Form</label>
@@ -660,7 +660,7 @@ function AddMedicineModal({
               </select>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <div>
               <label className="text-xs font-semibold text-ink-muted uppercase tracking-wider mb-1.5 block">Category</label>
               <select
@@ -674,7 +674,7 @@ function AddMedicineModal({
             </div>
             <Field label="Quantity" value={quantity} onChange={setQuantity} placeholder="1" type="number" />
           </div>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <Field label="Expiry date" value={expiryDate} onChange={setExpiryDate} type="date" />
             <Field label="Refill date" value={refillDate} onChange={setRefillDate} type="date" />
           </div>
@@ -690,7 +690,7 @@ function AddMedicineModal({
           </div>
         </div>
 
-        <div className="p-5 pt-0">
+        <div className="p-4 sm:p-5 pt-0">
           <button
             onClick={handleSubmit}
             disabled={!name.trim() || !dose.trim()}

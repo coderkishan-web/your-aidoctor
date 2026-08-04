@@ -14,10 +14,10 @@ const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") ||
   "https://ai-medical-chabot.com";
 
-const SITE_NAME = "MedOS";
-const SITE_TITLE = "MedOS — your worldwide medical assistant";
+const SITE_NAME = "Medora";
+const SITE_TITLE = "Medora — your worldwide medical assistant";
 const SITE_DESCRIPTION_LONG =
-  "Tell MedOS what's bothering you. Instant, private, multilingual health guidance aligned with WHO, CDC, and NHS.";
+  "Tell Medora what's bothering you. Instant, private, multilingual health guidance aligned with WHO, CDC, and NHS.";
 const SITE_DESCRIPTION_SHORT =
   "Private, multilingual health guidance aligned with WHO, CDC, and NHS — available 24/7.";
 
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   title: SITE_TITLE,
   description: SITE_DESCRIPTION_LONG,
   keywords: ["medical AI", "healthcare", "chatbot", "telemedicine", "WHO", "CDC"],
-  authors: [{ name: "MedOS Team" }],
+  authors: [{ name: "Medora Team" }],
   applicationName: SITE_NAME,
   manifest: "/manifest.webmanifest",
   icons: {
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "MedOS — your worldwide medical assistant",
+        alt: "Medora — your worldwide medical assistant",
       },
     ],
   },
@@ -98,7 +98,7 @@ export const viewport: Viewport = {
 const themeBootstrap = `
 (function() {
   try {
-    var stored = localStorage.getItem('medos_theme');
+    var stored = localStorage.getItem('medora_theme');
     var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     var isDark = stored === 'dark' || (stored === 'system' && prefersDark);
     if (isDark) document.documentElement.classList.add('dark');

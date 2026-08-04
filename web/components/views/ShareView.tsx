@@ -19,7 +19,7 @@ interface ShareViewProps {
 }
 
 /**
- * ShareView — distribution surface for MedOS.
+ * ShareView — distribution surface for Medora.
  *
  * Hierarchy is deliberate so the page reads as a healthcare utility,
  * not a marketing dashboard:

@@ -45,7 +45,7 @@ function stripBubbleMarkers(content: string): string {
  * MessageBubble — renders chat messages with markdown support.
  *
  * AI answers are rendered as structured cards with:
- *  - Avatar + "MedOS" header + optional source chip
+ *  - Avatar + "Medora" header + optional source chip
  *  - Full markdown: bold, italic, lists, links, code, headers
  *  - Section parsing for structured medical output
  *

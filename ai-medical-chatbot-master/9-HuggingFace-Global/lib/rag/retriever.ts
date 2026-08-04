@@ -1,6 +1,6 @@
 /**
  * Hybrid retrieval: SQLite FTS5 (keyword/BM25) + vector cosine, fused with
- * Reciprocal Rank Fusion. Everything lives in /data/medos.db, so there is
+ * Reciprocal Rank Fusion. Everything lives in /data/medora.db, so there is
  * no external vector service to operate for the HF-Spaces (Tier A) target.
  *
  * Degradation ladder (never throws to the caller):

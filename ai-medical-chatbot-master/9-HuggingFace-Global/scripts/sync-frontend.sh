@@ -34,7 +34,7 @@ mkdir -p "$HF_DIR/components/views" "$HF_DIR/components/chat" "$HF_DIR/component
 cp -r "$WEB_DIR/components/views/"* "$HF_DIR/components/views/"
 cp -r "$WEB_DIR/components/chat/"* "$HF_DIR/components/chat/"
 cp -r "$WEB_DIR/components/ui/"* "$HF_DIR/components/ui/"
-cp "$WEB_DIR/components/MedOSApp.tsx" "$HF_DIR/components/"
+cp "$WEB_DIR/components/MedoraApp.tsx" "$HF_DIR/components/"
 cp "$WEB_DIR/components/ThemeProvider.tsx" "$HF_DIR/components/"
 cp "$WEB_DIR/components/ThemeToggle.tsx" "$HF_DIR/components/"
 cp "$WEB_DIR/components/WelcomeScreen.tsx" "$HF_DIR/components/" 2>/dev/null || true
@@ -59,8 +59,8 @@ cp "$WEB_DIR/app/layout.tsx" "$HF_DIR/app/"
 
 # 5. Page shell
 cat > "$HF_DIR/app/page.tsx" << 'EOF'
-import MedOSApp from "@/components/MedOSApp";
-export default function HomePage() { return <MedOSApp />; }
+import MedoraApp from "@/components/MedoraApp";
+export default function HomePage() { return <MedoraApp />; }
 EOF
 
 # 6. Path rewrite: /api/proxy/* → /api/*

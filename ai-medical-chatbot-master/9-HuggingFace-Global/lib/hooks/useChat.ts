@@ -176,7 +176,7 @@ export function useChat() {
                 //      ← every card emitter (streamCardChunk) and the
                 //      ← post-LLM-filtered single-chunk reply use this.
                 //   2. OpenAI non-stream:    { choices: [{ message: { content }}]}
-                //   3. Legacy MedOS:         { content: "..." }
+                //   3. Legacy Medora:         { content: "..." }
                 //
                 // The HF Space client previously only checked #3, which
                 // meant every server chunk (all OpenAI-shaped) was

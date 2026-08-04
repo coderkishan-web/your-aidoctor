@@ -14,7 +14,7 @@ import type { SupportedLanguage } from "./i18n";
  * twice in a row, and every shown chip leads to a productive flow
  * supported by the medical card pipeline.
  *
- * Per-language banks are provided for the major MedOS audiences. For
+ * Per-language banks are provided for the major Medora audiences. For
  * languages without a curated list we fall back to the English bank
  * via `getExampleQuestions()` — better than missing chips and easy to
  * extend later without touching call-sites.

@@ -233,7 +233,7 @@ function DangerZone({
       return;
     }
     // On success the auth hook has already wiped local state and the
-    // parent (MedOSApp) navigates away — no further action needed here.
+    // parent (MedoraApp) navigates away — no further action needed here.
   };
 
   return (

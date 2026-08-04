@@ -127,7 +127,7 @@ export function preCheck(req: PreCheckRequest): PreCheckDecision {
   // generates. The post-filter is the second line of defence; this is the first.
   const spec = RISK_CLASSES[topRisk];
   const systemInstructions = [
-    `[MedOS safety policy — ${spec.code}: ${spec.label}]`,
+    `[Medora safety policy — ${spec.code}: ${spec.label}]`,
     `- Do NOT diagnose. Describe possibilities only.`,
     `- Do NOT recommend a specific medication or dose. Suggest a clinician or pharmacist.`,
     `- ${spec.selfCareAllowed ? 'Self-care suggestions are allowed for low-risk supportive measures.' : 'Do NOT recommend self-care; this situation needs professional input.'}`,

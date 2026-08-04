@@ -98,7 +98,7 @@ export const viewport: Viewport = {
 const themeBootstrap = `
 (function() {
   try {
-    var stored = localStorage.getItem('medos_theme');
+    var stored = localStorage.getItem('medora_theme');
     var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     var isDark = stored === 'dark' || (stored === 'system' && prefersDark);
     if (isDark) document.documentElement.classList.add('dark');

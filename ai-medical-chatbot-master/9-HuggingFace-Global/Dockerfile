@@ -1,5 +1,5 @@
 # ============================================================
-# MedOS HuggingFace Space — Production Dockerfile
+# Medora HuggingFace Space — Production Dockerfile
 #
 # Enterprise architecture:
 #   web/                    = frontend source of truth
@@ -45,7 +45,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/data ./data
 
 RUN mkdir -p /data && chown nextjs:nodejs /data
-ENV DB_PATH=/data/medos.db
+ENV DB_PATH=/data/medora.db
 
 USER nextjs
 EXPOSE 7860
