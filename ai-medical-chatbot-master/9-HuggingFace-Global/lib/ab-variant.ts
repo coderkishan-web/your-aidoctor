@@ -11,7 +11,7 @@
  * sensible.
  */
 
-const STORAGE_KEY = 'medos_variant';
+const STORAGE_KEY = 'medora_variant';
 
 export function pickVariant(n: number): number {
   if (n <= 1) return 0;

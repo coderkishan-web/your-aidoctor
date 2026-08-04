@@ -11,7 +11,7 @@ export interface User {
   createdAt?: string;
 }
 
-const TOKEN_KEY = "medos_auth_token";
+const TOKEN_KEY = "medora_auth_token";
 
 export function useAuth() {
   const [user, setUser] = useState<User | null>(null);
@@ -23,10 +23,10 @@ export function useAuth() {
     if (t) {
       localStorage.setItem(TOKEN_KEY, t);
       const secure = window.location.protocol === "https:" ? "; Secure" : "";
-      document.cookie = `medos_token=${t}; path=/; max-age=${30 * 86400}; SameSite=Lax${secure}`;
+      document.cookie = `medora_token=${t}; path=/; max-age=${30 * 86400}; SameSite=Lax${secure}`;
     } else {
       localStorage.removeItem(TOKEN_KEY);
-      document.cookie = "medos_token=; path=/; max-age=0";
+      document.cookie = "medora_token=; path=/; max-age=0";
     }
   }, []);
 

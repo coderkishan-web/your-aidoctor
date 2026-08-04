@@ -1,5 +1,5 @@
 /**
- * MedOS at-rest encryption helpers.
+ * Medora at-rest encryption helpers.
  *
  * Used to wrap user-provided secrets (BYO Hugging Face token, etc.)
  * before persisting them in SQLite. The master key is derived from
@@ -28,7 +28,7 @@ function getMasterKey(): Buffer {
   const raw =
     process.env.ENCRYPTION_KEY ||
     process.env.ADMIN_PASSWORD ||
-    'medos-default-dev-key-please-set-ENCRYPTION_KEY';
+    'medora-default-dev-key-please-set-ENCRYPTION_KEY';
   if (!process.env.ENCRYPTION_KEY) {
     // Loud, one-time warning so operators know the deployment is using
     // the development fallback. Never silently accept this in prod.

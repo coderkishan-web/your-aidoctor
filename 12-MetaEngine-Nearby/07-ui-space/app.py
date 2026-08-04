@@ -28,7 +28,7 @@ def search(lat, lon, radius, entity, limit):
 
 
 with gr.Blocks() as demo:
-    gr.Markdown("## MetaEngine Nearby Finder (MedOS-compatible)")
+    gr.Markdown("## MetaEngine Nearby Finder (Medora-compatible)")
     with gr.Row():
         lat = gr.Number(label="Latitude", value=40.7128)
         lon = gr.Number(label="Longitude", value=-74.0060)

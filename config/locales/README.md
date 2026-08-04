@@ -1,6 +1,6 @@
 # Medical locale packs
 
-This folder is the canonical source of **regional, medical-specific** data that MedOS needs to be safe and useful in a given region — emergency numbers, urgent-care wording, common medication names, units, pediatric thresholds, pregnancy-care escalation wording, and locale-specific disclaimers.
+This folder is the canonical source of **regional, medical-specific** data that Medora needs to be safe and useful in a given region — emergency numbers, urgent-care wording, common medication names, units, pediatric thresholds, pregnancy-care escalation wording, and locale-specific disclaimers.
 
 It is **not** a translation file for the UI. UI strings live with each app (`web/locales/`, `9-HuggingFace-Global/locales/`) and will move into a translation-management system in a follow-up (see `MIGRATION_PLAN.md` in this folder).
 

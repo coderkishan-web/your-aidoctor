@@ -1,6 +1,6 @@
 # Database deployment
 
-MedOS supports **two database drivers** chosen at runtime by a single env var.
+Medora supports **two database drivers** chosen at runtime by a single env var.
 
 | `DATABASE_URL` set? | Driver | Use case |
 |---|---|---|
@@ -25,7 +25,7 @@ For the database migration itself you only have to add **one** variable:
 
 Everything else (SSL mode, pool size, statement timeout, fallback path) has a sensible default baked into the code. Defaults are listed at the bottom of this doc — you only override them if a deployment proves you need to.
 
-The pre-existing MedOS env vars stay the same; they were already required before this migration:
+The pre-existing Medora env vars stay the same; they were already required before this migration:
 
 - `ADMIN_EMAIL`, `ADMIN_PASSWORD` — first-run admin seed.
 - `ENCRYPTION_KEY` — at-rest encryption for BYO HF tokens.
@@ -72,7 +72,7 @@ jobs:
 - **Secrets** for the sensitive set.
 - **Variables** for the non-sensitive set.
 
-Hugging Face Spaces persists `/data` between restarts on most Space hardware tiers, so the SQLite fallback works there if you choose not to use Postgres. With `DATABASE_URL` set, the Space writes to Postgres and the on-disk SQLite at `/data/medos.db` is unused.
+Hugging Face Spaces persists `/data` between restarts on most Space hardware tiers, so the SQLite fallback works there if you choose not to use Postgres. With `DATABASE_URL` set, the Space writes to Postgres and the on-disk SQLite at `/data/medora.db` is unused.
 
 Sample `space.yml` extract:
 
@@ -87,11 +87,11 @@ secrets:
   - SMTP_PASS
 variables:
   NODE_ENV: "production"
-  ADMIN_EMAIL: "admin@medos.health"
+  ADMIN_EMAIL: "admin@medora.health"
   SMTP_HOST: "smtp.sendgrid.net"
   SMTP_PORT: "587"
   SMTP_USER: "apikey"
-  FROM_EMAIL: "MedOS <noreply@your-domain>"
+  FROM_EMAIL: "Medora <noreply@your-domain>"
   APP_URL: "https://your-space.hf.space"
 ```
 
@@ -147,12 +147,12 @@ npm install
 npm run dev
 ```
 
-Without `DATABASE_URL` set, the app uses SQLite at `./medos.db`. The first request triggers the migration runner; verification codes show up on stdout because SMTP is unconfigured.
+Without `DATABASE_URL` set, the app uses SQLite at `./medora.db`. The first request triggers the migration runner; verification codes show up on stdout because SMTP is unconfigured.
 
 If you want to develop against Postgres locally, run a container:
 
 ```bash
-docker run --name medos-pg -e POSTGRES_PASSWORD=devpass -p 5432:5432 -d postgres:16
+docker run --name medora-pg -e POSTGRES_PASSWORD=devpass -p 5432:5432 -d postgres:16
 export DATABASE_URL="postgresql://postgres:devpass@localhost:5432/postgres"
 npm run db:migrate
 npm run dev

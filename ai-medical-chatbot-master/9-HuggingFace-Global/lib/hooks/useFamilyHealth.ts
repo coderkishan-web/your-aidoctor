@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import {
   type FamilyMember,
   type FamilyState,
-  type MedOSMode,
+  type MedoraMode,
   type MonthlyHealthRecord,
   emptyFamilyState,
   defaultFamily,
@@ -13,7 +13,7 @@ import {
   SCHEMA_VERSION,
 } from "@/lib/family-health";
 
-const STORAGE_KEY = "medos.family.v1";
+const STORAGE_KEY = "medora.family.v1";
 const INVITE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 
 /**
@@ -56,7 +56,7 @@ export function useFamilyHealth() {
   }, [state, loaded]);
 
   // ---- Mutators ----
-  const setMode = useCallback((mode: MedOSMode) => {
+  const setMode = useCallback((mode: MedoraMode) => {
     setState((s) => ({ ...s, mode }));
   }, []);
 
@@ -137,7 +137,7 @@ export function useFamilyHealth() {
   );
 
   const createInvite = useCallback(
-    (memberId: string, mode: MedOSMode) => {
+    (memberId: string, mode: MedoraMode) => {
       const code = generateInviteCode();
       const expiresAt = new Date(Date.now() + INVITE_TTL_MS).toISOString();
       setState((s) => ({

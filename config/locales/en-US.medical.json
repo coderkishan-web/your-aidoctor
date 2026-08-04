@@ -31,7 +31,7 @@
     "epinephrine":   ["EpiPen", "Auvi-Q"]
   },
   "disclaimer": {
-    "general": "MedOS shares general health information and is not a substitute for professional medical advice, diagnosis, or treatment. For decisions about your care, please contact a licensed clinician.",
+    "general": "Medora shares general health information and is not a substitute for professional medical advice, diagnosis, or treatment. For decisions about your care, please contact a licensed clinician.",
     "mental_health_crisis_addendum": "If you are in crisis or thinking of hurting yourself, please call 911 or 988 (the 988 Suicide and Crisis Lifeline) right now. You are not alone."
   },
   "crisis_resources": [

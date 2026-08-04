@@ -1,6 +1,6 @@
-# Contributing to MedOS
+# Contributing to Medora
 
-MedOS exists because people contribute. Every translation, every safety test, every typo fix, every clinical review makes this project more useful and safer for the next person who needs it.
+Medora exists because people contribute. Every translation, every safety test, every typo fix, every clinical review makes this project more useful and safer for the next person who needs it.
 
 This guide tells you how to help.
 
@@ -14,7 +14,7 @@ Pick what fits your skills and time:
 | **Locale packs** (regional emergency numbers, units, disclaimers) | Native-speaker context for one region | `config/locales/*.medical.json` |
 | **Safety test cases** | Clinical experience, even informal | `tests/safety/golden_prompts.jsonl` |
 | **Medical content review** | A clinical license | `GOVERNANCE.md` → Clinical Advisor role |
-| **UI / UX** | React / TypeScript skills | `web/`, `13-MedOS-Family/frontend/`, `17-MedOS-Research/frontend/` |
+| **UI / UX** | React / TypeScript skills | `web/`, `13-Medora-Family/frontend/`, `17-Medora-Research/frontend/` |
 | **Backend** | Node / TypeScript skills | `9-HuggingFace-Global/` |
 | **Bug reports** | A device that runs it | Open an issue, follow the template |
 | **Security findings** | Curiosity | **Don't** open a public issue — see [`SECURITY.md`](./SECURITY.md) |
@@ -42,7 +42,7 @@ npm install
 npm run dev
 ```
 
-The MedOS Family and MedOS Research design frontends each have their own `frontend/` folder under `13-MedOS-Family/` and `17-MedOS-Research/`; see their READMEs.
+The Medora Family and Medora Research design frontends each have their own `frontend/` folder under `13-Medora-Family/` and `17-Medora-Research/`; see their READMEs.
 
 ## Branching
 
@@ -78,7 +78,7 @@ For multi-file work, group logically and commit by intent, not by file.
 Until the Weblate/Crowdin migration lands (Phase 2), translations live in two places:
 
 - **App strings** — wherever the app stores them today (varies; the Phase-2A migration plan documents the move).
-- **Medical locale packs** — `config/locales/*.medical.json`. These are the unique-to-MedOS regional data: emergency numbers, units, disclaimers, pediatric thresholds.
+- **Medical locale packs** — `config/locales/*.medical.json`. These are the unique-to-Medora regional data: emergency numbers, units, disclaimers, pediatric thresholds.
 
 For locale-pack edits:
 
@@ -113,7 +113,7 @@ If you're a clinician reviewing existing cases and you disagree with one, open a
 
 - TypeScript everywhere we can.
 - Strict mode on.
-- Inline styles in the design-faithful frontends (`13-MedOS-Family/frontend/`, `17-MedOS-Research/frontend/`); CSS variables + classes in `web/`.
+- Inline styles in the design-faithful frontends (`13-Medora-Family/frontend/`, `17-Medora-Research/frontend/`); CSS variables + classes in `web/`.
 - Prefer small files. If a file is 800+ lines, split it.
 - Comments only when the *why* is non-obvious. Don't comment what the code already says.
 - No `dangerouslySetInnerHTML` on chat surfaces.
@@ -143,4 +143,4 @@ Contributors are credited in [`CONTRIBUTORS.md`](./CONTRIBUTORS.md). Translators
 - For safety: see [`SAFETY.md`](./SAFETY.md).
 - For privacy: see [`PRIVACY.md`](./PRIVACY.md).
 
-Thank you for making MedOS more useful and safer. The first ten lines you write here might be the difference between a user calling an ambulance and a user dismissing chest pain.
+Thank you for making Medora more useful and safer. The first ten lines you write here might be the difference between a user calling an ambulance and a user dismissing chest pain.

@@ -23,7 +23,7 @@ export function exportConversation(messages: any[]): void {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = `medos-conversation-${new Date().toISOString().split("T")[0]}.txt`;
+  a.download = `medora-conversation-${new Date().toISOString().split("T")[0]}.txt`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);

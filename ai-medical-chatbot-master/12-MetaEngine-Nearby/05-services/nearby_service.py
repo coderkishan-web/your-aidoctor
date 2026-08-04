@@ -1,4 +1,4 @@
-"""Service layer for MedOS-compatible meta search.
+"""Service layer for Medora-compatible meta search.
 
 Features:
 - unified entity search: pharmacy | doctor | all

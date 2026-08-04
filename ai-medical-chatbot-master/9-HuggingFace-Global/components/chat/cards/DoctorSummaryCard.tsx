@@ -9,7 +9,7 @@ import type { DoctorSummaryCard as DoctorSummaryCardData } from "@/lib/medical-f
  *
  * This is the killer enterprise feature: a clinician-formatted summary
  * the user can copy, share, or print. Generic chatbots give you a wall
- * of text; MedOS gives you something you can hand to a doctor.
+ * of text; Medora gives you something you can hand to a doctor.
  *
  * Format mirrors a SOAP-lite chart entry:
  *   Chief complaint · Duration · Severity · Red flags checked /
@@ -21,7 +21,7 @@ import type { DoctorSummaryCard as DoctorSummaryCardData } from "@/lib/medical-f
 
 function buildPlaintext(card: DoctorSummaryCardData): string {
   const lines: string[] = [];
-  lines.push(`MedOS Symptom Summary`);
+  lines.push(`Medora Symptom Summary`);
   lines.push(`Generated: ${new Date(card.generated_at).toLocaleString()}`);
   lines.push('');
   lines.push(`Chief complaint: ${card.chief_complaint}`);
@@ -47,7 +47,7 @@ function buildPlaintext(card: DoctorSummaryCardData): string {
   }
   lines.push('');
   lines.push(
-    'Note: MedOS provides general guidance and does not diagnose. Please confirm with a licensed clinician.',
+    'Note: Medora provides general guidance and does not diagnose. Please confirm with a licensed clinician.',
   );
   return lines.join('\n');
 }
@@ -82,7 +82,7 @@ export function DoctorSummaryCard({ card }: { card: DoctorSummaryCardData }) {
     if (typeof navigator !== 'undefined' && (navigator as any).share) {
       try {
         await (navigator as any).share({
-          title: 'MedOS Symptom Summary',
+          title: 'Medora Symptom Summary',
           text,
         });
       } catch {
@@ -98,14 +98,14 @@ export function DoctorSummaryCard({ card }: { card: DoctorSummaryCardData }) {
     const w = window.open('', '_blank', 'noopener,noreferrer');
     if (!w) return;
     w.document.write(`
-      <!doctype html><html><head><title>MedOS Symptom Summary</title>
+      <!doctype html><html><head><title>Medora Symptom Summary</title>
       <style>
         body { font-family: -apple-system, system-ui, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; line-height: 1.5; color: #1e293b; }
         h1 { font-size: 18px; margin-bottom: 4px; }
         .meta { color: #64748b; font-size: 12px; margin-bottom: 24px; }
         pre { white-space: pre-wrap; font-family: inherit; font-size: 14px; }
       </style></head><body>
-        <h1>MedOS Symptom Summary</h1>
+        <h1>Medora Symptom Summary</h1>
         <div class="meta">Generated: ${new Date(card.generated_at).toLocaleString()}</div>
         <pre>${text.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]!))}</pre>
       </body></html>
@@ -167,7 +167,7 @@ export function DoctorSummaryCard({ card }: { card: DoctorSummaryCardData }) {
           </div>
         )}
         <p className="text-[11px] text-ink-subtle italic pt-2 border-t border-line/30">
-          MedOS provides general guidance and does not diagnose. Please confirm with a licensed clinician.
+          Medora provides general guidance and does not diagnose. Please confirm with a licensed clinician.
         </p>
       </div>
 

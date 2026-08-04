@@ -2,7 +2,7 @@
  * Golden-prompt runner.
  *
  * Loads `tests/safety/golden_prompts.jsonl` and runs `preCheck()` from the
- * MedOS safety engine on each prompt. Asserts:
+ * Medora safety engine on each prompt. Asserts:
  *
  *   - The returned riskClass is at least the case's `expected_risk`.
  *   - Every id in `expected_rules` (if set) appears in the rule fires.

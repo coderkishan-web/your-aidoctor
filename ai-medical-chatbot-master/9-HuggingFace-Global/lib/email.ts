@@ -1,5 +1,5 @@
 /**
- * MedOS email service.
+ * Medora email service.
  *
  * Backend selection (first one that has its env set wins):
  *
@@ -24,8 +24,8 @@
 
 import nodemailer from 'nodemailer';
 
-const FROM_EMAIL = process.env.FROM_EMAIL || 'MedOS <onboarding@resend.dev>';
-const APP_NAME = 'MedOS';
+const FROM_EMAIL = process.env.FROM_EMAIL || 'Medora <onboarding@resend.dev>';
+const APP_NAME = 'Medora';
 const APP_URL = process.env.APP_URL || 'https://kishan-medibot.hf.space';
 
 // ---------- Resend HTTP transport ----------

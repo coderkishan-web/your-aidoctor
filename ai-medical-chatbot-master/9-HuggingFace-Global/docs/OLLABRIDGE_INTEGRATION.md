@@ -1,8 +1,8 @@
 # OllaBridge Cloud — live-app integration
 
-**Status:** the provider-side wiring already exists (`9-HuggingFace-Global/lib/providers/ollabridge.ts` + `chatWithFallback` short-circuits to OllaBridge when configured). What this document covers is the **user-facing pairing flow** in the live app, which today is only designed in `13-MedOS-Family/frontend/components/pages/SettingsPage.tsx` and not yet exposed to end users of `web/` and `9-HuggingFace-Global/`.
+**Status:** the provider-side wiring already exists (`9-HuggingFace-Global/lib/providers/ollabridge.ts` + `chatWithFallback` short-circuits to OllaBridge when configured). What this document covers is the **user-facing pairing flow** in the live app, which today is only designed in `13-Medora-Family/frontend/components/pages/SettingsPage.tsx` and not yet exposed to end users of `web/` and `9-HuggingFace-Global/`.
 
-This is the most credible "privacy-first" lever MedOS has. With OllaBridge Cloud, the user runs Ollama on their own machine; their prompts never leave their network. The MedOS server only exchanges encrypted, authenticated requests with the user's bridge.
+This is the most credible "privacy-first" lever Medora has. With OllaBridge Cloud, the user runs Ollama on their own machine; their prompts never leave their network. The Medora server only exchanges encrypted, authenticated requests with the user's bridge.
 
 Read together with `PRIVACY.md` and `SAFETY.md` at the repo root.
 
@@ -16,17 +16,17 @@ The safety sandwich does **not** change. `preCheck()` and `postCheck()` run on e
 
 | Mode | Who configures | Scope |
 |---|---|---|
-| **Operator-wide** | The MedOS deployment owner sets `OLLABRIDGE_URL` in the server env | All requests on that deployment go through that bridge |
+| **Operator-wide** | The Medora deployment owner sets `OLLABRIDGE_URL` in the server env | All requests on that deployment go through that bridge |
 | **Per-user** *(new)* | Each user pairs from Settings → Linked devices → "Pair OllaBridge Cloud" | Only that user's requests route through their bridge |
 
 Operator-wide is what `chatWithFallback` already supports today. Per-user is what this doc plans.
 
 ## Per-user pairing flow
 
-1. User opens **Settings → Linked devices → Pair OllaBridge Cloud** in the live app (the design exists in `13-MedOS-Family/frontend/components/pages/SettingsPage.tsx`).
+1. User opens **Settings → Linked devices → Pair OllaBridge Cloud** in the live app (the design exists in `13-Medora-Family/frontend/components/pages/SettingsPage.tsx`).
 2. UI shows a QR code + a 9-character pair code (rotates every 5 minutes).
 3. On the user's machine, they install Ollama and run `ollabridge --pair`. The CLI scans the QR or accepts the pair code.
-4. Bridge and MedOS exchange a one-time short-lived secret. MedOS server stores a per-user record:
+4. Bridge and Medora exchange a one-time short-lived secret. Medora server stores a per-user record:
 
    ```ts
    ollabridge_pairings (
@@ -66,7 +66,7 @@ OLLABRIDGE_TOKEN=<bearer>
 Server env (per-user feature flag, to be added):
 
 ```bash
-MEDOS_PER_USER_OLLABRIDGE=true
+MEDORA_PER_USER_OLLABRIDGE=true
 ```
 
 When the flag is off, only operator-wide pairing is honoured. When on, the chat route also reads the per-user pairing record.
@@ -90,7 +90,7 @@ Bridges live on someone's home machine. They will go offline.
 
 The safety sandwich is unchanged:
 
-- `preCheck()` runs *before* the request leaves MedOS for the user's bridge. R5 emergencies are template-handled and never sent to any LLM, including the user's local one.
+- `preCheck()` runs *before* the request leaves Medora for the user's bridge. R5 emergencies are template-handled and never sent to any LLM, including the user's local one.
 - `postCheck()` runs on the bridge's response just like any other provider's. The deterministic post-filter rules apply identically.
 - Locale packs (`config/locales/*.medical.json`) are read server-side and used to compose the system prompt and the post-filter, irrespective of where the LLM physically runs.
 
@@ -103,18 +103,18 @@ A contributor implementing per-user pairing would touch:
 3. `9-HuggingFace-Global/lib/db.ts` — migration adding `ollabridge_pairings` table.
 4. `9-HuggingFace-Global/lib/ollabridge-pairing.ts` — service module: create pairing, load pairing, mark needs-reauth, revoke.
 5. `9-HuggingFace-Global/app/api/ollabridge/pair/route.ts` — API endpoints: start pairing (returns QR + pair code), confirm pairing, revoke.
-6. `web/` (and / or each app frontend) — Settings page → Linked devices → "Pair OllaBridge Cloud" UI. The MedOS Family frontend already has the design.
+6. `web/` (and / or each app frontend) — Settings page → Linked devices → "Pair OllaBridge Cloud" UI. The Medora Family frontend already has the design.
 7. CI: a smoke test that mocks a bridge and checks the routing precedence.
 
 ## What this document explicitly does NOT do
 
-- Promise that running Ollama is easy for everyone. It is a non-trivial install. The pairing flow assumes a technically comfortable user; the rest of MedOS continues to work for everyone else.
+- Promise that running Ollama is easy for everyone. It is a non-trivial install. The pairing flow assumes a technically comfortable user; the rest of Medora continues to work for everyone else.
 - Bypass the safety sandwich. There is no "trusted bridge" mode. Every request is gated by `preCheck()` and `postCheck()`.
 - Move medical regional data into the bridge. Locale packs stay server-side.
 
 ## Roadmap
 
-1. Land the per-user pairing schema + service + endpoints behind `MEDOS_PER_USER_OLLABRIDGE=false`.
+1. Land the per-user pairing schema + service + endpoints behind `MEDORA_PER_USER_OLLABRIDGE=false`.
 2. Expose the UI in `web/` Settings.
 3. Soft-launch with the flag off; flip on for opted-in users; collect failure-rate metrics (no PHI).
 4. Make per-user pairing available to all users once the failure path is well-tested.

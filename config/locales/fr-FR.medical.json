@@ -31,7 +31,7 @@
     "epinephrine":   ["Anapen", "Jext", "EpiPen"]
   },
   "disclaimer": {
-    "general": "MedOS fournit des informations générales sur la santé et ne remplace pas un avis, un diagnostic ou un traitement médical professionnel. Pour les décisions concernant votre santé, consultez un professionnel de santé habilité.",
+    "general": "Medora fournit des informations générales sur la santé et ne remplace pas un avis, un diagnostic ou un traitement médical professionnel. Pour les décisions concernant votre santé, consultez un professionnel de santé habilité.",
     "mental_health_crisis_addendum": "Si vous êtes en crise ou pensez à vous faire du mal, appelez immédiatement le 3114 (numéro national de prévention du suicide) ou le 15. Vous n'êtes pas seul."
   },
   "crisis_resources": [

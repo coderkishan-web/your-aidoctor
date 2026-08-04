@@ -1,4 +1,4 @@
-# 🏥 Road to #1 Medical Chatbot on HuggingFace — MedOS/MediBot
+# 🏥 Road to #1 Medical Chatbot on HuggingFace — Medora/MediBot
 
 > Strategy document and execution log for turning the MediBot HF Space into
 > the most-liked medical chatbot on HuggingFace, worldwide.

@@ -68,7 +68,7 @@ other knob is pulled from OllaBridge on first request and cached. Concretely:
 | Concern                          | v1 (today)                          | v2 (this design)                              |
 |----------------------------------|-------------------------------------|-----------------------------------------------|
 | Cloud endpoint                   | `OLLABRIDGE_URL` env                | `OLLABRIDGE_URL` env (only var that remains)  |
-| Cloud API key                    | `OLLABRIDGE_API_KEY` env + Admin UI | one-time **paired** on first boot; persisted to `/data/medos-config.json` (already supported by `lib/server-config.ts`) |
+| Cloud API key                    | `OLLABRIDGE_API_KEY` env + Admin UI | one-time **paired** on first boot; persisted to `/data/medora-config.json` (already supported by `lib/server-config.ts`) |
 | HF token                         | `HF_TOKEN` env + Admin UI           | **removed** — HF is reached only via the OllaBridge cloud, which owns the token in its own credential store |
 | Default model                    | `DEFAULT_MODEL` env + chat-route arg | **server-fixed** to `medibot-free-best`; the alias chain is owned by OllaBridge Admin |
 | Cost mode, temp, max tokens, RAG, red-flag triage | scattered code + flags | single policy object pulled from `GET /api/apps/medibot/policy`, cached 60 s |
@@ -338,7 +338,7 @@ Today `OLLABRIDGE_API_KEY` is set as an env var. v2 replaces that with a
 6. MediBot POSTs the code to OllaBridge `/admin/apps/pair/exchange`,
    gets back an `app_api_key`, persists it via `saveConfig({
    llm: { ollabridgeApiKey: ... } })` (the existing `lib/server-config`
-   mechanism, which already writes to /data/medos-config.json).
+   mechanism, which already writes to /data/medora-config.json).
 ```
 
 This is the same TV-style flow already used for device pairing
@@ -414,7 +414,7 @@ column for each chat turn (read from the X-OllaBridge-* response headers).
 ### Rotate the gateway key
 
 Pair again from the Admin UI — overwrites the existing
-`/data/medos-config.json` value. Old key is revoked on the OllaBridge
+`/data/medora-config.json` value. Old key is revoked on the OllaBridge
 side automatically.
 
 ### Emergency offline mode
@@ -691,7 +691,7 @@ When the chain genuinely cannot serve, the response should still be:
 {
   "type": "error",
   "code": "all_providers_unavailable",
-  "message": "MedOS LLM gateway is temporarily unreachable.",
+  "message": "Medora LLM gateway is temporarily unreachable.",
   "retry_after_seconds": 15
 }
 ```
@@ -745,7 +745,7 @@ HF_TOKEN=hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 In the HF Space UI: **Settings → Variables and secrets → New secret**.
 Both can also be set via Admin → Server in MediBot's own UI — the
-`loadConfig()` machinery persists them to `/data/medos-config.json` so
+`loadConfig()` machinery persists them to `/data/medora-config.json` so
 they survive container restarts.
 
 After setting either, the next `/api/chat` call should log:
@@ -824,7 +824,7 @@ v2 design above is what prevents the next recurrence.
 
 The integration is done when:
 
-1. A new MedOS Space deploys with `OLLABRIDGE_URL` and nothing else.
+1. A new Medora Space deploys with `OLLABRIDGE_URL` and nothing else.
 2. Operator pairs with OllaBridge in one click; key is persisted.
 3. End users never see model, provider, or key UI anywhere.
 4. The chat route refuses any client-supplied `model`/`provider` field

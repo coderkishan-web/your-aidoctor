@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-MedOS LLM Provider Health Check
+Medora LLM Provider Health Check
 
-Tests all models in the MedOS fallback chain against the HuggingFace
+Tests all models in the Medora fallback chain against the HuggingFace
 Inference Providers router. Reports status, latency, and availability.
 
 Usage:
@@ -25,7 +25,7 @@ except ImportError:
     sys.exit(1)
 
 
-# All models in the MedOS fallback chain (verified 2026-04-07)
+# All models in the Medora fallback chain (verified 2026-04-07)
 MODELS = [
     # Chat LLMs (used for medical chat)
     "meta-llama/Llama-3.3-70B-Instruct:sambanova",
@@ -83,7 +83,7 @@ def test_model(model: str, token: str, verbose: bool = False) -> dict:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="MedOS LLM Provider Health Check")
+    parser = argparse.ArgumentParser(description="Medora LLM Provider Health Check")
     parser.add_argument("--json", action="store_true", help="Output as JSON")
     parser.add_argument("--verbose", "-v", action="store_true", help="Show full error details")
     parser.add_argument("--token", default=os.environ.get("HF_TOKEN", ""), help="HuggingFace token")
@@ -95,7 +95,7 @@ def main():
         sys.exit(1)
 
     if not args.json:
-        print(f"\nMedOS LLM Health Check — Testing {len(MODELS)} models...\n")
+        print(f"\nMedora LLM Health Check — Testing {len(MODELS)} models...\n")
 
     # Test all models in parallel
     results = []

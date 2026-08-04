@@ -8,14 +8,14 @@ the generator reads to produce fine-tuning training data.
 | File | Purpose | Schema |
 |---|---|---|
 | `questions.jsonl` | Seed medical conversations (richer superset of `dataset/cases.jsonl`) | One JSON per line: `{ id, category, patient_profile, turns, expected_card_kinds, notes }` |
-| `knowledge_base.jsonl` | Clinical reference snippets MedOS cites (WHO / CDC / NHS / BNF) | One JSON per line: `{ id, topic, source, level, body, applies_to }` |
+| `knowledge_base.jsonl` | Clinical reference snippets Medora cites (WHO / CDC / NHS / BNF) | One JSON per line: `{ id, topic, source, level, body, applies_to }` |
 
 ## Pipeline (run via `make dataset`)
 
 ```
 sources/questions.jsonl   ──┐
-                            ├──► run_medos.py    →  generated/stage1-traces.jsonl
-sources/knowledge_base.jsonl ┤    (replays each Q through the live MedOS
+                            ├──► run_medora.py    →  generated/stage1-traces.jsonl
+sources/knowledge_base.jsonl ┤    (replays each Q through the live Medora
                             │     dev server, captures card output)
                             │
                             ├──► annotate_kb.py  →  generated/stage2-annotated.jsonl
@@ -33,7 +33,7 @@ question before it becomes training signal.
 ## Why this beats prompt-engineering ChatGPT
 
 The fine-tuned model **bakes in** the structural moats currently
-enforced by MedOS server-side:
+enforced by Medora server-side:
 
 - Card-format output (`[card:KIND]` markers)
 - Locale awareness (right emergency number per country)
@@ -42,6 +42,6 @@ enforced by MedOS server-side:
 - Profile gate for deep analysis
 - Doctor-summary structure
 
-After fine-tuning, the model alone — with no MedOS orchestration —
-should produce these patterns reliably. The MedOS server then becomes
+After fine-tuning, the model alone — with no Medora orchestration —
+should produce these patterns reliably. The Medora server then becomes
 a thin safety harness rather than a heavy orchestrator.

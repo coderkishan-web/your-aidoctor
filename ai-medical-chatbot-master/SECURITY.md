@@ -1,6 +1,6 @@
 # Security policy
 
-We take the security of MedOS — and the safety of its users — seriously. Because MedOS handles health-related input, **safety vulnerabilities are treated as security vulnerabilities** under the same coordinated-disclosure process.
+We take the security of Medora — and the safety of its users — seriously. Because Medora handles health-related input, **safety vulnerabilities are treated as security vulnerabilities** under the same coordinated-disclosure process.
 
 ## Reporting a vulnerability
 
@@ -13,7 +13,7 @@ In your report, include:
 
 - A clear description of the issue.
 - Reproduction steps and impact.
-- The MedOS surface (e.g., live chat, Medicine Scanner, MedOS Family, MedOS Connect).
+- The Medora surface (e.g., live chat, Medicine Scanner, Medora Family, Medora Connect).
 - Any logs, screenshots, or proofs-of-concept.
 - Whether you believe PHI / user data is at risk.
 
@@ -25,7 +25,7 @@ We will acknowledge receipt within **3 business days** and provide a response wi
 - Backend API routes under `9-HuggingFace-Global/app/api/`.
 - The Medicine Scanner service (`11-Medicine-Scanner/`).
 - The Nearby Care metaengine (`12-MetaEngine-Nearby/`).
-- The frontends shipped under each MedOS module (`13-MedOS-Family/frontend/`, `17-MedOS-Research/frontend/`).
+- The frontends shipped under each Medora module (`13-Medora-Family/frontend/`, `17-Medora-Research/frontend/`).
 - Authentication, session handling, password storage.
 - The safety sandwich (`9-HuggingFace-Global/lib/safety/`) — bypassing it is a vulnerability.
 - Information leakage in logs (PHI exposure).

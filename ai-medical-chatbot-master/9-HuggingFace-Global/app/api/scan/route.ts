@@ -90,7 +90,7 @@ export async function POST(req: Request) {
     );
   }
 
-  // Resolve provider config (env at boot, admin overrides via /data/medos-config.json).
+  // Resolve provider config (env at boot, admin overrides via /data/medora-config.json).
   const cfg = loadConfig();
   const token = cfg.llm.hfTokenInference;
   const scannerUrl = cfg.llm.scannerUrl;

@@ -1,14 +1,14 @@
 /**
- * MedOS Global - Service Worker
+ * Medora Global - Service Worker
  * Provides offline support via caching strategies:
  * 1. App Shell: cache-first (HTML, CSS, JS)
  * 2. API calls: network-first, fallback to cached FAQ
  * 3. Static assets: cache-first
  */
 
-const CACHE_NAME = 'medos-v1';
-const APP_SHELL_CACHE = 'medos-shell-v1';
-const FAQ_CACHE = 'medos-faq-v1';
+const CACHE_NAME = 'medora-v1';
+const APP_SHELL_CACHE = 'medora-shell-v1';
+const FAQ_CACHE = 'medora-faq-v1';
 
 const APP_SHELL_URLS = [
   '/',

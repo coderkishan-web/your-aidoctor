@@ -1,5 +1,5 @@
 /**
- * MedOS Rate Limiter — sliding-window in-memory rate limiting.
+ * Medora Rate Limiter — sliding-window in-memory rate limiting.
  *
  * Protects auth endpoints against brute-force attacks.
  * Uses IP-based tracking with configurable windows.

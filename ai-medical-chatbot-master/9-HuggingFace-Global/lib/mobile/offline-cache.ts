@@ -5,7 +5,7 @@
  * Manages the medical FAQ cache for offline access.
  */
 
-const CACHE_KEY = 'medos-offline-faq';
+const CACHE_KEY = 'medora-offline-faq';
 const CACHE_VERSION = 1;
 
 interface CachedData {

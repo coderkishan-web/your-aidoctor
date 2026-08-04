@@ -49,7 +49,7 @@ export async function GET(req: Request) {
 
   const db = getDb();
 
-  const dbPath = process.env.DB_PATH || '/data/medos.db';
+  const dbPath = process.env.DB_PATH || '/data/medora.db';
   const persistentDir = process.env.PERSISTENT_DIR || path.dirname(dbPath);
   const userVersion = db.pragma('user_version', { simple: true }) as number;
   const journalMode = db.pragma('journal_mode', { simple: true });

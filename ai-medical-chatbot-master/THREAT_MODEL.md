@@ -21,7 +21,7 @@ What we're protecting:
 ## Threat actors we care about
 
 - **Curious / opportunistic attacker** — looking for low-hanging XSS, CVE, exposed key.
-- **Prompt-injection attacker** — trying to make MedOS give unsafe medical advice or leak its system prompt.
+- **Prompt-injection attacker** — trying to make Medora give unsafe medical advice or leak its system prompt.
 - **Account-takeover attacker** — trying to brute-force, credential-stuff, or hijack sessions.
 - **Insider mistake** — a contributor who accidentally logs PHI, ships a regressed safety rule, or commits a key.
 - **Supply-chain attacker** — typosquatting / malicious package update affecting our deps.

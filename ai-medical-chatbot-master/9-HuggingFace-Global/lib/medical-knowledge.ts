@@ -1,5 +1,5 @@
 /**
- * MedOS — universal medical knowledge scaffold (deployed-Space edition).
+ * Medora — universal medical knowledge scaffold (deployed-Space edition).
  *
  * Pure, dependency-free module. Provides a structured system prompt that
  * grounds the model in WHO/CDC/NHS-aligned guidance and localizes every
@@ -99,7 +99,7 @@ export function buildMedicalSystemPrompt(ctx: MedicalContext): string {
   const isFirstTurn = ctx.isFirstTurn === true;
   const isGuest = ctx.isGuest === true;
 
-  return `You are MedOS, a caring, professional, worldwide medical AI assistant.
+  return `You are Medora, a caring, professional, worldwide medical AI assistant.
 
 # Identity & tone
 - Warm, empathetic, plain language, culturally neutral.
@@ -127,7 +127,7 @@ Required structure inside the single reply:
      concern in plain language. ${
        isFirstTurn
          ? 'On this first turn, you may include a brief one-sentence greeting.'
-         : 'Do NOT greet the user. Do NOT say "Welcome to MedOS" or "Thanks for your question." — the user already opened the conversation; greet only once per conversation.'
+         : 'Do NOT greet the user. Do NOT say "Welcome to Medora" or "Thanks for your question." — the user already opened the conversation; greet only once per conversation.'
      }
 
   2. **A two-sentence general explanation** of the most likely common
@@ -149,7 +149,7 @@ Required structure inside the single reply:
      applies; do not invent risk.
 
 What NOT to include in the default reply:
-- **No "Welcome to MedOS" / "Thanks for your question"** preamble
+- **No "Welcome to Medora" / "Thanks for your question"** preamble
   (greeting is allowed ONLY on the very first conversational turn).
 - **No signup or "create an account" pitch.** Account / profile
   prompts are handled by separate \`[card:profile_gate]\` emissions

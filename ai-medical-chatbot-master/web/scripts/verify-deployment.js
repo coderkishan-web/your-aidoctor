@@ -3,7 +3,7 @@
 /**
  * Vercel Deployment Verification Script
  *
- * This script checks if the MedOS web application is ready for Vercel deployment.
+ * This script checks if the Medora web application is ready for Vercel deployment.
  * It verifies:
  * - Required files exist
  * - Configuration is valid
@@ -62,7 +62,7 @@ const checks = {
     'app/page.tsx',
     'app/api/chat/route.ts',
     'app/api/verify/route.ts',
-    'components/MedOSApp.tsx',
+    'components/MedoraApp.tsx',
     'lib/providers/index.ts',
     'lib/types.ts',
   ],
@@ -91,7 +91,7 @@ const checks = {
 };
 
 async function runVerification() {
-  header('MedOS Vercel Deployment Verification');
+  header('Medora Vercel Deployment Verification');
 
   let passed = 0;
   let failed = 0;

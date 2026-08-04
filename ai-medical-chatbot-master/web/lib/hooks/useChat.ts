@@ -323,7 +323,7 @@ export function useChat() {
         // The assistant bubble is created LAZILY — only after the first real
         // token arrives. While the stream is still flowing nothing is shown
         // but the typing indicator (handled by the caller via isTyping). This
-        // keeps the Ask view clean: no empty MedOS card sitting above the
+        // keeps the Ask view clean: no empty Medora card sitting above the
         // typing dots during streaming.
 
         while (true) {

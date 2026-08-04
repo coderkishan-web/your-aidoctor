@@ -12,7 +12,7 @@ Output schema (one JSON per line):
       "messages": [
         { "role": "system",    "content": SYSTEM_PROMPT },
         { "role": "user",      "content": "I have pain in my lower back."},
-        { "role": "assistant", "content": "<the ideal MedOS card output>" }
+        { "role": "assistant", "content": "<the ideal Medora card output>" }
       ],
       "meta": {
         "category":    "simple-symptom",
@@ -23,7 +23,7 @@ Output schema (one JSON per line):
       }
     }
 
-The system prompt is the SAME prompt the production MedOS uses,
+The system prompt is the SAME prompt the production Medora uses,
 condensed for fine-tuning efficiency. The fine-tuned model sees this
 same system prompt at inference time and reproduces the card patterns.
 """
@@ -42,7 +42,7 @@ from pathlib import Path
 # from the conversation + patient context every turn. Deterministic code
 # at the application layer handles safety validation, schema enforcement,
 # action routing, and emergency escalation — see web/lib/medical-flow/.
-SYSTEM_PROMPT = """You are MedOS, a professional medical assistant. You run inside an AI-first clinical conversation engine. Reply in structured cards, not paragraphs.
+SYSTEM_PROMPT = """You are Medora, a professional medical assistant. You run inside an AI-first clinical conversation engine. Reply in structured cards, not paragraphs.
 
 Wire format — emit one or more cards using this marker syntax:
   [card:KIND]
@@ -147,7 +147,7 @@ S5. NEVER diagnose definitively. Use hedged language ("may be...",
 S6. Every guidance card MUST include a non-empty seek_care_if list and
     at least one source label in sources[] (e.g. "WHO", "CDC", "NHS").
 S7. NEVER replace emergency care. Every assistant turn (except greeting
-    and context_switch) must implicitly carry the disclaimer that MedOS
+    and context_switch) must implicitly carry the disclaimer that Medora
     does not diagnose — usually via the guidance card's sources chip
     or the doctor_summary footer.
 
@@ -228,7 +228,7 @@ def run_stage3(stage2_path: Path, output_path: Path) -> int:
                 running_history.append({"role": "user", "content": user_text_for_msg})
                 assistant_reply = t.get("assistant", "")
                 if not assistant_reply or assistant_reply.startswith("[error]"):
-                    # Skip turns the live MedOS replay failed on so we
+                    # Skip turns the live Medora replay failed on so we
                     # don't train the model on broken examples.
                     continue
                 ex = {

@@ -1,5 +1,5 @@
 /**
- * MedOS Family — types, helpers, and persisted store.
+ * Medora Family — types, helpers, and persisted store.
  *
  * The Family Health Tree is private to the device: members, records,
  * and consent flags live in localStorage under FAMILY_KEY. This keeps
@@ -11,7 +11,7 @@
  * tagged on every persisted blob so future migrations are mechanical.
  */
 
-export type MedOSMode = "standard" | "adult" | "child" | "family-admin";
+export type MedoraMode = "standard" | "adult" | "child" | "family-admin";
 
 export type FamilyRelationship =
   | "self"
@@ -34,7 +34,7 @@ export interface FamilyMember {
   id: string;
   displayName: string;
   relationship: FamilyRelationship;
-  mode: MedOSMode;
+  mode: MedoraMode;
   avatarEmoji?: string;
   consentStatus: FamilyConsentStatus;
   createdAt: string;
@@ -61,13 +61,13 @@ export interface MonthlyHealthRecord {
 export interface FamilyInvite {
   code: string;
   memberId: string;
-  mode: MedOSMode;
+  mode: MedoraMode;
   expiresAt: string;
 }
 
 export interface FamilyState {
   schemaVersion: number;
-  mode: MedOSMode;
+  mode: MedoraMode;
   members: FamilyMember[];
   records: MonthlyHealthRecord[];
   currentMemberId: string | null;

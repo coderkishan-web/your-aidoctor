@@ -1,11 +1,11 @@
-# Baseline 2026-05-25 — Batch 5 (MedOS-only)
+# Baseline 2026-05-25 — Batch 5 (Medora-only)
 
 First end-to-end run after Batch 5 shipped (gap fixes: limited_guidance +
 emergency cards, medication-aware profile_gate, deep_analysis regex fix).
 
 ## Run config
 - Cases: 13 (dataset/cases.jsonl)
-- System: MedOS only (--skip-chatgpt)
+- System: Medora only (--skip-chatgpt)
 - Deployment: localhost:3041 dev server
 - OllaBridge: ob_-rEI…7I (production cloud, cloud-primary routing profile)
 - Date: 20260525T175754Z
@@ -18,12 +18,12 @@ emergency cards, medication-aware profile_gate, deep_analysis regex fix).
 - Auditable scores per (case × evaluator) — see results CSV
 
 ## How to compare future runs
-1. Run `make benchmark` (or `make medos-only`)
+1. Run `make benchmark` (or `make medora-only`)
 2. Copy out/results.csv here with a fresh timestamp
 3. Diff aggregates with:
    ```python
    import pandas as pd
-   a = pd.read_csv('baselines/2026-05-25-batch5/results-medos-only-20260525T175754Z.csv')
+   a = pd.read_csv('baselines/2026-05-25-batch5/results-medora-only-20260525T175754Z.csv')
    b = pd.read_csv('out/results.csv')
    delta = (b.groupby('evaluator').score.mean() - a.groupby('evaluator').score.mean()).round(3)
    print(delta.sort_values())

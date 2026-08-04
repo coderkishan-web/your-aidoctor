@@ -20,7 +20,7 @@ export interface Notification {
   urgent: boolean;
 }
 
-const DISMISSED_KEY = "medos_dismissed_notifications";
+const DISMISSED_KEY = "medora_dismissed_notifications";
 
 function loadDismissed(): Set<string> {
   try {

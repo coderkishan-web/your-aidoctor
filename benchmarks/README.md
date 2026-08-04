@@ -1,7 +1,7 @@
-# MedOS Benchmark Suite
+# Medora Benchmark Suite
 
 A small Python harness that replays the same medical conversations
-against **MedOS** (our chatbot) and **ChatGPT** (the OpenAI baseline),
+against **Medora** (our chatbot) and **ChatGPT** (the OpenAI baseline),
 scores every reply on safety/locale/allergy/brevity/personalization,
 and produces a marketing-ready HTML dashboard.
 
@@ -10,8 +10,8 @@ benchmarks/
 ├── run.py                      # entry: run the benchmark, write CSV
 ├── build_dashboard.py          # entry: CSV → HTML dashboard
 ├── dataset/cases.jsonl         # the scenarios under test
-├── medos_bench/
-│   ├── clients/                # MedOS + OpenAI client adapters
+├── medora_bench/
+│   ├── clients/                # Medora + OpenAI client adapters
 │   ├── evaluators/             # deterministic scoring rules
 │   ├── runner.py               # parallel orchestrator
 │   └── dashboard.py            # Plotly + Jinja-style HTML builder
@@ -20,14 +20,14 @@ benchmarks/
 
 ## Why this exists
 
-Without a benchmark, every "MedOS is better" claim is opinion. With
+Without a benchmark, every "Medora is better" claim is opinion. With
 one, we have a measurable, reproducible artifact that proves where
-MedOS structurally beats a strong general baseline — and where it
+Medora structurally beats a strong general baseline — and where it
 doesn't (so we know what to improve).
 
 The categories under test were chosen for **structural** advantage:
 
-| Category | What we measure | Why MedOS should win |
+| Category | What we measure | Why Medora should win |
 |---|---|---|
 | `simple-symptom` | Brevity + 1–3 follow-up questions | WhatsApp bubble contract caps length & questions |
 | `red-flag` | Did it escalate to emergency? | Deterministic `preCheck()` runs before the LLM |
@@ -44,7 +44,7 @@ The categories under test were chosen for **structural** advantage:
 cd benchmarks
 pip install -r requirements.txt
 cp .env.example .env
-# edit .env: set MEDOS_BASE_URL and OPENAI_API_KEY
+# edit .env: set MEDORA_BASE_URL and OPENAI_API_KEY
 ```
 
 ## Run
@@ -53,7 +53,7 @@ cp .env.example .env
 # Full A/B against the dataset:
 python run.py
 
-# MedOS-only smoke test (no OpenAI cost):
+# Medora-only smoke test (no OpenAI cost):
 python run.py --skip-chatgpt
 
 # Custom dataset:
@@ -79,8 +79,8 @@ latency boxplot, and a failure-detail table for transparency.
 For a deck-ready filename:
 
 ```bash
-python build_dashboard.py --title "MedOS Q1 2026 Medical Benchmark" \
-                         --output out/medos-q1-2026.html
+python build_dashboard.py --title "Medora Q1 2026 Medical Benchmark" \
+                         --output out/medora-q1-2026.html
 ```
 
 ## Adding cases
@@ -127,7 +127,7 @@ its check is unset, so unscored categories never skew the aggregates.
   for clinical claims.
 - **Not an accuracy benchmark.** LLM-as-judge accuracy scoring is a
   future addition. Today we measure UX & safety surface — the
-  dimensions where MedOS holds architectural advantages over a
+  dimensions where Medora holds architectural advantages over a
   general chatbot.
 - **Not a regression test.** Some checks are necessarily fuzzy
   (LLM outputs vary turn to turn). Treat run-to-run variance as

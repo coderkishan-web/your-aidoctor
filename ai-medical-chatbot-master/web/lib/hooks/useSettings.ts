@@ -35,21 +35,21 @@ export function useSettings() {
 
   // Load from localStorage on mount
   useEffect(() => {
-    const savedPreset = localStorage.getItem("medos_preset") as Preset;
-    const savedProvider = localStorage.getItem("medos_provider") as Provider;
-    const savedApiKey = localStorage.getItem("medos_api_key");
-    const savedHfToken = localStorage.getItem("medos_hf_token");
-    const savedAdvanced = localStorage.getItem("medos_advanced_mode");
-    const savedLanguage = localStorage.getItem("medos_language") as SupportedLanguage;
-    const savedCountry = localStorage.getItem("medos_country");
-    const savedVoice = localStorage.getItem("medos_voice");
-    const savedReadAloud = localStorage.getItem("medos_read_aloud");
-    const savedTextSize = localStorage.getItem("medos_text_size") as TextSize;
-    const savedSimple = localStorage.getItem("medos_simple_language");
-    const savedDark = localStorage.getItem("medos_dark_mode");
-    const savedWelcome = localStorage.getItem("medos_welcome_completed");
-    const savedEmergency = localStorage.getItem("medos_emergency_number");
-    const savedExplicit = localStorage.getItem("medos_explicit_language");
+    const savedPreset = localStorage.getItem("medora_preset") as Preset;
+    const savedProvider = localStorage.getItem("medora_provider") as Provider;
+    const savedApiKey = localStorage.getItem("medora_api_key");
+    const savedHfToken = localStorage.getItem("medora_hf_token");
+    const savedAdvanced = localStorage.getItem("medora_advanced_mode");
+    const savedLanguage = localStorage.getItem("medora_language") as SupportedLanguage;
+    const savedCountry = localStorage.getItem("medora_country");
+    const savedVoice = localStorage.getItem("medora_voice");
+    const savedReadAloud = localStorage.getItem("medora_read_aloud");
+    const savedTextSize = localStorage.getItem("medora_text_size") as TextSize;
+    const savedSimple = localStorage.getItem("medora_simple_language");
+    const savedDark = localStorage.getItem("medora_dark_mode");
+    const savedWelcome = localStorage.getItem("medora_welcome_completed");
+    const savedEmergency = localStorage.getItem("medora_emergency_number");
+    const savedExplicit = localStorage.getItem("medora_explicit_language");
 
     if (savedPreset) setPreset(savedPreset);
     if (savedProvider) setProvider(savedProvider);
@@ -89,79 +89,79 @@ export function useSettings() {
   // Save all settings to localStorage when they change
   useEffect(() => {
     if (!isLoaded) return;
-    localStorage.setItem("medos_preset", preset);
+    localStorage.setItem("medora_preset", preset);
   }, [preset, isLoaded]);
 
   useEffect(() => {
     if (!isLoaded) return;
-    localStorage.setItem("medos_provider", provider);
+    localStorage.setItem("medora_provider", provider);
   }, [provider, isLoaded]);
 
   useEffect(() => {
     if (!isLoaded) return;
-    localStorage.setItem("medos_api_key", apiKey);
+    localStorage.setItem("medora_api_key", apiKey);
   }, [apiKey, isLoaded]);
 
   useEffect(() => {
     if (!isLoaded) return;
     if (hfToken) {
-      localStorage.setItem("medos_hf_token", hfToken);
+      localStorage.setItem("medora_hf_token", hfToken);
     } else {
-      localStorage.removeItem("medos_hf_token");
+      localStorage.removeItem("medora_hf_token");
     }
   }, [hfToken, isLoaded]);
 
   useEffect(() => {
     if (!isLoaded) return;
-    localStorage.setItem("medos_advanced_mode", String(advancedMode));
+    localStorage.setItem("medora_advanced_mode", String(advancedMode));
   }, [advancedMode, isLoaded]);
 
   useEffect(() => {
     if (!isLoaded) return;
-    localStorage.setItem("medos_language", language);
+    localStorage.setItem("medora_language", language);
   }, [language, isLoaded]);
 
   useEffect(() => {
     if (!isLoaded) return;
-    localStorage.setItem("medos_country", country);
+    localStorage.setItem("medora_country", country);
     const num = getEmergencyNumber(country);
     setEmergencyNumber(num);
-    localStorage.setItem("medos_emergency_number", num);
+    localStorage.setItem("medora_emergency_number", num);
   }, [country, isLoaded]);
 
   useEffect(() => {
     if (!isLoaded) return;
-    localStorage.setItem("medos_voice", String(voiceEnabled));
+    localStorage.setItem("medora_voice", String(voiceEnabled));
   }, [voiceEnabled, isLoaded]);
 
   useEffect(() => {
     if (!isLoaded) return;
-    localStorage.setItem("medos_read_aloud", String(readAloud));
+    localStorage.setItem("medora_read_aloud", String(readAloud));
   }, [readAloud, isLoaded]);
 
   useEffect(() => {
     if (!isLoaded) return;
-    localStorage.setItem("medos_text_size", textSize);
+    localStorage.setItem("medora_text_size", textSize);
   }, [textSize, isLoaded]);
 
   useEffect(() => {
     if (!isLoaded) return;
-    localStorage.setItem("medos_simple_language", String(simpleLanguage));
+    localStorage.setItem("medora_simple_language", String(simpleLanguage));
   }, [simpleLanguage, isLoaded]);
 
   useEffect(() => {
     if (!isLoaded) return;
-    localStorage.setItem("medos_dark_mode", String(darkMode));
+    localStorage.setItem("medora_dark_mode", String(darkMode));
   }, [darkMode, isLoaded]);
 
   useEffect(() => {
     if (!isLoaded) return;
-    localStorage.setItem("medos_welcome_completed", String(welcomeCompleted));
+    localStorage.setItem("medora_welcome_completed", String(welcomeCompleted));
   }, [welcomeCompleted, isLoaded]);
 
   useEffect(() => {
     if (!isLoaded) return;
-    localStorage.setItem("medos_explicit_language", String(explicitLanguage));
+    localStorage.setItem("medora_explicit_language", String(explicitLanguage));
   }, [explicitLanguage, isLoaded]);
 
   /**
@@ -195,12 +195,12 @@ export function useSettings() {
 
   const clearApiKey = () => {
     setApiKey("");
-    localStorage.removeItem("medos_api_key");
+    localStorage.removeItem("medora_api_key");
   };
 
   const clearHfToken = () => {
     setHfToken("");
-    localStorage.removeItem("medos_hf_token");
+    localStorage.removeItem("medora_hf_token");
   };
 
   return {

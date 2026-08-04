@@ -1,6 +1,6 @@
 # Contributors
 
-MedOS is the work of many hands. This file is the public record of people in named roles.
+Medora is the work of many hands. This file is the public record of people in named roles.
 
 If you've contributed and aren't listed, please open a PR — we want to credit you.
 

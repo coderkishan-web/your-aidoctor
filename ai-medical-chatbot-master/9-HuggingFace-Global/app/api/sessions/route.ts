@@ -4,14 +4,14 @@ import { join } from 'path';
 
 /**
  * Server-side session counter.
- * Stores count in /tmp/medos-data/sessions.json (persists across requests, resets on container restart).
+ * Stores count in /tmp/medora-data/sessions.json (persists across requests, resets on container restart).
  * On HF Spaces with persistent storage, use /data/ instead of /tmp/.
  *
  * GET  /api/sessions → returns { count: number }
  * POST /api/sessions → increments and returns { count: number }
  */
 
-const DATA_DIR = process.env.PERSISTENT_DIR || '/tmp/medos-data';
+const DATA_DIR = process.env.PERSISTENT_DIR || '/tmp/medora-data';
 const COUNTER_FILE = join(DATA_DIR, 'sessions.json');
 const BASE_COUNT = 423000; // Historical base from before server-side tracking
 

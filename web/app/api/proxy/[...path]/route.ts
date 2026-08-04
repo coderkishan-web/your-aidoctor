@@ -55,7 +55,7 @@ async function handler(
   // Auth token: prefer the httpOnly cookie set on login; fall back to
   // an explicit Authorization header (useful for direct API callers
   // and the auth/me probe which doesn't have the cookie on first load).
-  const cookieToken = req.cookies.get('medos_token')?.value;
+  const cookieToken = req.cookies.get('medora_token')?.value;
   const explicitAuth = req.headers.get('authorization');
   if (cookieToken) {
     headers.set('Authorization', `Bearer ${cookieToken}`);

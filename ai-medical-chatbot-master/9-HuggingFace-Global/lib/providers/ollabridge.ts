@@ -71,7 +71,7 @@ export function isOllaBridgeConfigured(): boolean {
 // Circuit breaker
 // ─────────────────────────────────────────────────────────────────────
 // OllaBridge Cloud occasionally hangs for ~2 minutes when its routing
-// chain hits a stalled `local-ollama` backend. On each such turn MedOS
+// chain hits a stalled `local-ollama` backend. On each such turn Medora
 // would pay the full 45 s OllaBridge timeout BEFORE falling through to
 // HF — compounding badly across rapid retries.
 //

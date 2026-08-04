@@ -9,18 +9,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "MedOS — your worldwide medical assistant",
+  title: "Medora — your worldwide medical assistant",
   description:
-    "Tell MedOS what's bothering you. Instant, private, multilingual health guidance aligned with WHO, CDC, and NHS.",
+    "Tell Medora what's bothering you. Instant, private, multilingual health guidance aligned with WHO, CDC, and NHS.",
   keywords: ["medical AI", "healthcare", "chatbot", "telemedicine", "WHO", "CDC"],
-  authors: [{ name: "MedOS Team" }],
+  authors: [{ name: "Medora Team" }],
   manifest: "/manifest.webmanifest",
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
     shortcut: "/favicon.svg",
   },
   openGraph: {
-    title: "MedOS — your worldwide medical assistant",
+    title: "Medora — your worldwide medical assistant",
     description:
       "Private, multilingual health guidance aligned with WHO, CDC, and NHS — available 24/7.",
     type: "website",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   appleWebApp: {
     capable: true,
-    title: "MedOS",
+    title: "Medora",
   },
   other: {
     "mobile-web-app-capable": "yes",
@@ -53,7 +53,7 @@ export const viewport: Viewport = {
 const themeBootstrap = `
 (function() {
   try {
-    var stored = localStorage.getItem('medos_theme');
+    var stored = localStorage.getItem('medora_theme');
     var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     var isDark = stored === 'dark' || (stored === 'system' && prefersDark);
     if (isDark) document.documentElement.classList.add('dark');

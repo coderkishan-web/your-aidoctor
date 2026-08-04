@@ -31,7 +31,7 @@ export const REFUSALS: Record<RefusalCategory, RefusalSpec> = {
     code: 'diagnosis_definitive',
     label: 'Definitive diagnosis',
     description:
-      'A statement that asserts the user has condition X. MedOS describes possibilities, ' +
+      'A statement that asserts the user has condition X. Medora describes possibilities, ' +
       'not diagnoses.',
     saferRewrite:
       "I can't tell you what condition you have — that requires a clinician. " +
@@ -81,7 +81,7 @@ export const REFUSALS: Record<RefusalCategory, RefusalSpec> = {
     label: 'Medical advice for a minor without guardian framing',
     description:
       'Advice tailored to a specific minor when the requester is not in a guardian role. ' +
-      'MedOS describes information generally and routes to a guardian-managed surface.',
+      'Medora describes information generally and routes to a guardian-managed surface.',
     saferRewrite:
       "For decisions about a child's health, a parent, legal guardian, or pediatrician should " +
       'be involved. I can share general information; for specific guidance please contact a clinician.',

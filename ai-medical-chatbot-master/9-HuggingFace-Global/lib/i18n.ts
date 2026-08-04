@@ -1,4 +1,4 @@
-// i18n - Internationalization support for MedOS
+// i18n - Internationalization support for Medora
 // Provides translations and language/region detection
 
 export type SupportedLanguage =
@@ -440,7 +440,7 @@ export const translations: Record<string, Record<string, string>> = {
     settings_advanced: "Advanced technical settings",
     settings_advanced_warning: "Advanced settings are for technical users only.",
     settings_hide_advanced: "Hide advanced settings",
-    settings_managed_mode: "Use MedOS managed mode",
+    settings_managed_mode: "Use Medora managed mode",
     settings_managed_desc: "Best for most people. No setup needed.",
     settings_provider: "AI Provider",
     settings_api_key: "API Key",
@@ -641,10 +641,10 @@ export const translations: Record<string, Record<string, string>> = {
 
     // History
     hist_title: "Conversation History",
-    hist_subtitle: "Your past MedOS sessions, saved locally",
+    hist_subtitle: "Your past Medora sessions, saved locally",
     hist_clear: "Clear all",
     hist_none: "No conversations yet",
-    hist_none_desc: "Your past MedOS sessions will appear here automatically",
+    hist_none_desc: "Your past Medora sessions will appear here automatically",
 
     // Follow-up chips
     followup_label: "Follow up",
@@ -753,7 +753,7 @@ export const translations: Record<string, Record<string, string>> = {
     symptom_next: "Siguiente",
     symptom_back: "Atrás",
     symptom_submit: "Obtener orientación",
-    settings_managed_mode: "Usar modo administrado MedOS",
+    settings_managed_mode: "Usar modo administrado Medora",
     settings_managed_desc: "Mejor para la mayoría. Sin configuración necesaria.",
     settings_provider: "Proveedor de IA",
     settings_api_key: "Clave API",
@@ -853,7 +853,7 @@ export const translations: Record<string, Record<string, string>> = {
     rec_none_desc: "Agrega resultados de laboratorio, recetas y notas",
     rec_privacy: "Los registros se guardan solo en tu navegador. Nadie más puede verlos.",
     hist_title: "Historial de conversaciones",
-    hist_subtitle: "Tus sesiones pasadas con MedOS",
+    hist_subtitle: "Tus sesiones pasadas con Medora",
     hist_clear: "Borrar todo",
     hist_none: "Sin conversaciones aún",
     hist_none_desc: "Tus sesiones pasadas aparecerán aquí automáticamente",

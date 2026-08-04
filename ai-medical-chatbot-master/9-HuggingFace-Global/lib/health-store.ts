@@ -1,10 +1,10 @@
 /**
- * MedOS Health Store — client-side health data persistence.
+ * Medora Health Store — client-side health data persistence.
  *
  * All data is stored in localStorage as JSON, keyed per-user via
  * `scopedKey()` from ./storage-namespace (see that file for why). An
- * authenticated user reads/writes `medos:u:<userId>:<suffix>`; an
- * anonymous visitor reads/writes `medos:anon:<uuid>:<suffix>` in
+ * authenticated user reads/writes `medora:u:<userId>:<suffix>`; an
+ * anonymous visitor reads/writes `medora:anon:<uuid>:<suffix>` in
  * sessionStorage only. Switching accounts on a shared browser wipes the
  * previous user's scoped keys, so one patient can never see another's EHR.
  *
@@ -670,7 +670,7 @@ export function downloadHealthData(): void {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `medos-health-data-${new Date().toISOString().slice(0, 10)}.json`;
+  a.download = `medora-health-data-${new Date().toISOString().slice(0, 10)}.json`;
   a.click();
   URL.revokeObjectURL(url);
 }

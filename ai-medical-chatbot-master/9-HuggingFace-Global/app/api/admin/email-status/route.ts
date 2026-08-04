@@ -24,7 +24,7 @@ export async function GET(req: Request) {
 
   return NextResponse.json({
     transport: emailTransportName(),
-    from: process.env.FROM_EMAIL || '(default: MedOS <onboarding@resend.dev>)',
+    from: process.env.FROM_EMAIL || '(default: Medora <onboarding@resend.dev>)',
     appUrl: process.env.APP_URL || '(default: https://kishan-medibot.hf.space)',
   });
 }

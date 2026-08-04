@@ -1,4 +1,4 @@
-# MedOS - Enterprise Medical AI Chatbot
+# Medora - Enterprise Medical AI Chatbot
 
 A production-ready, enterprise-grade medical AI assistant built with Next.js 14, featuring multi-provider support, real-time streaming, and a beautiful patient-centric UI.
 
@@ -107,7 +107,7 @@ web/
 │   │   ├── RecordsView.tsx     # Health records
 │   │   ├── ScheduleView.tsx    # Calendar & tasks
 │   │   └── HistoryView.tsx     # Consultation history
-│   └── MedOSApp.tsx            # Main app component
+│   └── MedoraApp.tsx            # Main app component
 ├── lib/
 │   ├── providers/
 │   │   ├── openai.ts           # OpenAI integration

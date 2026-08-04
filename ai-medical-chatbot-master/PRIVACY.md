@@ -1,10 +1,10 @@
 # Privacy
 
-MedOS is built on a **privacy-first** posture: we want to be the medical assistant your phone trusts, not the one your phone snitches to.
+Medora is built on a **privacy-first** posture: we want to be the medical assistant your phone trusts, not the one your phone snitches to.
 
 This document is a public, plain-language **DPIA-style summary**. It is not a legal contract; it is the source of truth that the codebase, the README, and the privacy policy must remain consistent with. If you find a discrepancy, please open an issue.
 
-## What MedOS collects by default
+## What Medora collects by default
 
 Across the live chatbot (`web/`, `9-HuggingFace-Global/`) and the additive design layers, the **default** data posture is:
 
@@ -16,16 +16,16 @@ Across the live chatbot (`web/`, `9-HuggingFace-Global/`) and the additive desig
 | Auth (when used) | Email, password hash, last login | To support optional account features |
 | Health Tracker | Vitals, medicines, appointments — **stored locally on the device** by default | Local-first; user controls export/sync |
 | Medicine Scanner | The image the user submits, only for the duration of the request | Returned as structured JSON; the image is not retained |
-| MedOS Family / Connect / Classify / Pathogen / Research | See per-module privacy docs in their `*/04-security/` or `*/07-safety/` folders |
+| Medora Family / Connect / Classify / Pathogen / Research | See per-module privacy docs in their `*/04-security/` or `*/07-safety/` folders |
 
-## What MedOS does *not* collect
+## What Medora does *not* collect
 
 - **No advertising trackers.** Ever.
 - **No third-party analytics on health content.** No Google Analytics on chat pages, no pixel tracking.
 - **No raw chat content in audit logs.** The audit subsystem stores metadata only (risk class, rule fires, request id, model version, latency). See `9-HuggingFace-Global/lib/safety/audit.ts`.
 - **No symptom data sold or shared.** There is no commercial data path.
-- **No biometric data unless the user explicitly attaches it** (e.g., Withings sync via the optional MedOS Connect module, where the user OAuth-pairs their account).
-- **No data from minors collected without a guardian-managed flow** (see `13-MedOS-Family`).
+- **No biometric data unless the user explicitly attaches it** (e.g., Withings sync via the optional Medora Connect module, where the user OAuth-pairs their account).
+- **No data from minors collected without a guardian-managed flow** (see `13-Medora-Family`).
 
 ## "Zero data stored" — what we actually mean
 
@@ -74,9 +74,9 @@ The live chatbot routes prompts to one or more LLM providers depending on availa
 | Gemini API | Optional fallback | Provider-managed |
 | OpenStreetMap (via 12-MetaEngine-Nearby) | Nearby pharmacies / doctors | Public |
 
-If you are deploying MedOS yourself, you choose your providers and you control your data flow. The repo's design lets you turn providers off via env var.
+If you are deploying Medora yourself, you choose your providers and you control your data flow. The repo's design lets you turn providers off via env var.
 
-For privacy-conscious users, the **OllaBridge Cloud** pairing flow (designed in MedOS Family Settings, plumbed into the live app in Phase 2B) lets the user run a local Ollama instance and route their chat to it — so prompts never leave their machine.
+For privacy-conscious users, the **OllaBridge Cloud** pairing flow (designed in Medora Family Settings, plumbed into the live app in Phase 2B) lets the user run a local Ollama instance and route their chat to it — so prompts never leave their machine.
 
 ## User rights
 
@@ -92,14 +92,14 @@ These rights are exercised through the contact channel in [`SECURITY.md`](./SECU
 
 ## Children
 
-MedOS is not designed for unsupervised use by children. The MedOS Family layer (see `13-MedOS-Family/`) explicitly designs guardian-managed profiles, transfer-at-18 rules, and consent boundaries.
+Medora is not designed for unsupervised use by children. The Medora Family layer (see `13-Medora-Family/`) explicitly designs guardian-managed profiles, transfer-at-18 rules, and consent boundaries.
 
 ## Cross-references
 
-- `13-MedOS-Family/08-security/PRIVACY_AND_SAFETY.md` — family + consent model.
-- `14-MedOS-Connect/04-security/OAUTH_AND_PRIVACY.md` — OAuth token handling and audit.
-- `15-MedOS-Classify/07-safety/SAFETY_AND_COMPLIANCE.md` — clinical-classifier privacy stance.
-- `16-MedOS-Pathogen/07-safety/SAFETY_AND_COMPLIANCE.md` — DICOM PHI strip + license posture.
-- `17-MedOS-Research/09-safety/RESEARCH_SAFETY_AND_GOVERNANCE.md` — research-only data posture.
+- `13-Medora-Family/08-security/PRIVACY_AND_SAFETY.md` — family + consent model.
+- `14-Medora-Connect/04-security/OAUTH_AND_PRIVACY.md` — OAuth token handling and audit.
+- `15-Medora-Classify/07-safety/SAFETY_AND_COMPLIANCE.md` — clinical-classifier privacy stance.
+- `16-Medora-Pathogen/07-safety/SAFETY_AND_COMPLIANCE.md` — DICOM PHI strip + license posture.
+- `17-Medora-Research/09-safety/RESEARCH_SAFETY_AND_GOVERNANCE.md` — research-only data posture.
 - `THREAT_MODEL.md` — what we're defending against.
 - `SECURITY.md` — how to reach us.

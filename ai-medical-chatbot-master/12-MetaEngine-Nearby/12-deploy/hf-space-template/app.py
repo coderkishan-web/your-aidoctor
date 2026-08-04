@@ -1,5 +1,5 @@
 """
-MedOS Nearby Finder — HuggingFace Space (Docker SDK)
+Medora Nearby Finder — HuggingFace Space (Docker SDK)
 
 Find nearby pharmacies and doctors using OpenStreetMap.
 Gradio UI at / + REST API at /api/*.
@@ -16,7 +16,7 @@ import gradio as gr
 
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
 NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
-USER_AGENT = "medos-nearby-finder/1.0"
+USER_AGENT = "medora-nearby-finder/1.0"
 
 
 def haversine_m(lat1, lon1, lat2, lon2):
@@ -116,11 +116,11 @@ def search_ui(location_or_lat, lon_str, radius_m, entity_type, limit):
 # ============================================================
 
 with gr.Blocks(
-    title="MedOS Nearby Finder",
+    title="Medora Nearby Finder",
     theme=gr.themes.Soft(primary_hue="blue", secondary_hue="teal"),
     css="footer { display: none !important; }",
 ) as demo:
-    gr.Markdown("# MedOS Nearby Finder\nFind nearby **pharmacies** and **doctors** using OpenStreetMap data.\n\n**API:** `POST /api/search` with `{lat, lon, radius_m, entity_type, limit}`")
+    gr.Markdown("# Medora Nearby Finder\nFind nearby **pharmacies** and **doctors** using OpenStreetMap data.\n\n**API:** `POST /api/search` with `{lat, lon, radius_m, entity_type, limit}`")
 
     with gr.Row():
         with gr.Column(scale=1):

@@ -6,12 +6,12 @@ import { SYMPTOMS } from '@/lib/symptoms';
 const SITE_URL = 'https://kishan-medibot.hf.space';
 
 export const metadata: Metadata = {
-  title: 'Symptom guides — free, WHO-aligned | MedOS',
+  title: 'Symptom guides — free, WHO-aligned | Medora',
   description:
     'Browse evidence-based symptom guides: causes, safe self-care, red flags, and when to seek care. Free, multilingual, and aligned with WHO, CDC, and NHS.',
   alternates: { canonical: `${SITE_URL}/symptoms` },
   openGraph: {
-    title: 'Symptom guides — free, WHO-aligned | MedOS',
+    title: 'Symptom guides — free, WHO-aligned | Medora',
     description:
       'Browse evidence-based symptom guides: causes, safe self-care, red flags, and when to seek care.',
     url: `${SITE_URL}/symptoms`,
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 /**
  * Symptom catalog index. Static, cacheable, zero JS-on-load cost.
  * Works as a landing hub from organic search queries like
- * "medos symptoms" or "symptom checker".
+ * "medora symptoms" or "symptom checker".
  */
 export default function SymptomsIndexPage() {
   return (
@@ -76,7 +76,7 @@ export default function SymptomsIndexPage() {
             href="/"
             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-br from-blue-500 to-teal-500 text-white font-bold hover:brightness-110 transition-all shadow-lg shadow-blue-500/30"
           >
-            Open the live MedOS assistant
+            Open the live Medora assistant
             <ChevronRight size={18} />
           </Link>
         </div>

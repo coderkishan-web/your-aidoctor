@@ -14,14 +14,14 @@ import type {
 } from "@/lib/medical-flow/types";
 
 /**
- * ProfileGateCard — the structural moat that separates MedOS from
+ * ProfileGateCard — the structural moat that separates Medora from
  * ChatGPT.
  *
  * Fired by the server when the user asks for deep analysis but no
  * Health Profile is on file. The card is phrased as a medical-safety
  * requirement, never as a marketing CTA: the user understands they
  * are not being upsold — they are being asked to provide the context
- * MedOS needs to be safe.
+ * Medora needs to be safe.
  *
  * Four buttons cover every reasonable path out:
  *   - Complete Health Profile  → opens the EHR wizard

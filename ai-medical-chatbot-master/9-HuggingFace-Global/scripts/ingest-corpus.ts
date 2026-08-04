@@ -6,15 +6,15 @@
  *
  * Run from 9-HuggingFace-Global/ (tsx executes TypeScript directly):
  *
- *   DB_PATH=./medos.dev.db HF_TOKEN_INFERENCE=hf_xxx \
+ *   DB_PATH=./medora.dev.db HF_TOKEN_INFERENCE=hf_xxx \
  *     npx tsx scripts/ingest-corpus.ts
  *
  * On the Space itself, prefer POST /api/admin/ingest (see
  * app/api/admin/ingest/route.ts) so the index is written to the same
- * persistent /data/medos.db the running server uses.
+ * persistent /data/medora.db the running server uses.
  *
  * Env:
- *   DB_PATH               SQLite path (default /data/medos.db)
+ *   DB_PATH               SQLite path (default /data/medora.db)
  *   HF_TOKEN_INFERENCE    or HF_TOKEN — needed for embeddings
  *   RAG_EMBED_MODEL       embedding model (default multilingual-e5-base)
  *   CORPUS_DIR            corpus dir (default ./data/corpus)

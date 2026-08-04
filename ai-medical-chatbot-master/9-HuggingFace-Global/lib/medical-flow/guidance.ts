@@ -11,7 +11,7 @@
  * routine / urgent / emergency), a why-clause, action lists, and the
  * red flags to watch for. Deterministic — same inputs always produce
  * the same recommendation. This is intentional for medico-legal
- * defensibility: any reviewer can trace exactly why MedOS told the
+ * defensibility: any reviewer can trace exactly why Medora told the
  * user what it did.
  *
  * The LLM is NOT called here. Phase-2 may augment guidance with a
@@ -54,7 +54,7 @@ export function classifyCareLevel(
     // Headache flow escalates harder — thunderclap / worst-of-life is
     // an emergency, not "urgent care today".
     if (flow.safety.on_positive === 'emergency') {
-      // When the MEDOS_EMERGENCY_CARD_ENABLED feature flag is OFF
+      // When the MEDORA_EMERGENCY_CARD_ENABLED feature flag is OFF
       // (default), downgrade `emergency` → `urgent`. Users with red
       // flags still get a strongly-worded guidance card directing
       // them to seek same-day care (with the local emergency number

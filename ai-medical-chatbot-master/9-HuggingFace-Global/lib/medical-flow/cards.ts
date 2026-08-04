@@ -50,7 +50,7 @@ export function buildGreetingCard(opts: {
   const name = (opts.firstName || '').trim();
   const text = name
     ? `Hi ${name} 👋 What can I help you with today?`
-    : `Hi, I'm MedOS. I can help you check symptoms, understand medications, prepare for a doctor visit, or find care.\n\nWhat would you like help with today?`;
+    : `Hi, I'm Medora. I can help you check symptoms, understand medications, prepare for a doctor visit, or find care.\n\nWhat would you like help with today?`;
   return { kind: 'greeting', text, actions: GREETING_ACTIONS };
 }
 
@@ -103,7 +103,7 @@ export function buildProfileGateCard(opts: {
       title: 'Medication guidance requires your Health Profile',
       reason:
         opts.reason ||
-        `To answer this safely, MedOS needs to know your medications, allergies, chronic conditions, and relevant medical history. ${drug
+        `To answer this safely, Medora needs to know your medications, allergies, chronic conditions, and relevant medical history. ${drug
           .charAt(0)
           .toUpperCase() + drug.slice(1)} may not be suitable for some people, including those with stomach ulcers, kidney disease, blood thinner use, high blood pressure, heart disease, pregnancy, or NSAID allergy. Emergency guidance is always available without login.`,
       required_fields: opts.required_fields || [
@@ -121,7 +121,7 @@ export function buildProfileGateCard(opts: {
     title: 'Complete Your Health Profile',
     reason:
       opts.reason ||
-      'For deeper symptom analysis, MedOS needs your medical context — age, medications, allergies, chronic conditions, previous injuries, pregnancy status, and medical history — to make the safest, most accurate recommendation. You can still continue with general guidance without a profile. Emergency guidance is always available without login.',
+      'For deeper symptom analysis, Medora needs your medical context — age, medications, allergies, chronic conditions, previous injuries, pregnancy status, and medical history — to make the safest, most accurate recommendation. You can still continue with general guidance without a profile. Emergency guidance is always available without login.',
     required_fields: opts.required_fields || [
       'Age',
       'Sex',

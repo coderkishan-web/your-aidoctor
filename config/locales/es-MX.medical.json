@@ -31,7 +31,7 @@
     "epinephrine":   ["EpiPen"]
   },
   "disclaimer": {
-    "general": "MedOS proporciona información general de salud y no sustituye el consejo médico profesional, el diagnóstico o el tratamiento. Para decisiones sobre su salud, consulte a un profesional de la salud autorizado.",
+    "general": "Medora proporciona información general de salud y no sustituye el consejo médico profesional, el diagnóstico o el tratamiento. Para decisiones sobre su salud, consulte a un profesional de la salud autorizado.",
     "mental_health_crisis_addendum": "Si está en crisis o piensa en hacerse daño, llame al 911 o a la SAPTEL (línea de crisis nacional) al 55 5259 8121 ahora mismo. No está solo."
   },
   "crisis_resources": [

@@ -8,7 +8,7 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
 }
 
-const DISMISS_KEY = "medos_install_dismissed";
+const DISMISS_KEY = "medora_install_dismissed";
 const DELAY_MS = 8000;
 
 /**

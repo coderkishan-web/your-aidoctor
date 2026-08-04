@@ -39,7 +39,7 @@ export async function shareMessage(
   if (!url) return 'failed';
 
   const shareData: ShareData = {
-    title: 'MedOS — free AI medical assistant',
+    title: 'Medora — free AI medical assistant',
     text: question,
     url,
   };

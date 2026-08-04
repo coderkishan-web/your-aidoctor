@@ -1,6 +1,6 @@
-# Deployment Guide - MedOS on Vercel
+# Deployment Guide - Medora on Vercel
 
-This guide will walk you through deploying MedOS to Vercel in under 5 minutes.
+This guide will walk you through deploying Medora to Vercel in under 5 minutes.
 
 ## Prerequisites
 
@@ -15,7 +15,7 @@ This guide will walk you through deploying MedOS to Vercel in under 5 minutes.
 ```bash
 # From the root of ai-medical-chatbot
 git add .
-git commit -m "Add MedOS web application"
+git commit -m "Add Medora web application"
 git push origin main
 ```
 
@@ -66,7 +66,7 @@ Follow the prompts:
 - **Set up and deploy "~/ai-medical-chatbot/web"?** Yes
 - **Which scope?** Select your account
 - **Link to existing project?** No
-- **What's your project's name?** medos (or your choice)
+- **What's your project's name?** medora (or your choice)
 - **In which directory is your code located?** ./
 
 ### Step 4: Production Deployment
@@ -133,7 +133,7 @@ If you need to add environment variables:
 2. Add key-value pairs
 3. Redeploy to apply changes
 
-**Note**: Currently, MedOS requires no environment variables!
+**Note**: Currently, Medora requires no environment variables!
 
 ## Troubleshooting
 
@@ -272,6 +272,6 @@ After deployment, check:
 
 ---
 
-**Congratulations! Your MedOS application is now live on Vercel.** 🎉
+**Congratulations! Your Medora application is now live on Vercel.** 🎉
 
 Share your deployment URL with users and start collecting feedback!

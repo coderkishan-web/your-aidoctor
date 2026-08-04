@@ -2,7 +2,7 @@
  * POST /api/admin/ingest — (re)build the RAG corpus on the Space.
  *
  * This is the practical in-Space trigger: it writes chunks + embeddings +
- * FTS into the SAME persistent /data/medos.db the running server reads, so
+ * FTS into the SAME persistent /data/medora.db the running server reads, so
  * retrieval goes live without a redeploy.
  *
  * Auth: a shared secret in the `x-ingest-secret` header must equal the

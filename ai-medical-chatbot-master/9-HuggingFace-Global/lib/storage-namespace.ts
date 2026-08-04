@@ -1,14 +1,14 @@
 /**
  * Client-side storage namespacing — per-user isolation for localStorage.
  *
- * Every MedOS health-store read/write goes through `scopedKey(suffix)`.
+ * Every Medora health-store read/write goes through `scopedKey(suffix)`.
  * The prefix is owned by this module and derived from the active user:
  *
- *   logged-in user "u_abc"   →  "medos:u:u_abc:<suffix>"
- *   anonymous (guest/kiosk)  →  "medos:anon:<random>:<suffix>"
+ *   logged-in user "u_abc"   →  "medora:u:u_abc:<suffix>"
+ *   anonymous (guest/kiosk)  →  "medora:anon:<random>:<suffix>"
  *
  * Why this exists:
- *   Before Batch 6, keys were global (`medos_medications`, `medos_ehr_profile`,
+ *   Before Batch 6, keys were global (`medora_medications`, `medora_ehr_profile`,
  *   …). On a shared device (family laptop, kiosk, clinic workstation) the
  *   second user would read and overwrite the first user's EHR, meds and chat
  *   history — and those values were then concatenated into the LLM prompt
@@ -19,14 +19,14 @@
  *     local/sessionStorage, so account-switch on a shared browser is safe.
  *   - Anonymous sessions live only in sessionStorage and are isolated per
  *     tab; they are wiped on logout and never survive a browser restart.
- *   - Any legacy un-namespaced `medos_*` keys are migrated once on first
+ *   - Any legacy un-namespaced `medora_*` keys are migrated once on first
  *     scoped read and then removed, so existing users do not lose data.
  */
 
-const SCOPED_PREFIX = 'medos:u:';
-const ANON_PREFIX = 'medos:anon:';
-const LEGACY_PREFIX = 'medos_';
-const CONTEXT_KEY = 'medos:__context__'; // tracks the last-seen userId
+const SCOPED_PREFIX = 'medora:u:';
+const ANON_PREFIX = 'medora:anon:';
+const LEGACY_PREFIX = 'medora_';
+const CONTEXT_KEY = 'medora:__context__'; // tracks the last-seen userId
 
 type Ctx =
   | { kind: 'user'; userId: string; prefix: string }
@@ -54,9 +54,9 @@ function getOrCreateAnonCtx(): Ctx {
   if (!hasSessionStorage()) {
     return { kind: 'anon', anonId: 'ssr', prefix: `${ANON_PREFIX}ssr:` };
   }
-  const existing = sessionStorage.getItem('medos:__anon_id__');
+  const existing = sessionStorage.getItem('medora:__anon_id__');
   const anonId = existing || randomId();
-  if (!existing) sessionStorage.setItem('medos:__anon_id__', anonId);
+  if (!existing) sessionStorage.setItem('medora:__anon_id__', anonId);
   return { kind: 'anon', anonId, prefix: `${ANON_PREFIX}${anonId}:` };
 }
 
@@ -88,7 +88,7 @@ function getCtx(): Ctx {
 }
 
 /**
- * Migrate any legacy `medos_<suffix>` key to the current scoped key, then
+ * Migrate any legacy `medora_<suffix>` key to the current scoped key, then
  * remove the legacy one. Idempotent and safe to call on every read.
  *
  * We only migrate into a *user* context — anonymous context must not inherit
@@ -114,7 +114,7 @@ function migrateLegacyIfNeeded(suffix: string, scoped: string): void {
 
 /**
  * Return the current scoped storage key for the given suffix (e.g. passing
- * `"medications"` returns `"medos:u:<userId>:medications"`).
+ * `"medications"` returns `"medora:u:<userId>:medications"`).
  */
 export function scopedKey(suffix: string): string {
   const ctx = getCtx();
@@ -132,10 +132,10 @@ export function isAuthenticatedContext(): boolean {
 }
 
 /**
- * Wipe every scoped key belonging to `userId` (or every `medos:u:*` + legacy
- * `medos_*` key if no userId is given). Call this on logout.
+ * Wipe every scoped key belonging to `userId` (or every `medora:u:*` + legacy
+ * `medora_*` key if no userId is given). Call this on logout.
  *
- * Anonymous (`medos:anon:*`) keys live in sessionStorage and are wiped too.
+ * Anonymous (`medora:anon:*`) keys live in sessionStorage and are wiped too.
  */
 export function wipeUserScopedStorage(userId?: string): void {
   if (hasLocalStorage()) {
@@ -153,14 +153,14 @@ export function wipeUserScopedStorage(userId?: string): void {
     for (let i = 0; i < sessionStorage.length; i++) {
       const k = sessionStorage.key(i);
       if (!k) continue;
-      if (k.startsWith(ANON_PREFIX) || k.startsWith('medos:')) toDelete.push(k);
+      if (k.startsWith(ANON_PREFIX) || k.startsWith('medora:')) toDelete.push(k);
     }
     toDelete.forEach((k) => sessionStorage.removeItem(k));
   }
 }
 
 /**
- * Wipe literally every MedOS key (scoped, anonymous, and legacy). Intended
+ * Wipe literally every Medora key (scoped, anonymous, and legacy). Intended
  * for hard resets / delete-account flows, not routine logouts.
  */
 export function wipeAllMedosStorage(): void {
@@ -173,7 +173,7 @@ export function wipeAllMedosStorage(): void {
         k.startsWith(SCOPED_PREFIX) ||
         k.startsWith(ANON_PREFIX) ||
         k.startsWith(LEGACY_PREFIX) ||
-        k.startsWith('medos:')
+        k.startsWith('medora:')
       ) {
         toDelete.push(k);
       }
@@ -185,7 +185,7 @@ export function wipeAllMedosStorage(): void {
     for (let i = 0; i < sessionStorage.length; i++) {
       const k = sessionStorage.key(i);
       if (!k) continue;
-      if (k.startsWith('medos:')) toDelete.push(k);
+      if (k.startsWith('medora:')) toDelete.push(k);
     }
     toDelete.forEach((k) => sessionStorage.removeItem(k));
   }
@@ -216,7 +216,7 @@ export function setStorageUserContext(userId: string | null | undefined): void {
       for (let i = 0; i < sessionStorage.length; i++) {
         const k = sessionStorage.key(i);
         if (!k) continue;
-        if (k.startsWith(ANON_PREFIX) || k === 'medos:__anon_id__') toDelete.push(k);
+        if (k.startsWith(ANON_PREFIX) || k === 'medora:__anon_id__') toDelete.push(k);
       }
       toDelete.forEach((k) => sessionStorage.removeItem(k));
     }
@@ -248,7 +248,7 @@ export function setStorageUserContext(userId: string | null | undefined): void {
   // does not leak into the next one.
   if (hasSessionStorage()) {
     try {
-      sessionStorage.removeItem('medos:__anon_id__');
+      sessionStorage.removeItem('medora:__anon_id__');
     } catch {
       /* non-fatal */
     }

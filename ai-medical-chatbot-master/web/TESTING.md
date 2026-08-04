@@ -1,6 +1,6 @@
-# MedOS Testing & Verification Guide
+# Medora Testing & Verification Guide
 
-This guide covers testing, verification, and quality assurance for the MedOS web application.
+This guide covers testing, verification, and quality assurance for the Medora web application.
 
 ## Quick Test
 
