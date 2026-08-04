@@ -126,7 +126,7 @@ export function EHRWizard({ onComplete, onCancel, language, onContinueChat }: EH
             Health Profile
           </h2>
           <p className="text-sm text-ink-muted mt-1">
-            Optional — helps Medora give you personalized advice
+            Optional — helps YourAIDoctor give you personalized advice
           </p>
         </div>
 
@@ -281,7 +281,7 @@ function StepBasicInfo({
     <div className="space-y-4">
       <h3 className="font-bold text-lg text-ink-base">Basic Information</h3>
       <p className="text-sm text-ink-muted">
-        Just three quick details so Medora can tailor its advice. All optional.
+        Just three quick details so YourAIDoctor can tailor its advice. All optional.
       </p>
 
       <div className="grid sm:grid-cols-2 gap-4">

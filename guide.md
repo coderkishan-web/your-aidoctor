@@ -1,4 +1,4 @@
-# 🩺 Medora — Local Developer Guide
+# 🩺 YourAIDoctor — Local Developer Guide
 
 > Complete guide to start the app locally, understand the architecture, database, and both frontend/9-HuggingFace-Global.
 
@@ -75,7 +75,7 @@ ADMIN_EMAIL=contact@coderkishan.in
 ```
 
 > [!IMPORTANT]
-> For production, change `HF_BACKEND_URL` and `NEXT_PUBLIC_BACKEND_URL` to your live 9-HuggingFace-Global URL (e.g., `https://medora.in`).
+> For production, change `HF_BACKEND_URL` and `NEXT_PUBLIC_BACKEND_URL` to your live 9-HuggingFace-Global URL (e.g., `https://youraidoctor.in`).
 
 ---
 
@@ -285,7 +285,7 @@ Update `repoclone/web/.env.local`:
 ```env
 HF_BACKEND_URL=https://your-live-9-HuggingFace-Global.com
 NEXT_PUBLIC_BACKEND_URL=https://your-live-9-HuggingFace-Global.com
-NEXT_PUBLIC_SITE_URL=https://medora.in
+NEXT_PUBLIC_SITE_URL=https://youraidoctor.in
 ```
 Deploy with: `vercel --prod` (from `repoclone/web/`)
 
@@ -295,4 +295,4 @@ Run: `npm run start` (or `npm run dev` for local).
 
 ---
 
-*Medora — [medora.in](https://medora.in) | GitHub: [coderkishan-web/your-aidoctor](https://github.com/coderkishan-web/your-aidoctor) | Author: [coderkishan.in](https://coderkishan.in)*
+*YourAIDoctor — [youraidoctor.in](https://youraidoctor.in) | GitHub: [coderkishan-web/your-aidoctor](https://github.com/coderkishan-web/your-aidoctor) | Author: [coderkishan.in](https://coderkishan.in)*

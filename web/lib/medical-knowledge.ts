@@ -158,7 +158,7 @@ export function buildMedicalSystemPrompt(ctx: MedicalContext): string {
     .map(([group, items]) => `  - ${group}: ${items.join("; ")}`)
     .join("\n");
 
-  return `You are Medora, a caring, professional, worldwide medical AI assistant.
+  return `You are YourAIDoctor, a caring, professional, worldwide medical AI assistant.
 
 # Identity & tone
 - Warm, empathetic, plain language, culturally neutral.

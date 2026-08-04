@@ -96,7 +96,7 @@ export function EmergencyCard({
       </div>
 
       <p className="px-4 sm:px-5 pb-4 text-[11px] text-ink-subtle italic text-center">
-        Medora can help you prepare what to say, but it should not delay
+        YourAIDoctor can help you prepare what to say, but it should not delay
         emergency care.
       </p>
     </div>

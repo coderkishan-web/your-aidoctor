@@ -1,4 +1,4 @@
-# 🩺 Medora — Master Project Reference Guide (`imp.md`)
+# 🩺 YourAIDoctor — Master Project Reference Guide (`imp.md`)
 
 > **Single Source of Truth** for the entire `repoclone` project — covering directory structure, frontend & backend architecture, complete API catalog, database fallback, and step-by-step production deployment guide for going live.
 
@@ -8,7 +8,7 @@
 
 | Parameter | Specification |
 |---|---|
-| **App Name** | **Medora** (formerly Medora) |
+| **App Name** | **YourAIDoctor** (formerly Medora) |
 | **Frontend Framework** | Next.js 14 (App Router) + React 18 + Tailwind CSS + Lucide Icons |
 | **Backend Framework** | Node.js + Express.js (ES Modules `type: module`) |
 | **AI Engine** | Google Gemini API (`gemini-flash-latest`) + 15-Step Cognitive Pipeline |
@@ -168,13 +168,13 @@ repoclone/
 
 ## 🚀 4. Going Live & Production Deployment Guide
 
-When deploying **Medora** to production, follow this exact guide to configure domain URLs and environment variables.
+When deploying **YourAIDoctor** to production, follow this exact guide to configure domain URLs and environment variables.
 
 ```
                   ┌─────────────────────────────────────────┐
                   │ 🌐 FRONTEND: Deploy on Vercel           │
                   │ Repository root: repoclone/web          │
-                  │ Domain: https://medora.in         │
+                  │ Domain: https://youraidoctor.in         │
                   └────────────────────┬────────────────────┘
                                        │
                                        │ API Requests
@@ -182,7 +182,7 @@ When deploying **Medora** to production, follow this exact guide to configure do
                   ┌─────────────────────────────────────────┐
                   │ ⚙️ BACKEND: Deploy on Railway / Render  │
                   │ Repository root: repoclone/9-HF-Global  │
-                  │ Domain: https://api.medora.in     │
+                  │ Domain: https://api.youraidoctor.in     │
                   └────────────────────┬────────────────────┘
                                        │
                                        ▼
@@ -200,11 +200,11 @@ In your Vercel Project Settings ➔ **Environment Variables**, add:
 
 ```env
 # Point to your live backend domain
-HF_BACKEND_URL=https://api.medora.in
-NEXT_PUBLIC_BACKEND_URL=https://api.medora.in
+HF_BACKEND_URL=https://api.youraidoctor.in
+NEXT_PUBLIC_BACKEND_URL=https://api.youraidoctor.in
 
 # Frontend Production Domain
-NEXT_PUBLIC_SITE_URL=https://medora.in
+NEXT_PUBLIC_SITE_URL=https://youraidoctor.in
 ```
 
 ---
@@ -253,9 +253,9 @@ app.use(cors({
   origin: function (origin, callback) {
     const allowed = [
       'http://localhost:3000',
-      'https://medora.in',           // ← Your Production Domain
-      'https://www.medora.in',       // ← Your WWW Domain
-      'https://medora.vercel.app'    // ← Vercel Preview Domain
+      'https://youraidoctor.in',           // ← Your Production Domain
+      'https://www.youraidoctor.in',       // ← Your WWW Domain
+      'https://youraidoctor.vercel.app'    // ← Vercel Preview Domain
     ];
     if (!origin || allowed.includes(origin) || origin.endsWith('.vercel.app')) {
       callback(null, true);

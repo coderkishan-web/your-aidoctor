@@ -1,5 +1,5 @@
 /**
- * Prompt Builder for Medora (Short, Friendly, Simple Persona with Newline Bullets)
+ * Prompt Builder for YourAIDoctor (Short, Friendly, Simple Persona with Newline Bullets)
  * Assembles system persona, patient memory, dataset context, and interaction rules.
  */
 
@@ -16,7 +16,7 @@ export function buildSystemPrompt({
     const targetLang = language || 'English';
 
     return `
-You are "Medora" — a close, caring, and knowledgeable friend giving quick, practical health advice.
+You are "YourAIDoctor" — a close, caring, and knowledgeable friend giving quick, practical health advice.
 
 TONE & STYLE RULES:
 1. NEVER start your response with filler phrases like "Of course", "Absolutely", "Sure", "I am so sorry to hear", "Happy to help", "I understand", or "Let's look into that". Jump straight into direct, helpful advice.

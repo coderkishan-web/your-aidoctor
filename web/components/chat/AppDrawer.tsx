@@ -104,7 +104,7 @@ export function AppDrawer({
             </div>
             <div className="min-w-0">
               <div className="text-sm font-bold text-ink-base truncate">
-                {isAuthenticated ? (username || "Account") : "Medora"}
+                {isAuthenticated ? (username || "Account") : "YourAIDoctor"}
               </div>
               {isAuthenticated && (
                 <div className="text-[11px] text-ink-muted truncate">{t("drawer_signed_in", language)}</div>

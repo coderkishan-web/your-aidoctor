@@ -12,12 +12,12 @@ const inter = Inter({
 // (preview deployments, staging). Falls back to the production domain.
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") ||
-  "https://medora.in";
+  "https://youraidoctor.in";
 
-const SITE_NAME = "Medora";
-const SITE_TITLE = "Medora — your worldwide medical assistant";
+const SITE_NAME = "YourAIDoctor";
+const SITE_TITLE = "YourAIDoctor — your worldwide medical assistant";
 const SITE_DESCRIPTION_LONG =
-  "Tell Medora what's bothering you. Instant, private, multilingual health guidance aligned with WHO, CDC, and NHS.";
+  "Tell YourAIDoctor what's bothering you. Instant, private, multilingual health guidance aligned with WHO, CDC, and NHS.";
 const SITE_DESCRIPTION_SHORT =
   "Private, multilingual health guidance aligned with WHO, CDC, and NHS — available 24/7.";
 
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   title: SITE_TITLE,
   description: SITE_DESCRIPTION_LONG,
   keywords: ["medical AI", "healthcare", "chatbot", "telemedicine", "WHO", "CDC"],
-  authors: [{ name: "Medora Team", url: "https://coderkishan.in" }],
+  authors: [{ name: "YourAIDoctor Team", url: "https://coderkishan.in" }],
   applicationName: SITE_NAME,
   manifest: "/manifest.webmanifest",
   icons: {
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Medora — your worldwide medical assistant",
+        alt: "YourAIDoctor — your worldwide medical assistant",
       },
     ],
   },

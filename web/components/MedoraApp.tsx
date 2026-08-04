@@ -737,7 +737,7 @@ function MedoraAppInner() {
               <div className="w-7 h-7 rounded-lg bg-brand-gradient flex items-center justify-center text-white">
                 <Heart size={12} />
               </div>
-              <span className="font-bold text-ink-base tracking-tight text-sm">Medora</span>
+              <span className="font-bold text-ink-base tracking-tight text-sm">YourAIDoctor</span>
             </div>
           </div>
 

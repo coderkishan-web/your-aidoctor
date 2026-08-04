@@ -1,5 +1,5 @@
 /**
- * /api/chat — proxy to Medora Node.js backend.
+ * /api/chat — proxy to YourAIDoctor Node.js backend.
  *
  * Routes chat messages to the local/deployed Node.js backend at
  * HF_BACKEND_URL (default: http://localhost:4000).
@@ -8,7 +8,7 @@
  *
  * Configuration (set in .env.local):
  *   HF_BACKEND_URL          backend URL (local: http://localhost:4000,
- *                           production: https://medora.in/api)
+ *                           production: https://youraidoctor.in/api)
  *   HF_BACKEND_TIMEOUT_MS   optional timeout (default 50000ms).
  */
 
