@@ -115,6 +115,17 @@ function MedoraAppInner() {
   const auth = useAuth();
   const resetLink = usePasswordResetLink();
 
+  // Redirect to Health Profile onboarding immediately after user signs in for the first time
+  useEffect(() => {
+    if (auth.user) {
+      const hasCompleted = localStorage.getItem(`medora_onboarding_${auth.user.id}`);
+      if (!hasCompleted) {
+        setActiveNav("ehr-wizard");
+        localStorage.setItem(`medora_onboarding_${auth.user.id}`, "true");
+      }
+    }
+  }, [auth.user]);
+
   // When the user lands here from a password-reset email, drop them on
   // the login screen with the reset step pre-filled. Done once on mount;
   // the hook itself clears the params from the URL so it won't re-fire.

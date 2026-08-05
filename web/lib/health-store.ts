@@ -127,6 +127,22 @@ export interface ConversationSummary {
 }
 
 // ============================================================
+// Family Members
+// ============================================================
+
+export interface FamilyMember {
+  id: string;
+  name: string;
+  relation: string;
+  dateOfBirth?: string;
+  chronicConditions?: string[];
+  allergies?: string[];
+  medications?: string[];
+  notes?: string;
+  createdAt: string;
+}
+
+// ============================================================
 // Contacts — doctors, pharmacies, drugstores address book
 // ============================================================
 
@@ -387,6 +403,7 @@ const KEYS = {
   history: 'medora_history',
   medicines: 'medora_medicines',
   contacts: 'medora_contacts',
+  familyMembers: 'medora_family_members',
 } as const;
 
 // ============================================================
@@ -618,6 +635,31 @@ export function removeRecord(id: string): void {
     KEYS.records,
     loadRecords().filter((r) => r.id !== id),
   );
+}
+
+// --- Family Members ---
+
+export function loadFamilyMembers(): FamilyMember[] {
+  return load<FamilyMember>(KEYS.familyMembers);
+}
+
+export function saveFamilyMember(member: Omit<FamilyMember, 'id' | 'createdAt'>): FamilyMember {
+  const all = loadFamilyMembers();
+  const item: FamilyMember = { ...member, id: genId(), createdAt: new Date().toISOString() };
+  all.push(item);
+  save(KEYS.familyMembers, all);
+  return item;
+}
+
+export function updateFamilyMember(id: string, patch: Partial<FamilyMember>): void {
+  const all = loadFamilyMembers().map((m) =>
+    m.id === id ? { ...m, ...patch } : m,
+  );
+  save(KEYS.familyMembers, all);
+}
+
+export function removeFamilyMember(id: string): void {
+  save(KEYS.familyMembers, loadFamilyMembers().filter((m) => m.id !== id));
 }
 
 // --- Medicine inventory ---

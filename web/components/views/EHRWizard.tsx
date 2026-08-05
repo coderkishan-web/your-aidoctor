@@ -13,11 +13,18 @@ import {
   Plus,
   X,
   MessageCircle,
+  Users,
+  Trash2,
 } from "lucide-react";
 import {
   loadEHRProfile,
   saveEHRProfile,
   loadMedications,
+  loadFamilyMembers,
+  saveFamilyMember,
+  removeFamilyMember,
+  loadRecords,
+  loadMedicines,
   CHRONIC_CONDITIONS_OPTIONS,
   ALLERGY_COMMON,
   type EHRProfile,
@@ -44,6 +51,7 @@ const STEPS = [
   { icon: Heart, label: "Medical History" },
   { icon: Pill, label: "Medications" },
   { icon: Activity, label: "Lifestyle" },
+  { icon: Users, label: "Family" },
   { icon: ClipboardCheck, label: "Review" },
 ];
 
@@ -69,7 +77,7 @@ export function EHRWizard({ onComplete, onCancel, language, onContinueChat }: EH
   useEffect(() => {
     const existing = loadEHRProfile();
     setProfile(existing);
-    if (existing.wizardStep) setStep(Math.min(existing.wizardStep, 4));
+    if (existing.wizardStep) setStep(Math.min(existing.wizardStep, 5));
     setMeds(loadMedications().filter((m) => m.active));
   }, []);
 
@@ -93,7 +101,7 @@ export function EHRWizard({ onComplete, onCancel, language, onContinueChat }: EH
   };
 
   const next = () => {
-    const nextStep = Math.min(step + 1, 4);
+    const nextStep = Math.min(step + 1, 5);
     setStep(nextStep);
     saveEHRProfile({ ...profile, wizardStep: nextStep });
   };
@@ -101,7 +109,7 @@ export function EHRWizard({ onComplete, onCancel, language, onContinueChat }: EH
   const prev = () => setStep(Math.max(step - 1, 0));
 
   const finish = () => {
-    const final: EHRProfile = { ...profile, completedAt: new Date().toISOString(), wizardStep: 5 };
+    const final: EHRProfile = { ...profile, completedAt: new Date().toISOString(), wizardStep: 6 };
     saveEHRProfile(final);
     onComplete();
   };
@@ -197,7 +205,8 @@ export function EHRWizard({ onComplete, onCancel, language, onContinueChat }: EH
           )}
           {step === 2 && <StepMedications meds={meds} />}
           {step === 3 && <StepLifestyle profile={profile} update={update} />}
-          {step === 4 && <StepReview profile={profile} meds={meds} />}
+          {step === 4 && <StepFamilyMembers />}
+          {step === 5 && <StepReview profile={profile} meds={meds} />}
         </div>
 
         {/* Navigation buttons */}
@@ -218,7 +227,7 @@ export function EHRWizard({ onComplete, onCancel, language, onContinueChat }: EH
             </button>
           )}
 
-          {step < 4 ? (
+          {step < 5 ? (
             <button
               onClick={next}
               className="flex items-center gap-1.5 px-5 py-2.5 bg-brand-gradient text-white rounded-xl font-bold text-sm shadow-glow hover:brightness-110 transition-all"
@@ -474,6 +483,67 @@ function StepLifestyle({
   );
 }
 
+function StepFamilyMembers() {
+  const [familyMembers, setFamilyMembers] = useState(loadFamilyMembers());
+  const [name, setName] = useState("");
+  const [relation, setRelation] = useState("");
+  const [healthDetails, setHealthDetails] = useState("");
+
+  const handleAdd = () => {
+    if (!name.trim()) return;
+    saveFamilyMember({ name: name.trim(), relation: relation.trim(), notes: healthDetails.trim() });
+    setFamilyMembers(loadFamilyMembers());
+    setName("");
+    setRelation("");
+    setHealthDetails("");
+  };
+
+  const handleRemove = (id: string) => {
+    removeFamilyMember(id);
+    setFamilyMembers(loadFamilyMembers());
+  };
+
+  return (
+    <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
+      <div>
+        <h3 className="font-bold text-lg text-ink-base">Family Members</h3>
+        <p className="text-sm text-ink-muted">Add your family members so your AI assistant knows who you are referring to.</p>
+      </div>
+
+      <div className="space-y-3">
+        {familyMembers.map((fm) => (
+          <div key={fm.id} className="p-3 border border-line/60 rounded-xl bg-surface-2 flex items-center justify-between">
+            <div>
+              <p className="text-sm font-semibold text-ink-base">{fm.name} <span className="text-ink-muted font-normal">({fm.relation})</span></p>
+              {fm.notes && <p className="text-xs text-ink-muted mt-1">{fm.notes}</p>}
+            </div>
+            <button
+              onClick={() => handleRemove(fm.id)}
+              className="w-8 h-8 rounded-full flex items-center justify-center text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
+            >
+              <Trash2 size={16} />
+            </button>
+          </div>
+        ))}
+      </div>
+
+      <div className="p-4 border border-line/60 rounded-xl space-y-3">
+        <h4 className="text-sm font-semibold text-ink-base">Add New Family Member</h4>
+        <InputField label="Name" value={name} onChange={setName} placeholder="e.g. Jane" />
+        <InputField label="Relation" value={relation} onChange={setRelation} placeholder="e.g. Spouse, Child" />
+        <InputField label="Health Details (Optional)" value={healthDetails} onChange={setHealthDetails} placeholder="e.g. Diabetic, allergic to peanuts" />
+        <button
+          onClick={handleAdd}
+          disabled={!name.trim()}
+          className="flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-700 dark:bg-brand-500/10 dark:text-brand-300 rounded-lg text-sm font-semibold hover:bg-brand-100 dark:hover:bg-brand-500/20 transition-colors disabled:opacity-50"
+        >
+          <Plus size={16} /> Add Member
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function StepReview({ profile, meds }: { profile: EHRProfile; meds: Medication[] }) {
   const sections = [
     { label: "Name", value: [profile.firstName, profile.lastName].filter(Boolean).join(" ") || "—" },
@@ -491,6 +561,22 @@ function StepReview({ profile, meds }: { profile: EHRProfile; meds: Medication[]
     { label: "Exercise", value: profile.exerciseFrequency || "—" },
     { label: "Diet", value: profile.dietType || "—" },
   ];
+
+  // Dynamically load data potentially added from the Personal Assistant Popup
+  const familyMembers = loadFamilyMembers();
+  if (familyMembers.length > 0) {
+    sections.push({ label: "Family Added", value: familyMembers.map((fm) => `${fm.name} (${fm.relation})`).join(", ") });
+  }
+  
+  const records = loadRecords();
+  if (records.length > 0) {
+    sections.push({ label: "Records Added", value: records.map((r) => r.title).join(", ") });
+  }
+
+  const medicines = loadMedicines();
+  if (medicines.length > 0) {
+    sections.push({ label: "Inventory Added", value: medicines.map((m) => `${m.name} ${m.dose}`).join(", ") });
+  }
 
   return (
     <div className="space-y-4">
