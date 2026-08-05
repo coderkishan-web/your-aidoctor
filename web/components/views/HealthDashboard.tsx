@@ -420,7 +420,7 @@ function SignedOutDashboard({
 
           <div className="mt-7 flex items-center gap-2 text-[12px] text-ink-subtle">
             <ShieldCheck size={14} className="text-success-600" />
-            <span>Zero chat content stored. Open source. Free forever.</span>
+            <span>Zero chat content stored. Proprietary. Free forever.</span>
           </div>
         </div>
       </div>

@@ -37,7 +37,7 @@ export function AboutModal({ onClose }: { onClose: () => void }) {
         <div className="p-5 space-y-5">
           {/* Description */}
           <p className="text-sm text-ink-base leading-relaxed">
-            YourAIDoctor is a free, open-source AI medical assistant that speaks
+            YourAIDoctor is a state-of-the-art AI medical assistant that speaks
             20 languages. It provides general health guidance aligned with
             WHO, CDC, and NHS guidelines — always available, completely
             private, no sign-up required.
@@ -60,30 +60,17 @@ export function AboutModal({ onClose }: { onClose: () => void }) {
               <InfoRow label="Knowledge" value="WHO · CDC · NHS · SIE · SID · ADA" />
               <InfoRow label="Framework" value="Next.js 14 · React 18" />
               <InfoRow label="Backend" value="Node.js Engine" />
-              <InfoRow label="License" value="Apache 2.0 — Open Source" />
+              <InfoRow label="License" value="Proprietary / All Rights Reserved" />
             </div>
           </div>
 
           {/* Links */}
-          <div className="flex gap-2">
-            <a
-              href="https://github.com/coderkishan-web/your-aidoctor"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border border-line/60 text-sm font-semibold text-ink-base hover:bg-surface-2 transition-colors"
-            >
-              <Github size={16} />
-              GitHub
-            </a>
-            <a
-              href="https://youraidoctor.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border border-line/60 text-sm font-semibold text-ink-base hover:bg-surface-2 transition-colors"
-            >
-              <ExternalLink size={16} />
-              Website
-            </a>
+          {/* Ownership */}
+          <div className="bg-brand-50 dark:bg-brand-500/10 rounded-xl p-4 text-center border border-brand-100 dark:border-brand-500/20">
+            <p className="text-sm font-medium text-brand-700 dark:text-brand-300">
+              Created and solely owned by<br/>
+              <span className="font-bold text-base">Kishan Shinde (alias CoderKishan)</span>
+            </p>
           </div>
 
           {/* Disclaimer */}
